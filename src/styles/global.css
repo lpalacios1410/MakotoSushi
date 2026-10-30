@@ -1,0 +1,169 @@
+/*
+  Sistema de diseño "Urban Tokyo Dark Fusion" (ver DESIGN.md).
+  Tokens migrados 1:1 al formato @theme de Tailwind CSS v4.
+*/
+@import "tailwindcss";
+
+@theme {
+  /* ── Superficies ─────────────────────────────────────────── */
+  --color-surface: #131315;
+  --color-surface-dim: #131315;
+  --color-surface-bright: #39393b;
+  --color-surface-variant: #353437;
+  --color-surface-container-lowest: #0e0e10;
+  --color-surface-container-low: #1b1b1d;
+  --color-surface-container: #201f21;
+  --color-surface-container-high: #2a2a2c;
+  --color-surface-container-highest: #353437;
+
+  /* ── Texto sobre superficies ─────────────────────────────── */
+  --color-on-surface: #e5e1e4;
+  --color-on-surface-variant: #e6bdb8;
+  --color-on-background: #e5e1e4;
+  --color-inverse-surface: #e5e1e4;
+  --color-inverse-on-surface: #313032;
+
+  /* ── Bordes ──────────────────────────────────────────────── */
+  --color-outline: #ac8884;
+  --color-outline-variant: #5c403c;
+
+  /* ── Primario (rojo torched) ─────────────────────────────── */
+  --color-primary: #ffb4ab;
+  --color-on-primary: #690005;
+  --color-primary-container: #dc2626;
+  --color-on-primary-container: #fff6f5;
+  --color-inverse-primary: #bf0715;
+  --color-primary-fixed: #ffdad6;
+  --color-primary-fixed-dim: #ffb4ab;
+  --color-on-primary-fixed: #410002;
+  --color-on-primary-fixed-variant: #93000b;
+
+  /* ── Secundario (wasabi) ─────────────────────────────────── */
+  --color-secondary: #4ae176;
+  --color-on-secondary: #003915;
+  --color-secondary-container: #00b954;
+  --color-on-secondary-container: #004119;
+  --color-secondary-fixed: #6bff8f;
+  --color-secondary-fixed-dim: #4ae176;
+  --color-on-secondary-fixed: #002109;
+  --color-on-secondary-fixed-variant: #005321;
+
+  /* ── Terciario (sésamo dorado) ───────────────────────────── */
+  --color-tertiary: #f7be1d;
+  --color-on-tertiary: #3f2e00;
+  --color-tertiary-container: #906d00;
+  --color-on-tertiary-container: #fff8f0;
+  --color-tertiary-fixed: #ffdf9a;
+  --color-tertiary-fixed-dim: #f7be1d;
+  --color-on-tertiary-fixed: #251a00;
+  --color-on-tertiary-fixed-variant: #5a4300;
+
+  /* ── Error ───────────────────────────────────────────────── */
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  --color-error-container: #93000a;
+  --color-on-error-container: #ffdad6;
+
+  /* ── Fondo global ────────────────────────────────────────── */
+  --color-background: #131315;
+  --color-surface-tint: #ffb4ab;
+
+  /* ── Familias tipográficas ───────────────────────────────── */
+  --font-headline-xl: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-headline-xl-mobile: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-headline-lg: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-headline-lg-mobile: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-headline-md: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-headline-sm: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-body-lg: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body-md: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body-sm: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-label-md: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-label-sm: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+
+  /* ── Escala tipográfica ──────────────────────────────────── */
+  --text-headline-xl: 48px;
+  --text-headline-xl--line-height: 56px;
+  --text-headline-xl--letter-spacing: -0.02em;
+  --text-headline-xl--font-weight: 800;
+
+  --text-headline-xl-mobile: 32px;
+  --text-headline-xl-mobile--line-height: 38px;
+  --text-headline-xl-mobile--letter-spacing: -0.01em;
+  --text-headline-xl-mobile--font-weight: 800;
+
+  --text-headline-lg: 36px;
+  --text-headline-lg--line-height: 44px;
+  --text-headline-lg--letter-spacing: -0.01em;
+  --text-headline-lg--font-weight: 700;
+
+  --text-headline-lg-mobile: 26px;
+  --text-headline-lg-mobile--line-height: 32px;
+  --text-headline-lg-mobile--font-weight: 700;
+
+  --text-headline-md: 24px;
+  --text-headline-md--line-height: 30px;
+  --text-headline-md--font-weight: 700;
+
+  --text-headline-sm: 18px;
+  --text-headline-sm--line-height: 24px;
+  --text-headline-sm--font-weight: 600;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 28px;
+  --text-body-lg--font-weight: 400;
+
+  --text-body-md: 15px;
+  --text-body-md--line-height: 22px;
+  --text-body-md--font-weight: 400;
+
+  --text-body-sm: 13px;
+  --text-body-sm--line-height: 18px;
+  --text-body-sm--font-weight: 400;
+
+  --text-label-md: 13px;
+  --text-label-md--line-height: 16px;
+  --text-label-md--letter-spacing: 0.06em;
+  --text-label-md--font-weight: 700;
+
+  --text-label-sm: 11px;
+  --text-label-sm--line-height: 14px;
+  --text-label-sm--letter-spacing: 0.08em;
+  --text-label-sm--font-weight: 700;
+}
+
+/* ── Utilidades personalizadas ─────────────────────────────── */
+
+/* Oculta la barra de scroll en contenedores de scroll horizontal */
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Resplandor carmesí para CTAs de alta intención (DESIGN.md) */
+@utility glow-primary {
+  box-shadow: 0 0 25px rgb(220 38 38 / 0.35);
+}
+
+/* Brillo de neón para texto destacado */
+@utility neon-text-glow {
+  text-shadow: 0 0 12px rgb(255 180 171 / 0.4);
+}
+
+/* Iconos Material Symbols en versión "filled" (estrellas, checks...) */
+@utility ms-fill {
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+/* ── Base ──────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}

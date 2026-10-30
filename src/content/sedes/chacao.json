@@ -1,0 +1,13 @@
+{
+  "nombre": "Chacao",
+  "ciudad": "Caracas",
+  "orden": 3,
+  "modalidades": ["restaurante", "delivery", "pickup"],
+  "horarios": [
+    { "dias": "Lunes a Jueves", "apertura": "10:00 am", "cierre": "11:30 pm" },
+    { "dias": "Viernes a Domingo", "apertura": "10:00 am", "cierre": "12:00 am" }
+  ],
+  "direccion": "Calle Cecilio Acosta con Páez, Chacao",
+  "comoLlegar": "Subiendo por la plaza Bolívar de Chacao, en la esquina de la iglesia San José cruza a la izquierda y continuamente a la izquierda; nos encontramos del lado izquierdo de la calle. El edificio tiene fachada de ladrillos y publicidad representativa.",
+  "whatsapp": null
+}

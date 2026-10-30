@@ -1,0 +1,74 @@
+---
+/**
+ * Pie de página compartido.
+ */
+const LOGO_URL =
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuCAU1zHMukdShxQaC9RgKRpJIjjRp05B_QvFgQ4A0f2qKSpQYPPTRiuSXTtQETXyPZ0NCp0OdaX3fnBooPLq5MF9BkFqAeY_8vwIis36q3A77Iaf_thLyIwIjZXxPQdHENuJQeemR_xtR6LiBEIIeI5MgHconpI3MTFmC_VGP_Rx6oj82Q59LtSVRv_BsFO8d63ptkacenruyabAMywbniPfFuvyvUf8bTou3ccu0ohYSH1WFztyaFDfQ';
+
+const redes = [
+  { href: 'https://instagram.com', icono: 'photo_camera', etiqueta: 'Instagram' },
+  { href: 'https://tiktok.com', icono: 'play_circle', etiqueta: 'TikTok' },
+  { href: 'https://wa.me/', icono: 'chat', etiqueta: 'WhatsApp' },
+];
+
+const enlaces = [
+  { href: '/sedes/', texto: 'Horarios de Atención' },
+  { href: '/sedes/', texto: 'Zona de Cobertura' },
+  { href: 'https://wa.me/', texto: 'WhatsApp Delivery', externo: true },
+  { href: '#', texto: 'Términos y Condiciones' },
+  { href: '#', texto: 'Aviso de Privacidad' },
+];
+---
+
+<footer class="border-t border-outline-variant/20 bg-surface-container-lowest">
+  <div class="mx-auto flex w-full max-w-7xl flex-col items-center justify-center gap-6 px-6 py-12 text-center">
+    <!-- Logo e identidad -->
+    <div class="flex flex-col items-center gap-3">
+      <div class="h-16 w-16 overflow-hidden rounded-full border border-outline-variant/40 bg-surface p-1">
+        <img src={LOGO_URL} alt="Logo Oficial Letsgo Sushi" class="h-full w-full object-contain" width="64" height="64" loading="lazy" />
+      </div>
+      <span class="font-headline-md text-headline-md font-extrabold text-on-surface">LETSGO SUSHI</span>
+      <p class="max-w-md font-body-sm text-body-sm text-on-surface/60">
+        Makoto Sushi Bar &amp; Delivery. Alta gastronomía japonesa y cocina urbana contemporánea.
+      </p>
+    </div>
+
+    <!-- Redes sociales -->
+    <div class="flex items-center gap-4">
+      {
+        redes.map((red) => (
+          <a
+            class="flex h-10 w-10 items-center justify-center rounded-full bg-surface-container text-on-surface transition-all hover:bg-surface-container-high hover:text-primary"
+            href={red.href}
+            aria-label={red.etiqueta}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <span class="material-symbols-outlined list-none text-xl" aria-hidden="true">{red.icono}</span>
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- Enlaces de interés -->
+    <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 pt-2">
+      {
+        enlaces.map((enlace) => (
+          <a
+            class="font-label-sm text-label-sm text-on-surface-variant transition-colors duration-150 hover:text-primary"
+            href={enlace.href}
+            target={enlace.externo ? '_blank' : undefined}
+            rel={enlace.externo ? 'noopener noreferrer' : undefined}
+          >
+            {enlace.texto}
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- Copyright -->
+    <p class="w-full max-w-2xl border-t border-outline-variant/10 pt-6 font-body-sm text-body-sm text-on-surface/50">
+      © 2026 Makoto Sushi - Letsgo Sushi. Todos los derechos reservados.
+    </p>
+  </div>
+</footer>

@@ -1,0 +1,14 @@
+{
+  "nombre": "La Candelaria",
+  "ciudad": "Caracas",
+  "orden": 1,
+  "modalidades": ["restaurante"],
+  "horarios": [
+    { "dias": "Todos los días", "apertura": "11:00 am", "cierre": "10:00 pm" }
+  ],
+  "direccion": "C.C. Sambil, Local ZG-23, Zona Gourmet, La Candelaria",
+  "centroComercial": "C.C. Sambil",
+  "local": "Local ZG-23 (Zona gourmet)",
+  "comoLlegar": "",
+  "whatsapp": null
+}

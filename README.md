@@ -27,23 +27,30 @@ Hoy el negocio funciona con una página de Google Sites que envían a los client
 
 ```
 MakotoSushi/
-├── README.md          # Este archivo
-├── DESIGN.md          # Sistema de diseño (tokens, tipografía, componentes)
-├── code.html          # Prototipo de referencia de la landing (monolito)
-├── screen.png         # Captura de referencia visual
-└── (fase 1) makotosushi/  # Proyecto Astro
-    ├── src/
-    │   ├── content/       # menu/*.json, sedes/*.json
-    │   ├── components/    # Navbar, DishCard, CartDrawer...
-    │   └── pages/         # index, menu/[...slug], sedes/[slug]
-    └── public/
+├── README.md              # Este archivo
+├── DESIGN.md              # Sistema de diseño (tokens, tipografía, componentes)
+├── code.html              # Prototipo de referencia de la landing (monolito)
+├── screen.png             # Captura de referencia visual
+├── astro.config.mjs       # Configuración de Astro (+ plugin de Tailwind v4)
+├── package.json
+├── tsconfig.json
+├── public/                # Favicon y archivos estáticos
+└── src/
+    ├── styles/global.css  # Tokens del design system → @theme de Tailwind v4
+    ├── layouts/           # Layout.astro (head, Navbar, Footer)
+    ├── components/        # Hero, Pilares, Catalogo, DishCard, SedeCard...
+    ├── content/sedes/     # 4 sedes en JSON (horarios, dirección, modalidades)
+    ├── data/              # destacados.json (platos de la landing)
+    └── pages/
+        ├── index.astro         # Landing
+        └── sedes/[slug].astro  # Detalle de cada sede con mapa
 ```
 
 ## 🗺️ Fases de desarrollo
 
 | Fase | Alcance | Estado |
 |---|---|---|
-| **1** | Proyecto Astro + Tailwind con tokens del design system, landing y páginas de sedes | ⏳ Pendiente |
+| **1** | Proyecto Astro + Tailwind con tokens del design system, landing y páginas de sedes | ✅ Completada |
 | **2** | Menú desde datos + carrito → checkout → WhatsApp | ⏳ Pendiente |
 | **3** | CMS (Sanity) para el personal, SEO local y Open Graph | ⏳ Pendiente |
 
@@ -56,12 +63,13 @@ MakotoSushi/
 
 Este repositorio se desarrolla con asistencia de agentes de código (OpenCode). Los commits siguen la convención generada por la skill **`commit-messages`** (Conventional Commits basados en `git diff`).
 
-## 🚀 Cómo ejecutar (una vez implementada la fase 1)
+## 🚀 Cómo ejecutar
 
 ```bash
-npm install     # instalar dependencias
-npm run dev     # servidor de desarrollo (http://localhost:4321)
+npm install     # instalar dependencias (solo la primera vez)
+npm run dev     # servidor de desarrollo → http://localhost:4321
 npm run build   # build de producción en ./dist
+npm run preview # previsualizar el build de producción
 ```
 
 ---

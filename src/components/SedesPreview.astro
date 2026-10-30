@@ -1,0 +1,44 @@
+---
+/**
+ * Vista previa de las sedes en la landing (sustituye la sección
+ * "Nuestro Local" del prototipo por el listado real del negocio).
+ */
+import { getCollection } from 'astro:content';
+import SedeCard from './SedeCard.astro';
+
+const sedes = (await getCollection('sedes')).sort((a, b) => a.data.orden - b.data.orden);
+---
+
+<section id="sedes" class="border-y border-outline-variant/20 bg-surface-container-lowest py-16 md:py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <!-- Encabezado -->
+    <div class="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+      <div>
+        <div class="mb-2 inline-flex w-fit items-center gap-2 rounded-full border border-outline-variant/40 bg-surface-container-high px-3 py-1">
+          <span class="material-symbols-outlined text-base text-primary" aria-hidden="true">pin_drop</span>
+          <span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface">Puntos de Encuentro</span>
+        </div>
+        <h2 class="font-headline-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">
+          Vive la Experiencia en Barra o Pide a Domicilio
+        </h2>
+        <p class="mt-2 max-w-xl font-body-md text-body-md text-on-surface/70">
+          Cuatro sedes en Caracas combinan el dinamismo urbano de
+          <strong class="font-bold text-on-surface">Letsgo Sushi</strong> con la maestría de corte de
+          <strong class="font-bold text-on-surface">Makoto Sushi</strong>.
+        </p>
+      </div>
+      <a
+        class="inline-flex items-center gap-2 font-label-md text-label-md font-semibold text-primary transition-colors hover:text-primary-fixed"
+        href="/sedes/"
+      >
+        <span>Conoce cada sede en detalle</span>
+        <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
+      </a>
+    </div>
+
+    <!-- Grilla de sedes -->
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {sedes.map((sede) => <SedeCard sede={sede} />)}
+    </div>
+  </div>
+</section>

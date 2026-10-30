@@ -1,0 +1,44 @@
+---
+/**
+ * Sección de catálogo con platos destacados.
+ * Fase 2: se alimentará del menú completo (src/content/menu) y los chips filtrarán por categoría.
+ */
+import CategoryChips from './CategoryChips.astro';
+import DishCard from './DishCard.astro';
+import destacados from '../data/destacados.json';
+
+const platillos = destacados;
+---
+
+<section id="catalogo" class="bg-surface py-16 md:py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <!-- Encabezado de la sección -->
+    <div class="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+      <div>
+        <span class="mb-2 block font-label-sm text-label-sm uppercase tracking-widest text-primary">Carta Gastronómica</span>
+        <h2 class="font-headline-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">Nuestro Catálogo Exclusivo</h2>
+        <p class="mt-2 max-w-xl font-body-md text-body-md text-on-surface/70">
+          Preparaciones minuciosas elaboradas con arroz sazonado a punto, palta Hass seleccionada y toppings que desafían lo
+          convencional.
+        </p>
+      </div>
+      <a
+        class="inline-flex items-center gap-2 font-label-md text-label-md font-semibold text-secondary transition-colors hover:text-secondary-fixed"
+        href="https://wa.me/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <span>¿Deseas personalizar tu pedido?</span>
+        <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
+      </a>
+    </div>
+
+    <!-- Chips de categoría -->
+    <CategoryChips />
+
+    <!-- Grilla de platos -->
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {platillos.map((platillo) => <DishCard platillo={platillo} />)}
+    </div>
+  </div>
+</section>

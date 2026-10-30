@@ -1,0 +1,76 @@
+---
+/**
+ * Sección de reseñas de clientes (prueba social).
+ */
+const resenas = [
+  {
+    estrellas: 5,
+    texto:
+      '"El Makoto Avocado Roll es de otro planeta. La palta estaba mantecosa y el salmón fresquísimo. Llegó en menos de 30 minutos a mi departamento."',
+    iniciales: 'CM',
+    nombre: 'Camila Morales',
+    detalle: 'Cliente frecuente delivery',
+    clasesIniciales: 'text-primary',
+  },
+  {
+    estrellas: 5,
+    texto:
+      '"Ver la preparación en la barra en vivo te da una seguridad total. La atención de los chicos en Makoto Sushi es impecable y los rolls son gigantes."',
+    iniciales: 'FR',
+    nombre: 'Felipe Rivas',
+    detalle: 'Visita en barra local',
+    clasesIniciales: 'text-tertiary',
+  },
+  {
+    estrellas: 5,
+    texto:
+      '"Aprovechamos el 2x1 de los martes y la calidad nunca baja. Los hot rolls llegan calientes y crocantes, no aceitosos. 10 de 10."',
+    iniciales: 'VS',
+    nombre: 'Valentina Silva',
+    detalle: 'Pedido online',
+    clasesIniciales: 'text-secondary',
+  },
+];
+---
+
+<section id="opiniones" class="border-t border-outline-variant/20 bg-surface-container-lowest py-16 md:py-20">
+  <div class="mx-auto max-w-7xl px-6">
+    <!-- Encabezado -->
+    <div class="mx-auto mb-12 max-w-2xl text-center">
+      <span class="mb-2 block font-label-sm text-label-sm uppercase tracking-widest text-primary">Comunidad Letsgo</span>
+      <h2 class="font-headline-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">Lo que Dicen Nuestros Clientes</h2>
+      <p class="mt-2 font-body-md text-body-md text-on-surface/70">
+        La fidelidad de nuestros comensales es nuestra mejor carta de presentación.
+      </p>
+    </div>
+
+    <!-- Grilla de reseñas -->
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      {
+        resenas.map((resena) => (
+          <div class="flex flex-col justify-between rounded-2xl border border-outline-variant/30 bg-surface-container-low p-6">
+            <div>
+              <div class="mb-3 flex text-tertiary">
+                {Array.from({ length: resena.estrellas }).map(() => (
+                  <span class="material-symbols-outlined ms-fill text-sm" aria-hidden="true">
+                    star
+                  </span>
+                ))}
+              </div>
+              <p class="font-body-md text-body-md italic text-on-surface/90">{resena.texto}</p>
+            </div>
+            <div class="mt-4 flex items-center gap-3 border-t border-outline-variant/20 pt-5">
+              <div class={`flex h-10 w-10 items-center justify-center rounded-full bg-surface-container-highest font-bold ${resena.clasesIniciales}`}>
+                {resena.iniciales}
+              </div>
+              <div>
+                <p class="font-label-md text-label-md font-bold text-on-surface">{resena.nombre}</p>
+                <p class="font-body-sm text-body-sm text-on-surface/60">{resena.detalle}</p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

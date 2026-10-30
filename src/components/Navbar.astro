@@ -1,0 +1,150 @@
+---
+/**
+ * Barra de navegación superior (sticky, frosted glass).
+ * Fase 2: el botón del carrito abrirá el drawer de pedidos.
+ */
+interface Props {
+  /** Id de la sección activa para el subrayado del enlace */
+  activo?: string;
+}
+
+const { activo } = Astro.props;
+
+const LOGO_URL =
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuCAU1zHMukdShxQaC9RgKRpJIjjRp05B_QvFgQ4A0f2qKSpQYPPTRiuSXTtQETXyPZ0NCp0OdaX3fnBooPLq5MF9BkFqAeY_8vwIis36q3A77Iaf_thLyIwIjZXxPQdHENuJQeemR_xtR6LiBEIIeI5MgHconpI3MTFmC_VGP_Rx6oj82Q59LtSVRv_BsFO8d63ptkacenruyabAMywbniPfFuvyvUf8bTou3ccu0ohYSH1WFztyaFDfQ';
+
+const enlaces = [
+  { href: '/#inicio', id: 'inicio', texto: 'Inicio' },
+  { href: '/#catalogo', id: 'catalogo', texto: 'Catálogo' },
+  { href: '/#promociones', id: 'promociones', texto: 'Promociones' },
+  { href: '/sedes/', id: 'sedes', texto: 'Sedes' },
+  { href: '/#opiniones', id: 'opiniones', texto: 'Reseñas' },
+];
+---
+
+<header class="sticky top-0 z-50 border-b border-outline-variant/30 bg-surface/90 shadow-md backdrop-blur-md">
+  <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4">
+    <!-- Logo y nombre de la marca -->
+    <a class="group flex items-center gap-3 transition-transform duration-150 active:scale-95" href="/#inicio">
+      <div
+        class="relative h-11 w-11 overflow-hidden rounded-full border border-outline-variant/40 bg-surface-container-lowest p-0.5 transition-colors group-hover:border-primary-container"
+      >
+        <img src={LOGO_URL} alt="Logo Letsgo Sushi" class="h-full w-full object-contain" width="44" height="44" loading="eager" />
+      </div>
+      <div class="flex flex-col">
+        <span class="font-headline-md text-headline-md font-extrabold leading-tight tracking-wider text-on-surface">
+          LETSGO SUSHI
+        </span>
+        <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary">
+          Makoto Sushi Bar
+        </span>
+      </div>
+    </a>
+
+    <!-- Navegación de escritorio -->
+    <nav class="hidden items-center gap-8 md:flex" aria-label="Navegación principal">
+      {
+        enlaces.map((enlace) => (
+          <a
+            href={enlace.href}
+            class:list={[
+              'pb-1 font-label-md text-label-md transition-colors duration-200 hover:text-primary',
+              activo === enlace.id
+                ? 'border-b-2 border-primary-container font-bold text-primary'
+                : 'font-medium text-on-surface/80',
+            ]}
+          >
+            {enlace.texto}
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- Acciones a la derecha -->
+    <div class="flex items-center gap-3">
+      <!-- WhatsApp directo -->
+      <a
+        class="hidden items-center gap-2 rounded-lg border border-outline-variant/30 bg-surface-container-high px-3.5 py-2 font-label-sm text-label-sm text-secondary transition-all hover:border-secondary hover:bg-surface-container lg:flex"
+        href="https://wa.me/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <span class="material-symbols-outlined text-lg" aria-hidden="true">chat</span>
+        <span>WhatsApp Delivery</span>
+      </a>
+
+      <!-- Fase 2: este botón abrirá el drawer del carrito -->
+      <a
+        class="relative rounded-lg border border-outline-variant/30 bg-surface-container p-2.5 text-on-surface transition-colors duration-150 hover:bg-surface-container-high active:scale-95"
+        href="/#catalogo"
+        aria-label="Ver catálogo"
+      >
+        <span class="material-symbols-outlined text-xl" aria-hidden="true">shopping_bag</span>
+      </a>
+
+      <!-- CTA principal -->
+      <a
+        class="hidden rounded-lg bg-primary-container px-5 py-2.5 font-label-md text-label-md font-bold tracking-wider text-on-primary-container transition-all duration-150 hover:opacity-90 active:scale-95 glow-primary sm:inline-flex"
+        href="/#catalogo"
+      >
+        Pedir Ahora
+      </a>
+
+      <!-- Menú hamburguesa (móvil) -->
+      <button
+        id="menuBtn"
+        class="rounded-lg border border-outline-variant/30 bg-surface-container p-2.5 text-on-surface transition-colors duration-150 hover:bg-surface-container-high active:scale-95 md:hidden"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="menuMovil"
+      >
+        <span class="material-symbols-outlined text-xl" aria-hidden="true">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Menú móvil desplegable -->
+  <nav id="menuMovil" class="hidden border-t border-outline-variant/30 bg-surface md:hidden" aria-label="Navegación móvil">
+    <div class="flex flex-col gap-1 px-6 py-4">
+      {
+        enlaces.map((enlace) => (
+          <a
+            href={enlace.href}
+            class:list={[
+              'rounded-lg px-3 py-2.5 font-label-md text-label-md transition-colors hover:bg-surface-container hover:text-primary',
+              activo === enlace.id ? 'bg-surface-container font-bold text-primary' : 'text-on-surface/80',
+            ]}
+          >
+            {enlace.texto}
+          </a>
+        ))
+      }
+      <a
+        class="mt-2 rounded-lg bg-primary-container px-3 py-3 text-center font-label-md text-label-md font-bold tracking-wider text-on-primary-container"
+        href="/#catalogo"
+      >
+        Pedir Ahora
+      </a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Toggle del menú móvil
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('menuMovil');
+
+  btn?.addEventListener('click', () => {
+    const abierto = !menu?.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(abierto));
+    btn.setAttribute('aria-label', abierto ? 'Cerrar menú' : 'Abrir menú');
+  });
+
+  // Al pulsar un enlace del menú móvil, este se cierra
+  menu?.querySelectorAll('a').forEach((enlace) => {
+    enlace.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      btn?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>

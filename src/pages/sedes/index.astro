@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import SedeCard from '../../components/SedeCard.astro';
+
+const sedes = (await getCollection('sedes')).sort((a, b) => a.data.orden - b.data.orden);
+---
+
+<Layout
+  title="Nuestras Sedes — Makoto Sushi"
+  description="Conoce las 4 sedes de Makoto Sushi / Letsgo Sushi en Caracas: horarios, direcciones, modalidades de atención y cómo llegar."
+  activo="sedes"
+>
+  <section class="bg-surface-container-lowest py-12 md:py-20">
+    <div class="mx-auto max-w-7xl px-6">
+      <!-- Encabezado -->
+      <div class="mx-auto mb-12 max-w-2xl text-center">
+        <span class="mb-2 block font-label-sm text-label-sm uppercase tracking-widest text-primary">Puntos de Encuentro</span>
+        <h1 class="font-headline-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">Nuestras Sedes</h1>
+        <p class="mt-2 font-body-md text-body-md text-on-surface/70">
+          Cuatro puntos en Caracas para disfrutar en barra, recoger tu pedido o recibirlo en casa.
+        </p>
+      </div>
+
+      <!-- Grilla de sedes -->
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {sedes.map((sede) => <SedeCard sede={sede} />)}
+      </div>
+    </div>
+  </section>
+</Layout>

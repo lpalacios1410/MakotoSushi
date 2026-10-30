@@ -1,0 +1,53 @@
+---
+/**
+ * Barra de propuesta de valor (4 pilares de la marca).
+ */
+const pilares = [
+  {
+    icono: 'set_meal',
+    clasesIcono: 'bg-primary-container/10 text-primary',
+    titulo: 'Calidad Premium',
+    texto: 'Salmón fresco y cortes selectos seleccionados diariamente.',
+  },
+  {
+    icono: 'local_shipping',
+    clasesIcono: 'bg-tertiary/10 text-tertiary',
+    titulo: 'Delivery Térmico',
+    texto: 'Empaques especiales para preservar temperatura y crocancia.',
+  },
+  {
+    icono: 'soup_kitchen',
+    clasesIcono: 'bg-secondary/10 text-secondary',
+    titulo: 'Cocina a la Vista',
+    texto: 'Máxima higiene y pasión en barra abierta ante tus ojos.',
+  },
+  {
+    icono: 'touch_app',
+    clasesIcono: 'bg-primary-container/10 text-primary',
+    titulo: 'Pide en 3 Clics',
+    texto: 'Catálogo directo en la web o enlace rápido a WhatsApp.',
+  },
+];
+---
+
+<section class="border-b border-outline-variant/20 bg-surface-container-low py-10">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        pilares.map((pilar) => (
+          <div class="flex items-start gap-4 rounded-xl border border-outline-variant/20 bg-surface p-5 transition-colors hover:border-outline-variant/50">
+            <div class={`shrink-0 rounded-lg p-2.5 ${pilar.clasesIcono}`}>
+              <span class="material-symbols-outlined text-2xl" aria-hidden="true">
+                {pilar.icono}
+              </span>
+            </div>
+            <div>
+              <h3 class="mb-1 font-headline-sm text-headline-sm text-on-surface">{pilar.titulo}</h3>
+              <p class="font-body-sm text-body-sm text-on-surface/70">{pilar.texto}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

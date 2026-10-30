@@ -1,0 +1,50 @@
+[
+  {
+    "id": "makoto-avocado-roll",
+    "nombre": "Makoto Avocado Roll",
+    "descripcion": "Salmón fresco, queso crema artesanal, palta Hass madura y topping de salsa agridulce crocante con papas hilo.",
+    "precio": 9990,
+    "badge": { "texto": "Estrella de la Casa", "tipo": "oro" },
+    "imagen": "https://lh3.googleusercontent.com/aida-public/AB6AXuDwXrb3oVtw-pOmOqjtAUSQzDZfHE0AS6mnJrvF6IeK_l5NEDhYx5qQxKp1H0gCdHtrAnL_KT71QPKN3WDaubK8wkLW6xBZeDEZhQpZ0EivgRQasrRVctp_ZnpQpeWbR2p_LwMM-0hcSjDtkSxuC0SYw_y91PWVu5WBOIZeJPUgMoaRbm6Y9fxJ0d-quNuMgyKfNN8fq6YhYpjt-Dxjn-1EVSr9GGClBH-pY-rO_v4EI-RTww_fesvTGQ"
+  },
+  {
+    "id": "crispy-ebi-roll",
+    "nombre": "Crispy Ebi Roll",
+    "descripcion": "Langostino furai crocante, palta, ciboulette, cobertura de papas hilo crujientes y baño en salsa teriyaki casera.",
+    "precio": 8990,
+    "badge": { "texto": "Más Pedido", "tipo": "fuego" },
+    "imagen": "https://lh3.googleusercontent.com/aida-public/AB6AXuBKgUqgcsqLVvCFIrGYI-_InpAoBRdXdsmlwzkmDwQhCt5sWfPXgPi9rxdHs6Do6AqCmXkAkDtM8wRFXT1cFdoSfFY95oczEDU41eZTBsF3TNgX9vut4cSA2bXVGicCeGjUkW-XLsvO2BJGGTjhlFrbtyfPTv_TSfWB1G19NBP6H6byKaCTFsGFn7PunqdIUozOOTEIPamCxAYlnU3gvUz-W0NRUZSBmFGVn_lXlGWV"
+  },
+  {
+    "id": "spicy-tuna-fusion",
+    "nombre": "Spicy Tuna Fusion",
+    "descripcion": "Atún rojo de corte fino, cebollín flameado al wok, sésamo bicolor tostado y mayonesa spicy sriracha de autor.",
+    "precio": 10500,
+    "badge": { "texto": "Picante Medio", "tipo": "picante" },
+    "imagen": "https://lh3.googleusercontent.com/aida-public/AB6AXuD8V3Y5VYkVpyk-d1np2OGAuDRfC3g_hQKxoPNqhgHhMzK3eHaJBQLSNNCbFRWEH1jW7cvSnTZVyUCWhrS65Bm2Chb9kJ-_KBUEFfp1IYe2JQlDvmlkCN9HvzxIh_sLOqDfiV3ZybPxR4xKHL57SRWeC0uBltmIVZb57u3gF9wfGqrrDKGDSUT8vf4XIF9nBODW9azcLLVjdXVDTP7jtkg31Uf6bkC2L0DHH3dqtSZU"
+  },
+  {
+    "id": "tabla-letsgo-30",
+    "nombre": "Tabla Letsgo 30 Piezas",
+    "descripcion": "10 Makoto Avocado, 10 Crispy Ebi furai, 6 Hosomakis de salmón y 4 Nigiris flambeados para una experiencia completa.",
+    "precio": 24990,
+    "badge": { "texto": "Ideal 2-3 Pers", "tipo": "fresco" },
+    "imagen": "https://lh3.googleusercontent.com/aida-public/AB6AXuDkI9XtbNan0jO5qNf5bDml0r7rumjetKx0gRE4B6A8bdX3bg7nkef6lkFIa7Ie5ZnwP_GyoNxU2AZbB7Jqu6g6zxNxRvCR1B1MbkTxd23acreM0GCbTSFqNFNlbTmIC1T7N9pCl_DVyB3FFpnGQynFWL6nmxDbUj9OYh6D51QUWRH8BjGA2IVQkfSJUSA9ciHLwEVV9y3_0wHEq7CYR927w56oSCfcwVC48rFks4W6"
+  },
+  {
+    "id": "hot-acevichado-roll",
+    "nombre": "Hot Acevichado Roll",
+    "descripcion": "Roll frito crocante en panko japonés, relleno de queso crema y palta, coronado con cremosa salsa acevichada.",
+    "precio": 9490,
+    "badge": { "texto": "Tempura Hot", "tipo": "neutro" },
+    "imagen": "https://lh3.googleusercontent.com/aida-public/AB6AXuDY7r9q6lX_IHiozjaUR1ri9ySciIU97jDIlV4jOH9kRiXJL2S8fU-vV2BUbM3dOGacF3pZfu5tEv1Rni_fWhchwTVtrDAgoq11eFuJeN6PmRX4ed-Wez8L9I7a_nt64AEZlmSRpmdErQ1J1bxwCppZqQDBsHU6th_hhPsqKkI_O4LXeWgyEnaev9zK3afgp4VT2dk4Mx9URmexpx3ZrY-9Ot_gtS3gi20gaH9i-Tnn"
+  },
+  {
+    "id": "salmon-tataki-nigiri",
+    "nombre": "Salmón Tataki Nigiri (4 uds)",
+    "descripcion": "Láminas de salmón sellado al soplete con gotas de aceite de sésamo virgen, cebollín fino y toque de togarashi.",
+    "precio": 6900,
+    "badge": { "texto": "Flameado", "tipo": "flameado" },
+    "imagen": "https://lh3.googleusercontent.com/aida-public/AB6AXuBD6j7nxakCWovHObt508DhNazxoIiyHtf8wEDhRaBTMJWSJ4FgGN6epvIIfsUfrcyGgfsvfw8XfTEHBNcUDnk11khKdfn32IoKbrKXwinjPl5FvK1hoQGAtrPlNe7-iVA102TCrjpFpX3qquyadhH7yBO__ptwHZ0ZArdWbXtk0Q_If3EZrb2NSOb3u-JL0Z7tvTEQKjcKBftE5Hr9K77kL26-AANvsLXMJTTPXUDC"
+  }
+]

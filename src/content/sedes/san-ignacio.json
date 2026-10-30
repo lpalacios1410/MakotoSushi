@@ -1,0 +1,14 @@
+{
+  "nombre": "San Ignacio",
+  "ciudad": "Caracas",
+  "orden": 2,
+  "modalidades": ["restaurante"],
+  "horarios": [
+    { "dias": "Todos los días", "apertura": "11:00 am", "cierre": "12:00 am / 1:00 am" }
+  ],
+  "direccion": "C.C. San Ignacio, Local BL-15-1 / BL-15-2, Av. Blandín",
+  "centroComercial": "C.C. San Ignacio",
+  "local": "Local BL-15-1 / BL-15-2 (Av. Blandín, frente a NAIDA HOGAR)",
+  "comoLlegar": "",
+  "whatsapp": null
+}
