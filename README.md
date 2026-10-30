@@ -65,11 +65,13 @@ Este repositorio se desarrolla con asistencia de agentes de código (OpenCode). 
 
 ## 🚀 Cómo ejecutar
 
+> Este proyecto usa **pnpm** como gestor de paquetes (no npm).
+
 ```bash
-npm install     # instalar dependencias (solo la primera vez)
-npm run dev     # servidor de desarrollo → http://localhost:4321
-npm run build   # build de producción en ./dist
-npm run preview # previsualizar el build de producción
+pnpm install    # instalar dependencias (solo la primera vez)
+pnpm dev        # servidor de desarrollo → http://localhost:4321
+pnpm build      # build de producción en ./dist
+pnpm preview    # previsualizar el build de producción
 ```
 
 ---

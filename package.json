@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Web oficial de Makoto Sushi / Letsgo Sushi — landing, catálogo y sedes con pedidos por WhatsApp.",
+  "packageManager": "pnpm@11.21.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
