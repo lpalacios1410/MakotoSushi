@@ -1,0 +1,32 @@
+{
+  "titulo": "Menú Ejecutivo",
+  "grupo": "Menú Ejecutivo",
+  "descripcion": "Almuerzos ejecutivos con arroz yakimeshi, croquetas, roll's y refresco 14oz incluido.",
+  "orden": 1,
+  "items": [
+    {
+      "id": "ejecutivo-lomito-teriyaki",
+      "nombre": "Lomito Teriyaki",
+      "descripcion": "Arroz yakimeshi, lomito teriyaki, 5 croquetas y 5 piezas de california-latin roll + vaso de refresco 14oz.",
+      "precio": 16
+    },
+    {
+      "id": "ejecutivo-pollo-jengibre",
+      "nombre": "Pollo en Salsa de Jengibre",
+      "descripcion": "Arroz yakimeshi, pollo marinado en salsa de jengibre, 5 croquetas y 6 piezas de ebi king roll + vaso de refresco 14oz.",
+      "precio": 16
+    },
+    {
+      "id": "ejecutivo-pollo-teriyaki",
+      "nombre": "Pollo Teriyaki",
+      "descripcion": "Arroz yakimeshi, pollo teriyaki, 5 croquetas y 5 piezas de california-latin roll + vaso de refresco 14oz.",
+      "precio": 16
+    },
+    {
+      "id": "ejecutivo-chicken-bbq",
+      "nombre": "Chicken BBQ",
+      "descripcion": "Arroz yakimeshi, pollo crispy con salsa BBQ, 5 croquetas y 6 piezas de ebi king roll + vaso de refresco 14oz.",
+      "precio": 16
+    }
+  ]
+}

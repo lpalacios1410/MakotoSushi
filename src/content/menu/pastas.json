@@ -1,0 +1,18 @@
+{
+  "titulo": "Pastas",
+  "grupo": "Platos Calientes",
+  "descripcion": "Fideos salteados al wok y pastas con toque oriental.",
+  "orden": 10,
+  "items": [
+    {
+      "id": "pasta-pad-thai",
+      "nombre": "Pad Thai",
+      "descripcion": "Fideos de arroz, pollo, camarón, vegetales, salsa teriyaki, salsa de ostras y leche de coco.",
+      "precio": 11,
+      "badge": { "texto": "Más Pedido", "tipo": "fuego" }
+    },
+    { "id": "pasta-yakisoba", "nombre": "Yakisoba", "descripcion": "Fideos salteados con vegetales, pollo y lomito en salsa tonkatsu.", "precio": 15 },
+    { "id": "pasta-tallarines-thai", "nombre": "Tallarines Thai", "descripcion": "Tallarines salteados al wok con pollo, lomito, camarones y vegetales, en salsa teriyaki.", "precio": 14 },
+    { "id": "pasta-marinera", "nombre": "Marinera", "descripcion": "Pasta con camarones, pulpo, calamar, mejillones y vieiras.", "precio": 13 }
+  ]
+}

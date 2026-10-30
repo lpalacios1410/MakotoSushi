@@ -1,34 +1,22 @@
 ---
 /**
- * Chips de filtrado por categoría.
- * Fase 2: se conectarán al menú real desde las colecciones de contenido.
+ * Chips de categoría: enlaces a cada página del menú.
+ * Se generan desde la colección "menu" (orden por `orden`).
  */
-const categorias = [
-  { texto: 'Todos los Rolls', activo: true },
-  { texto: 'Rolls de Autor', activo: false },
-  { texto: 'Combos & Tablas', activo: false },
-  { texto: 'Hot & Tempura', activo: false },
-  { texto: 'Nigiris & Sashimi', activo: false },
-  { texto: 'Bebidas & Cocktails', activo: false },
-];
+import { getCollection } from 'astro:content';
+
+const categorias = (await getCollection('menu')).sort((a, b) => a.data.orden - b.data.orden);
 ---
 
-<div class="scrollbar-none mb-10 flex items-center gap-2 overflow-x-auto pb-4" role="tablist" aria-label="Filtrar catálogo por categoría">
+<div class="scrollbar-none mb-10 flex items-center gap-2 overflow-x-auto pb-4" aria-label="Categorías del menú">
   {
     categorias.map((cat) => (
-      <button
-        type="button"
-        role="tab"
-        aria-selected={cat.activo}
-        class:list={[
-          'whitespace-nowrap rounded-full px-5 py-2.5 font-label-sm text-label-sm transition-all',
-          cat.activo
-            ? 'glow-primary bg-primary-container font-bold text-on-primary-container'
-            : 'border border-outline-variant/30 bg-surface-container-high font-semibold text-on-surface/80 hover:bg-surface-container-highest hover:text-on-surface',
-        ]}
+      <a
+        href={`/menu/${cat.id}/`}
+        class="whitespace-nowrap rounded-full border border-outline-variant/30 bg-surface-container-high px-5 py-2.5 font-label-sm text-label-sm font-semibold text-on-surface/80 transition-all hover:bg-surface-container-highest hover:text-on-surface"
       >
-        {cat.texto}
-      </button>
+        {cat.data.titulo}
+      </a>
     ))
   }
 </div>

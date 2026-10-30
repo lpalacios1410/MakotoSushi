@@ -14,3 +14,7 @@ Thumbs.db
 # Editores
 .vscode/
 .idea/
+
+# SkillsSH
+.agents
+.claude

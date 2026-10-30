@@ -1,0 +1,54 @@
+{
+  "titulo": "Entradas",
+  "grupo": "Entradas",
+  "descripcion": "Cortes frescos, ensaladas, tartares, ceviches y bites para abrir el apetito.",
+  "orden": 2,
+  "items": [
+    { "id": "entradas-niguiri-salmon", "nombre": "Niguiri de Salmón", "descripcion": "Cortes de salmón sobre arroz.", "precio": 11 },
+    { "id": "entradas-niguiri-atun", "nombre": "Niguiri de Atún", "descripcion": "Cortes de atún sobre arroz.", "precio": 9 },
+    { "id": "entradas-sashimi-salmon", "nombre": "Sashimi de Salmón", "descripcion": "Cortes de salmón.", "precio": 11 },
+    { "id": "entradas-sashimi-atun", "nombre": "Sashimi de Atún", "descripcion": "Cortes de atún.", "precio": 8 },
+    { "id": "entradas-maguro-tataki", "nombre": "Maguro Tataki", "descripcion": "Atún sellado a la plancha con salsa miso, salsa ponzu y ajonjolí.", "precio": 11 },
+    { "id": "entradas-tako-sunomono", "nombre": "Tako Sunomono", "descripcion": "Pulpo a la vinagreta, salsa ponzu y cebollín.", "precio": 9 },
+    { "id": "entradas-ensalada-neptuno", "nombre": "Ensalada Neptuno", "descripcion": "Salmón, atún y aguacate en cubos, cangrejo, wakame, salsa dragon y salsa ponzu.", "precio": 12 },
+    { "id": "entradas-ensalada-mixta", "nombre": "Ensalada Mixta", "descripcion": "Salmón y atún en cubos, pulpo, aguacate y salsa tosazu.", "precio": 9 },
+    { "id": "entradas-tartar-salmon", "nombre": "Tartar de Salmón", "descripcion": "Salmón, aguacate y cebollín con salsa dragon, miso y ponzu.", "precio": 12 },
+    { "id": "entradas-tartar-atun", "nombre": "Tartar de Atún", "descripcion": "Atún, aguacate y cebollín con salsa dragon, miso y ponzu.", "precio": 11 },
+    {
+      "id": "entradas-trio-ceviches",
+      "nombre": "Trío de Ceviches",
+      "descripcion": "Ceviche peruano en leche de tigre, cóctel de camarones y ceviche hismeño con pescado blanco y pulpo.",
+      "precio": 14
+    },
+    { "id": "entradas-ceviche-esencial", "nombre": "Ceviche Esencial", "descripcion": "Pescado blanco, zumo de limón, ají, cebolla morada, cilantro y chip de plátano.", "precio": 10 },
+    { "id": "entradas-ceviche-mixto", "nombre": "Ceviche Mixto", "descripcion": "Pescado blanco, pulpo, camarones, zumo de limón, ají, cebolla morada, cilantro y chip de plátano.", "precio": 12 },
+    {
+      "id": "entradas-edamame",
+      "nombre": "Edamame en Concha",
+      "descripcion": "Ración de 100g de edamame.",
+      "precio": 7,
+      "badge": { "texto": "Vegetariano", "tipo": "fresco" }
+    },
+    { "id": "entradas-ensalada-dinamita", "nombre": "Ensalada Dinamita", "descripcion": "Cangrejo, masago y salsa dragon con aguacate.", "precio": 8 },
+    {
+      "id": "entradas-ensalada-wakame",
+      "nombre": "Ensalada Wakame",
+      "descripcion": "Porción de 100g de wakame.",
+      "precio": 8,
+      "badge": { "texto": "Vegetariano", "tipo": "fresco" }
+    },
+    { "id": "entradas-ensalada-makoto", "nombre": "Ensalada Makoto", "descripcion": "Cangrejo con wakame, coquitos de salmón, salsa curry y salsa anguila.", "precio": 12 },
+    { "id": "entradas-coquitos-salmon", "nombre": "Coquitos de Salmón", "descripcion": "Rellenos de salmón, aguacate y queso crema, con salsa curry y salsa anguila.", "precio": 11 },
+    { "id": "entradas-sushi-pizza", "nombre": "Sushi Pizza", "descripcion": "Arroz crujiente, salmón y aguacate con salsa dragon y anguila.", "precio": 11 },
+    { "id": "entradas-fiesta-langostinos", "nombre": "Fiesta de Langostinos", "descripcion": "Ración de langostinos tempura con salsa fuji y salsa anguila.", "precio": 11 },
+    { "id": "entradas-tacos-mixtos", "nombre": "Tacos Mixtos", "descripcion": "Rellenos con salmón, atún y camarones.", "precio": 14 },
+    { "id": "entradas-croquetas-5", "nombre": "Croquetas (5 piezas)", "descripcion": "Rellenas con cangrejo, acompañadas con salsa tártara.", "precio": 6 },
+    { "id": "entradas-croquetas-10", "nombre": "Croquetas (10 piezas)", "descripcion": "Rellenas con cangrejo, acompañadas con salsa tártara.", "precio": 8 },
+    { "id": "entradas-lumpias", "nombre": "Lumpias", "descripcion": "Rellenas con hilos de arroz, pollo y vegetales.", "precio": 6 },
+    { "id": "entradas-gyozas", "nombre": "Gyozas", "descripcion": "Rellenas con vegetales y pollo.", "precio": 10 },
+    { "id": "entradas-brochetas", "nombre": "Brochetas", "descripcion": "Lomito y pollo al grill.", "precio": 7 },
+    { "id": "entradas-brochetas-papas", "nombre": "Brochetas con Papas", "descripcion": "Lomito y pollo al grill, con ración de papas.", "precio": 10 },
+    { "id": "entradas-racion-papas", "nombre": "Ración de Papas", "descripcion": "Ración de 200g de papas fritas o al vapor.", "precio": 7 },
+    { "id": "entradas-chicken-tenders", "nombre": "Chicken Tenders", "descripcion": "Ración de pollo crispy y papas.", "precio": 9 }
+  ]
+}

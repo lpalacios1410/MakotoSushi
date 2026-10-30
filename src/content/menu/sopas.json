@@ -1,0 +1,10 @@
+{
+  "titulo": "Sopas",
+  "grupo": "Platos Calientes",
+  "descripcion": "Caldos y asopados de mariscos para entrar en calor.",
+  "orden": 8,
+  "items": [
+    { "id": "sopa-kanisu", "nombre": "Sopa Kanisu", "descripcion": "Camarones, pulpo, fideos y vegetales.", "precio": 13 },
+    { "id": "sopa-asopado-mariscos", "nombre": "Asopado de Mariscos", "descripcion": "Caldo de mariscos, camarón, calamar, pulpo, langostinos y vieiras.", "precio": 11 }
+  ]
+}

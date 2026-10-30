@@ -1,0 +1,20 @@
+{
+  "titulo": "Combos",
+  "grupo": "Combos",
+  "descripcion": "Combos con refresco incluido; elige tu proteína al confirmar el pedido.",
+  "orden": 11,
+  "items": [
+    {
+      "id": "combo-arroces",
+      "nombre": "Combo Arroces",
+      "descripcion": "Arroces, pollo miel, croquetas de cangrejo y un vaso de refresco. Elige tu proteína: pollo y jamón de pavo, calamares, lomito o camarones.",
+      "precio": 9
+    },
+    {
+      "id": "combo-tallarines",
+      "nombre": "Combo Tallarines",
+      "descripcion": "Tallarines, pollo miel, croquetas de cangrejo y un vaso de refresco. Elige tu proteína: pollo, calamares, lomito o camarones.",
+      "precio": 8
+    }
+  ]
+}

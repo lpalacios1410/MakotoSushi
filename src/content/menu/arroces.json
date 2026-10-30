@@ -1,0 +1,30 @@
+{
+  "titulo": "Arroces",
+  "grupo": "Platos Calientes",
+  "descripcion": "Wok, tepanyaki y arroces al estilo Makoto.",
+  "orden": 9,
+  "items": [
+    { "id": "arroz-khao-pan-goong", "nombre": "Khao Pan Goong", "descripcion": "Arroz con vegetales, edamame, langostinos, salsa hoisin y salsa de soya, servido en cama de salsa hoisin.", "precio": 14 },
+    {
+      "id": "arroz-tepan-lomito",
+      "nombre": "Tepan de Lomito",
+      "descripcion": "Arroz con huevo, zanahoria, germinados, cebollín y salsa de soya, acompañado de lomito con pimentón, cebolla morada y salsa teriyaki.",
+      "precio": 17,
+      "badge": { "texto": "Más Pedido", "tipo": "fuego" }
+    },
+    { "id": "arroz-tepan-pollo", "nombre": "Tepan de Pollo", "descripcion": "Arroz con huevo, zanahoria, germinados, cebollín y salsa de soya, acompañado de pollo con pimentón, cebolla morada y salsa teriyaki.", "precio": 17 },
+    { "id": "arroz-camaron", "nombre": "De Camarón", "descripcion": "Arroz con langostinos, jamón, huevo, germinado, cebollín, salsa de soya y onoto en polvo.", "precio": 12 },
+    { "id": "arroz-beijin", "nombre": "Beijin", "descripcion": "Arroz con pulpo, vieiras, camarones, jamón, germinados, cebollín y salsa de soya.", "precio": 14 },
+    { "id": "arroz-chino-makoto", "nombre": "Chino Makoto", "descripcion": "Arroz con pollo, camarones y jamón, al estilo Makoto.", "precio": 14 },
+    { "id": "arroz-chino-camarones", "nombre": "Chino de Camarones", "descripcion": "Arroz con jamón, camarones, huevo, germinado, cebollín y salsa de soya.", "precio": 14 },
+    { "id": "arroz-chino-mixto", "nombre": "Chino Mixto", "descripcion": "Arroz con pollo, pulpo, vieiras, camarones, jamón, germinados, cebollín y salsa de soya.", "precio": 15 },
+    { "id": "arroz-cantones", "nombre": "Cantones", "descripcion": "Arroz al wok con lomito, pollo, camarones y vegetales en salsa de ostras.", "precio": 14 },
+    {
+      "id": "arroz-paella",
+      "nombre": "Paella",
+      "descripcion": "Arroz con camarones, langostinos, calamar, pulpo, mejillones y vieiras.",
+      "precio": 15,
+      "badge": { "texto": "Recomendado", "tipo": "oro" }
+    }
+  ]
+}
