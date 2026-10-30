@@ -1,0 +1,100 @@
+---
+/**
+ * Índice del menú: todas las categorías agrupadas por grupo.
+ */
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const categorias = (await getCollection("menu")).sort(
+  (a, b) => a.data.orden - b.data.orden,
+);
+
+// Agrupar por grupo superior respetando el orden de aparición
+const grupos = new Map<string, typeof categorias>();
+for (const cat of categorias) {
+  const lista = grupos.get(cat.data.grupo) ?? [];
+  lista.push(cat);
+  grupos.set(cat.data.grupo, lista);
+}
+
+const iconos: Record<string, string> = {
+  "Menú Ejecutivo": "work",
+  Entradas: "restaurant_menu",
+  Sushi: "set_meal",
+  "Platos Calientes": "soup_kitchen",
+  Combos: "fastfood",
+};
+---
+
+<Layout
+  title="Menú — Makoto Sushi"
+  description="Carta completa de Makoto Sushi / Letsgo Sushi: menú ejecutivo, entradas, poke, rolls fríos y tempurizados, barcos, platos calientes y más."
+  activo="catalogo"
+>
+  <section class="bg-surface-container-lowest py-12 md:py-16">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mx-auto max-w-2xl text-center">
+        <span
+          class="mb-2 block font-label-sm text-label-sm uppercase tracking-widest text-primary"
+          >Carta Gastronómica</span
+        >
+        <h1
+          class="font-headline-lg text-headline-lg-mobile text-on-surface md:text-headline-lg"
+        >
+          Nuestro Menú Completo
+        </h1>
+        <p class="mt-2 font-body-md text-body-md text-on-surface/70">
+          Arma tu pedido por categoría y envíalo directo al WhatsApp de tu sede.
+          Los precios no incluyen IVA ni el 10% de servicio.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface py-12 md:py-16">
+    <div class="mx-auto flex max-w-7xl flex-col gap-12 px-6">
+      {
+        [...grupos.entries()].map(([grupo, cats]) => (
+          <div>
+            <div class="mb-6 flex items-center gap-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-container/10 text-primary">
+                <span
+                  class="material-symbols-outlined text-xl"
+                  aria-hidden="true"
+                >
+                  {iconos[grupo] ?? "restaurant"}
+                </span>
+              </div>
+              <h2 class="font-headline-md text-headline-md text-on-surface">
+                {grupo}
+              </h2>
+            </div>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {cats.map((cat) => (
+                <a
+                  class="group flex items-center justify-between gap-4 rounded-2xl border border-outline-variant/30 bg-surface-container-low p-5 transition-all duration-300 hover:border-primary-container/80"
+                  href={`/menu/${cat.id}/`}
+                >
+                  <div>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface transition-colors group-hover:text-primary">
+                      {cat.data.titulo}
+                    </h3>
+                    <p class="mt-1 font-body-sm text-body-sm text-on-surface/60">
+                      {cat.data.items.length} platos
+                    </p>
+                  </div>
+                  <span
+                    class="material-symbols-outlined text-on-surface/40 transition-all group-hover:translate-x-1 group-hover:text-primary"
+                    aria-hidden="true"
+                  >
+                    arrow_forward
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

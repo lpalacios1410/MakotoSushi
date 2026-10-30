@@ -1,7 +1,8 @@
 ---
 /**
  * Card de plato para el catálogo.
- * Fase 2: el botón "Añadir" sumará al carrito (drawer + WhatsApp).
+ * Sin `imagen` renderiza un placeholder (la mayoría del menú real no tiene foto).
+ * El botón "Añadir" dispara el carrito vía data-attributes (delegación en Carrito.astro).
  */
 interface Platillo {
   id: string;
@@ -9,7 +10,7 @@ interface Platillo {
   descripcion: string;
   precio: number;
   badge?: { texto: string; tipo: string };
-  imagen: string;
+  imagen?: string;
 }
 
 interface Props {
@@ -33,15 +34,25 @@ const precio = '$' + platillo.precio.toLocaleString('es-VE');
 ---
 
 <article class="group flex flex-col overflow-hidden rounded-2xl border border-outline-variant/30 bg-surface-container-low shadow-lg transition-all duration-300 hover:border-primary-container/80 hover:shadow-2xl">
-  <div class="relative h-52 overflow-hidden bg-surface-container">
-    <img
-      src={platillo.imagen}
-      alt={platillo.nombre}
-      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-      width="400"
-      height="208"
-      loading="lazy"
-    />
+  <div class="relative h-44 overflow-hidden bg-surface-container">
+    {
+      platillo.imagen ? (
+        <img
+          src={platillo.imagen}
+          alt={platillo.nombre}
+          class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          width="400"
+          height="176"
+          loading="lazy"
+        />
+      ) : (
+        <div class="flex h-full w-full items-center justify-center bg-gradient-to-br from-surface-container to-surface-container-lowest text-on-surface/20">
+          <span class="material-symbols-outlined text-5xl" aria-hidden="true">
+            set_meal
+          </span>
+        </div>
+      )
+    }
     {
       platillo.badge && (
         <div class={`absolute top-3 right-3 rounded-full px-3 py-1 font-label-sm text-label-sm font-bold tracking-wider uppercase shadow-md ${claseBadge}`}>
@@ -56,16 +67,18 @@ const precio = '$' + platillo.precio.toLocaleString('es-VE');
       <h3 class="font-headline-sm text-headline-sm text-on-surface transition-colors group-hover:text-primary">
         {platillo.nombre}
       </h3>
-      <p class="mt-1 line-clamp-2 font-body-sm text-body-sm text-on-surface/70">{platillo.descripcion}</p>
+      <p class="mt-1 line-clamp-3 font-body-sm text-body-sm text-on-surface/70">{platillo.descripcion}</p>
     </div>
 
     <div class="mt-4 flex items-center justify-between border-t border-outline-variant/20 pt-5">
       <span class="font-headline-md text-headline-md font-extrabold text-on-surface">{precio}</span>
-      <!-- Fase 2: handler del carrito -->
       <button
         type="button"
         class="inline-flex items-center gap-1.5 rounded-lg bg-primary-container px-4 py-2 font-label-sm text-label-sm font-bold text-on-primary-container transition-all hover:opacity-90 active:scale-95"
         data-add-to-cart={platillo.id}
+        data-nombre={platillo.nombre}
+        data-precio={platillo.precio}
+        aria-label={`Añadir ${platillo.nombre} al carrito`}
       >
         <span class="material-symbols-outlined text-base" aria-hidden="true">add</span>
         Añadir

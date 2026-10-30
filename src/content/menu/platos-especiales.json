@@ -1,0 +1,21 @@
+{
+  "titulo": "Platos Especiales",
+  "grupo": "Sushi",
+  "descripcion": "Creaciones de autor del itamae, para esas ganas de algo distinto.",
+  "orden": 7,
+  "items": [
+    {
+      "id": "especial-big-boom",
+      "nombre": "Big Boom",
+      "descripcion": "Arroz, aguacate, cangrejo, atún, salmón, langostinos, baby mix, wakame, salsa dragon y salsa anguila. (Tempurizada)",
+      "precio": 17,
+      "badge": { "texto": "Chef Especial", "tipo": "fuego" }
+    },
+    {
+      "id": "especial-sushi-club",
+      "nombre": "Sushi Club",
+      "descripcion": "Arroz, salmón, atún y ensalada sunset, acompañado con mini ensalada Neptuno.",
+      "precio": 15
+    }
+  ]
+}

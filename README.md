@@ -37,13 +37,17 @@ MakotoSushi/
 ├── public/                # Favicon y archivos estáticos
 └── src/
     ├── styles/global.css  # Tokens del design system → @theme de Tailwind v4
-    ├── layouts/           # Layout.astro (head, Navbar, Footer)
-    ├── components/        # Hero, Pilares, Catalogo, DishCard, SedeCard...
-    ├── content/sedes/     # 4 sedes en JSON (horarios, dirección, modalidades)
+    ├── layouts/           # Layout.astro (head, Navbar, Footer, Carrito)
+    ├── scripts/carrito.ts # Núcleo del carrito (localStorage + eventos)
+    ├── components/        # Hero, Pilares, Catalogo, DishCard, SedeCard, Carrito...
+    ├── content/
+    │   ├── menu/          # 11 categorías del menú real (~100 platos)
+    │   └── sedes/         # 4 sedes (horarios, dirección, modalidades, whatsapp)
     ├── data/              # destacados.json (platos de la landing)
     └── pages/
-        ├── index.astro         # Landing
-        └── sedes/[slug].astro  # Detalle de cada sede con mapa
+        ├── index.astro              # Landing
+        ├── menu/[slug].astro        # Categorías del menú
+        └── sedes/[slug].astro       # Detalle de cada sede con mapa
 ```
 
 ## 🗺️ Fases de desarrollo
@@ -51,7 +55,7 @@ MakotoSushi/
 | Fase | Alcance | Estado |
 |---|---|---|
 | **1** | Proyecto Astro + Tailwind con tokens del design system, landing y páginas de sedes | ✅ Completada |
-| **2** | Menú desde datos + carrito → checkout → WhatsApp | ⏳ Pendiente |
+| **2** | Menú desde datos + carrito → checkout → WhatsApp | ✅ Completada |
 | **3** | CMS (Sanity) para el personal, SEO local y Open Graph | ⏳ Pendiente |
 
 ## 📝 Convenciones

@@ -15,7 +15,7 @@ const LOGO_URL =
 
 const enlaces = [
   { href: '/#inicio', id: 'inicio', texto: 'Inicio' },
-  { href: '/#catalogo', id: 'catalogo', texto: 'Catálogo' },
+  { href: '/menu/', id: 'catalogo', texto: 'Menú' },
   { href: '/#promociones', id: 'promociones', texto: 'Promociones' },
   { href: '/sedes/', id: 'sedes', texto: 'Sedes' },
   { href: '/#opiniones', id: 'opiniones', texto: 'Reseñas' },
@@ -73,19 +73,25 @@ const enlaces = [
         <span>WhatsApp Delivery</span>
       </a>
 
-      <!-- Fase 2: este botón abrirá el drawer del carrito -->
-      <a
+      <!-- Carrito de pedidos (abre el drawer) -->
+      <button
         class="relative rounded-lg border border-outline-variant/30 bg-surface-container p-2.5 text-on-surface transition-colors duration-150 hover:bg-surface-container-high active:scale-95"
-        href="/#catalogo"
-        aria-label="Ver catálogo"
+        data-abrir-carrito
+        aria-label="Ver carrito de pedidos"
       >
         <span class="material-symbols-outlined text-xl" aria-hidden="true">shopping_bag</span>
-      </a>
+        <span
+          data-cart-count
+          class="absolute -top-1 -right-1 hidden h-5 w-5 items-center justify-center rounded-full border-2 border-surface bg-primary-container text-[10px] font-bold text-on-primary-container"
+        >
+          0
+        </span>
+      </button>
 
       <!-- CTA principal -->
       <a
         class="hidden rounded-lg bg-primary-container px-5 py-2.5 font-label-md text-label-md font-bold tracking-wider text-on-primary-container transition-all duration-150 hover:opacity-90 active:scale-95 glow-primary sm:inline-flex"
-        href="/#catalogo"
+        href="/menu/"
       >
         Pedir Ahora
       </a>
@@ -121,7 +127,7 @@ const enlaces = [
       }
       <a
         class="mt-2 rounded-lg bg-primary-container px-3 py-3 text-center font-label-md text-label-md font-bold tracking-wider text-on-primary-container"
-        href="/#catalogo"
+        href="/menu/"
       >
         Pedir Ahora
       </a>

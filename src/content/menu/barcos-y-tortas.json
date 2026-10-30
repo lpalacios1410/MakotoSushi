@@ -1,0 +1,33 @@
+{
+  "titulo": "Barcos y Tortas",
+  "grupo": "Sushi",
+  "descripcion": "Presentaciones grandes para compartir. Los roll's van a tu elección.",
+  "orden": 6,
+  "items": [
+    {
+      "id": "barco-60",
+      "nombre": "Barco de Sushi (60 piezas)",
+      "descripcion": "Barco de 60 piezas, incluye ensalada Neptuno y una sushi pizza. Los roll's son a tu elección. Nota: requiere depósito de ref. 100 por la estructura, reembolsable al devolverla en perfecto estado.",
+      "precio": 80,
+      "badge": { "texto": "Para Compartir", "tipo": "fresco" }
+    },
+    {
+      "id": "barco-100",
+      "nombre": "Barco de Sushi (100 piezas)",
+      "descripcion": "Barco de 100 piezas, incluye ensalada Neptuno y una sushi pizza. Los roll's son a tu elección. Nota: requiere depósito de ref. 100 por la estructura, reembolsable al devolverla en perfecto estado.",
+      "precio": 141
+    },
+    {
+      "id": "torta-50",
+      "nombre": "Torta de Sushi (50 piezas)",
+      "descripcion": "Torta de 50 piezas, incluye ensalada Neptuno y una sushi pizza. Los roll's son a tu elección.",
+      "precio": 64
+    },
+    {
+      "id": "torta-100",
+      "nombre": "Torta de Sushi (100 piezas)",
+      "descripcion": "Torta de 100 piezas, incluye ensalada Neptuno y una sushi pizza. Los roll's son a tu elección.",
+      "precio": 112
+    }
+  ]
+}

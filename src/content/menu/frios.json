@@ -1,0 +1,51 @@
+{
+  "titulo": "Roll's Fríos",
+  "grupo": "Sushi",
+  "descripcion": "La colección insignia de rolls fríos: rellenos generosos y firmes sobre arroz sazonado a punto.",
+  "orden": 5,
+  "items": [
+    {
+      "id": "frios-makoto-especial",
+      "nombre": "Makoto Especial",
+      "descripcion": "Relleno con langostinos, salmón, atún, cangrejo, fruta, baby mix y queso crema. Topping de langostinos y chutney de fruta.",
+      "precio": 13,
+      "badge": { "texto": "Estrella de la Casa", "tipo": "oro" }
+    },
+    { "id": "frios-dragon", "nombre": "Dragon", "descripcion": "Relleno con langostinos, aguacate y queso crema. Topping de aguacate, salsa dragon y salsa anguila.", "precio": 10 },
+    { "id": "frios-dragon-especial", "nombre": "Dragon Especial", "descripcion": "Relleno con langostinos, cangrejo, aguacate y queso crema. Topping de aguacate, salsa dragon y salsa anguila.", "precio": 11 },
+    { "id": "frios-sex-on-the-beach", "nombre": "Sex on the Beach", "descripcion": "Relleno con langostinos, cangrejo, aguacate y queso crema. Topping de salmón, aguacate, langostinos picantes y salsa anguila.", "precio": 13 },
+    {
+      "id": "frios-john-wick",
+      "nombre": "John Wick",
+      "descripcion": "Relleno con salmón, atún, cangrejo, langostinos, aguacate y queso crema. Topping de atún, aguacate, mozzarella, langostinos, wakame, cangrejo y salsa anguila.",
+      "precio": 14,
+      "badge": { "texto": "Más Pedido", "tipo": "fuego" }
+    },
+    { "id": "frios-fantasia", "nombre": "Fantasía", "descripcion": "Relleno con salmón, cangrejo, wakame, aguacate y queso crema. Topping de tartar de atún y salsa anguila.", "precio": 12 },
+    { "id": "frios-zambal", "nombre": "Zambal", "descripcion": "Relleno con arroz, chispas tempura, sriracha y cebollín, envuelto en salmón. Topping gratinado con queso crema y salsa anguila.", "precio": 15 },
+    { "id": "frios-alaska", "nombre": "Alaska", "descripcion": "Relleno con salmón, aguacate y queso crema. Topping de salmón, aguacate y wakame.", "precio": 11 },
+    { "id": "frios-philadelphia", "nombre": "Philadelphia", "descripcion": "Relleno con salmón, atún, cangrejo, langostinos, aguacate y queso crema. Topping de salmón, atún, aguacate, ensalada sunset y salsa anguila.", "precio": 13 },
+    { "id": "frios-kansai", "nombre": "Kansai", "descripcion": "Relleno con cangrejo, salmón, aguacate y queso crema. Topping de plátano, crema dinamita y salsa anguila.", "precio": 12 },
+    { "id": "frios-sakana", "nombre": "Sakana", "descripcion": "Relleno con salmón, atún, pescado blanco, cangrejo, aguacate y baby mix. Topping de wakame y salsa ponzu.", "precio": 15 },
+    { "id": "frios-dinamita", "nombre": "Dinamita", "descripcion": "Relleno con cangrejo, aguacate y queso crema. Topping de masago, crema dinamita y salsa anguila.", "precio": 12 },
+    { "id": "frios-fuji", "nombre": "Fuji", "descripcion": "Relleno con salmón, cangrejo, langostinos, aguacate y queso crema. Topping de langostinos, salsa fuji y salsa anguila.", "precio": 13 },
+    { "id": "frios-chicken", "nombre": "Chicken", "descripcion": "Relleno con pollo, mozzarella, sriracha, aguacate y queso crema. Topping de plátano, pollo, cangrejo y salsa dragon.", "precio": 9 },
+    { "id": "frios-tum", "nombre": "Tum", "descripcion": "Relleno con cangrejo, plátano, aguacate y queso crema. Topping de aguacate, camarones al ajillo y salsa anguila.", "precio": 11 },
+    { "id": "frios-oishi", "nombre": "Oishi", "descripcion": "Relleno con piel de salmón, cebollín, aguacate y queso crema. Topping de chispas tempura, cangrejo, salsa dragon y salsa anguila.", "precio": 12 },
+    { "id": "frios-sake", "nombre": "Sake", "descripcion": "Relleno con salmón, cangrejo, aguacate y queso crema. Topping de wakame, cangrejo y salsa dragon.", "precio": 11 },
+    { "id": "frios-aleska", "nombre": "Aleska", "descripcion": "Relleno con salmón, crema dinamita, aguacate y queso crema. Topping de aguacate y salsa naomi.", "precio": 11 },
+    { "id": "frios-spice-tuna", "nombre": "Spice Tuna", "descripcion": "Relleno con tartar de atún y aguacate. Topping de salsa dragon, salsa anguila y cebollín.", "precio": 11 },
+    { "id": "frios-sensei-crispy", "nombre": "Sensei Crispy", "descripcion": "Relleno con salmón, langostinos, ensalada sunset, baby mix, aguacate y queso crema. Topping de langostinos y salsa ponzu.", "precio": 15 },
+    { "id": "frios-sekai", "nombre": "Sekai", "descripcion": "Relleno con salmón, ensalada sunset, aguacate y queso crema. Topping de salsa anguila.", "precio": 12 },
+    {
+      "id": "frios-california",
+      "nombre": "California",
+      "descripcion": "Relleno con cangrejo, pepino y aguacate. Topping de masago.",
+      "precio": 11,
+      "badge": { "texto": "Clásico", "tipo": "neutro" }
+    },
+    { "id": "frios-mori", "nombre": "Mori", "descripcion": "Relleno con atún, ensalada sunset, aguacate y queso crema. Topping de tartar de atún y salsa anguila.", "precio": 12 },
+    { "id": "frios-koi", "nombre": "Koi", "descripcion": "Relleno con langostinos, kakiage, aguacate y queso crema. Topping de aguacate, kakiage, salsa dragon y salsa anguila.", "precio": 11 },
+    { "id": "frios-salmon-skin-fusion", "nombre": "Salmon Skin Fusion", "descripcion": "Relleno con piel de salmón, cangrejo, plátano, aguacate y queso crema. Topping de ensalada sunset y salsa anguila.", "precio": 12 }
+  ]
+}

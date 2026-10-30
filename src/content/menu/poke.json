@@ -1,0 +1,51 @@
+{
+  "titulo": "Poke",
+  "grupo": "Sushi",
+  "descripcion": "Bowls sobre base de arroz con pescado fresco, misura, wakame y salsas de la casa.",
+  "orden": 3,
+  "items": [
+    {
+      "id": "poke-makoto-especial",
+      "nombre": "Makoto Especial",
+      "descripcion": "Arroz de base con salmón y langostinos crujientes, wakame, cangrejo, fruta, edamame, baby mix, salsa fuji y salsa anguila.",
+      "precio": 10,
+      "badge": { "texto": "Estrella de la Casa", "tipo": "oro" }
+    },
+    {
+      "id": "poke-especial",
+      "nombre": "Especial",
+      "descripcion": "Arroz de base con salmón, atún, cangrejo y aguacate en cubos, wakame, zanahoria, edamame y fruta con salsa ponzu, fuji y dragon.",
+      "precio": 10
+    },
+    {
+      "id": "poke-fresh",
+      "nombre": "Fresh",
+      "descripcion": "Base de arroz con misura, salmón, atún, pescado blanco, pulpo, wakame, masago, edamame, limón y aguacate.",
+      "precio": 10
+    },
+    {
+      "id": "poke-citrus",
+      "nombre": "Citrus",
+      "descripcion": "Base de arroz con misura, pulpo, mora, wakame, cangrejo, camarón, edamame, cebollín, pepino y aguacate.",
+      "precio": 10
+    },
+    {
+      "id": "poke-sensei-crispy",
+      "nombre": "Sensei Crispy",
+      "descripcion": "Base de arroz con misura, salmón crujiente, pulpo, wakame, cangrejo, edamame, pepino y aguacate.",
+      "precio": 10
+    },
+    {
+      "id": "poke-big-bang",
+      "nombre": "Big Bang",
+      "descripcion": "Base de arroz con misura, atún, camarón, wakame, cangrejo, edamame, manzana, masago y aguacate.",
+      "precio": 10
+    },
+    {
+      "id": "poke-negui",
+      "nombre": "Negui",
+      "descripcion": "Base de arroz con misura, camarón, pulpo, cangrejo, edamame, pepino, masago, salmón, atún y aguacate.",
+      "precio": 10
+    }
+  ]
+}

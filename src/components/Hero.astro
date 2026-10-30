@@ -3,63 +3,105 @@
  * Hero principal de la landing.
  */
 const IMAGEN_PLATO =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuDwXrb3oVtw-pOmOqjtAUSQzDZfHE0AS6mnJrvF6IeK_l5NEDhYx5qQxKp1H0gCdHtrAnL_KT71QPKN3WDaubK8wkLW6xBZeDEZhQpZ0EivgRQasrRVctp_ZnpQpeWbR2p_LwMM-0hcSjDtkSxuC0SYw_y91PWVu5WBOIZeJPUgMoaRbm6Y9fxJ0d-quNuMgyKfNN8fq6YhYpjt-Dxjn-1EVSr9GGClBH-pY-rO_v4EI-RTww_fesvTGQ';
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuDwXrb3oVtw-pOmOqjtAUSQzDZfHE0AS6mnJrvF6IeK_l5NEDhYx5qQxKp1H0gCdHtrAnL_KT71QPKN3WDaubK8wkLW6xBZeDEZhQpZ0EivgRQasrRVctp_ZnpQpeWbR2p_LwMM-0hcSjDtkSxuC0SYw_y91PWVu5WBOIZeJPUgMoaRbm6Y9fxJ0d-quNuMgyKfNN8fq6YhYpjt-Dxjn-1EVSr9GGClBH-pY-rO_v4EI-RTww_fesvTGQ";
 ---
 
-<section id="inicio" class="relative overflow-hidden border-b border-outline-variant/20 bg-surface-container-lowest pb-20 pt-10 md:py-24">
+<section
+  id="inicio"
+  class="relative overflow-hidden border-b border-outline-variant/20 bg-surface-container-lowest pb-20 pt-10 md:py-24"
+>
   <!-- Resplandores atmosféricos -->
-  <div class="pointer-events-none absolute -top-32 left-1/4 h-96 w-96 rounded-full bg-primary-container/10 blur-3xl"></div>
-  <div class="pointer-events-none absolute bottom-0 right-10 h-96 w-96 rounded-full bg-tertiary/5 blur-3xl"></div>
+  <div
+    class="pointer-events-none absolute -top-32 left-1/4 h-96 w-96 rounded-full bg-primary-container/10 blur-3xl"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute bottom-0 right-10 h-96 w-96 rounded-full bg-tertiary/5 blur-3xl"
+  >
+  </div>
 
   <div class="relative z-10 mx-auto max-w-7xl px-6">
     <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
       <!-- Columna izquierda: copy y CTAs -->
       <div class="flex flex-col items-start gap-6 lg:col-span-6">
-        <div class="inline-flex items-center gap-2.5 rounded-full border border-outline-variant/40 bg-surface-container-high px-3.5 py-1.5">
-          <span class="h-2.5 w-2.5 animate-pulse rounded-full bg-primary-container"></span>
-          <span class="font-label-sm text-label-sm uppercase tracking-wider text-primary">Adictos al Verdadero Sabor</span>
+        <div
+          class="inline-flex items-center gap-2.5 rounded-full border border-outline-variant/40 bg-surface-container-high px-3.5 py-1.5"
+        >
+          <span
+            class="h-2.5 w-2.5 animate-pulse rounded-full bg-primary-container"
+          ></span>
+          <span
+            class="font-label-sm text-label-sm uppercase tracking-wider text-primary"
+            >Adictos al Verdadero Sabor</span
+          >
         </div>
 
-        <h1 class="font-headline-xl text-headline-xl-mobile leading-tight tracking-tight text-on-surface md:text-headline-xl">
+        <h1
+          class="font-headline-xl text-headline-xl-mobile leading-tight tracking-tight text-on-surface md:text-headline-xl"
+        >
           Adictos al Verdadero
           <br class="hidden sm:inline" />
-          <span class="bg-gradient-to-r from-primary via-primary-container to-tertiary bg-clip-text text-transparent">
+          <span
+            class="bg-linear-to-r from-primary via-primary-container to-tertiary bg-clip-text text-transparent"
+          >
             Sabor Japonés
           </span>
         </h1>
 
         <p class="max-w-xl font-body-lg text-body-lg text-on-surface/80">
-          Sushi de autor, pesca del día fresca y combinaciones artesanales llevadas a tu mesa o a la comodidad de tu hogar.
-          Pasión en barra por <strong class="font-semibold text-on-surface">Makoto Sushi</strong> y la energía urbana de
+          Sushi de autor, pesca del día fresca y combinaciones artesanales
+          llevadas a tu mesa o a la comodidad de tu hogar. Pasión en barra por <strong
+            class="font-semibold text-on-surface">Makoto Sushi</strong
+          > y la energía urbana de
           <strong class="font-semibold text-on-surface">Letsgo Sushi</strong>.
         </p>
 
         <div class="flex w-full flex-wrap items-center gap-4 pt-2 sm:w-auto">
           <a
             class="glow-primary inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary-container px-7 py-3.5 font-label-md text-label-md font-bold tracking-wider text-on-primary-container transition-all duration-150 hover:opacity-95 active:scale-95 sm:w-auto"
-            href="/#catalogo"
+            href="/menu/"
           >
-            <span class="material-symbols-outlined" aria-hidden="true">restaurant_menu</span>
+            <span class="material-symbols-outlined" aria-hidden="true"
+              >restaurant_menu</span
+            >
             Explorar Catálogo Completo
           </a>
           <a
             class="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-outline-variant/40 bg-surface-container px-6 py-3.5 font-label-md text-label-md font-semibold text-on-surface transition-all duration-150 hover:border-primary-container hover:text-primary sm:w-auto"
             href="/sedes/"
           >
-            <span class="material-symbols-outlined" aria-hidden="true">storefront</span>
+            <span class="material-symbols-outlined" aria-hidden="true"
+              >storefront</span
+            >
             Visitar Nuestras Sedes
           </a>
         </div>
 
         <!-- Prueba social -->
-        <div class="flex w-full items-center gap-6 border-t border-outline-variant/30 pt-4">
+        <div
+          class="flex w-full items-center gap-6 border-t border-outline-variant/30 pt-4"
+        >
           <div class="flex -space-x-2">
-            <div class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-surface bg-surface-container-high text-[10px] font-bold text-primary">MS</div>
-            <div class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-surface bg-surface-container-highest text-[10px] font-bold text-tertiary">LS</div>
-            <div class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-surface bg-primary-container text-[10px] font-bold text-on-primary-container">+5k</div>
+            <div
+              class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-surface bg-surface-container-high text-[10px] font-bold text-primary"
+            >
+              MS
+            </div>
+            <div
+              class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-surface bg-surface-container-highest text-[10px] font-bold text-tertiary"
+            >
+              LS
+            </div>
+            <div
+              class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-surface bg-primary-container text-[10px] font-bold text-on-primary-container"
+            >
+              +5k
+            </div>
           </div>
           <p class="font-body-sm text-body-sm text-on-surface/70">
-            Más de <span class="font-semibold text-on-surface">12,000 pedidos</span> entregados con excelencia gastronómica.
+            Más de <span class="font-semibold text-on-surface"
+              >12,000 pedidos</span
+            > entregados con excelencia gastronómica.
           </p>
         </div>
       </div>
@@ -68,51 +110,93 @@ const IMAGEN_PLATO =
       <div class="relative lg:col-span-6">
         <div class="group relative mx-auto max-w-lg lg:max-w-none">
           <!-- Plato central -->
-          <div class="relative overflow-hidden rounded-2xl border border-outline-variant/40 bg-surface-container shadow-2xl">
+          <div
+            class="relative overflow-hidden rounded-2xl border border-outline-variant/40 bg-surface-container shadow-2xl"
+          >
             <img
               src={IMAGEN_PLATO}
               alt="Sushi de Autor y Rolls Makoto Sushi"
-              class="h-[380px] w-full object-cover object-center transition-transform duration-500 group-hover:scale-105 sm:h-[460px]"
+              class="h-95 w-full object-cover object-center transition-transform duration-500 group-hover:scale-105 sm:h-115"
               width="512"
               height="460"
               loading="eager"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent opacity-80"></div>
-            <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-xl border border-outline-variant/30 bg-surface/85 p-4 backdrop-blur-md">
+            <div
+              class="absolute inset-0 bg-linear-to-t from-surface-container-lowest via-transparent to-transparent opacity-80"
+            >
+            </div>
+            <div
+              class="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-xl border border-outline-variant/30 bg-surface/85 p-4 backdrop-blur-md"
+            >
               <div>
-                <span class="block font-label-sm text-label-sm font-bold uppercase tracking-wider text-tertiary">Recomendación del Itamae</span>
-                <h4 class="font-headline-sm text-headline-sm text-on-surface">Tabla Degustación de Autor</h4>
+                <span
+                  class="block font-label-sm text-label-sm font-bold uppercase tracking-wider text-tertiary"
+                  >Recomendación del Itamae</span
+                >
+                <h4 class="font-headline-sm text-headline-sm text-on-surface">
+                  Tabla Degustación de Autor
+                </h4>
               </div>
-              <span class="font-headline-sm text-headline-sm font-bold text-primary">$24.990</span>
+              <span
+                class="font-headline-sm text-headline-sm font-bold text-primary"
+                >$25</span
+              >
             </div>
           </div>
 
           <!-- Badge flotante: reseñas -->
-          <div class="absolute -top-4 left-4 flex items-center gap-3 rounded-xl border border-outline-variant/40 bg-surface-container-high/95 px-4 py-3 shadow-xl backdrop-blur-md sm:-left-6">
-            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-tertiary/10 text-tertiary">
-              <span class="material-symbols-outlined ms-fill text-xl" aria-hidden="true">star</span>
+          <div
+            class="absolute -top-4 left-4 flex items-center gap-3 rounded-xl border border-outline-variant/40 bg-surface-container-high/95 px-4 py-3 shadow-xl backdrop-blur-md sm:-left-6"
+          >
+            <div
+              class="flex h-10 w-10 items-center justify-center rounded-lg bg-tertiary/10 text-tertiary"
+            >
+              <span
+                class="material-symbols-outlined ms-fill text-xl"
+                aria-hidden="true">star</span
+              >
             </div>
             <div>
-              <p class="font-label-md text-label-md font-bold text-on-surface">4.9 / 5.0</p>
-              <p class="font-body-sm text-body-sm text-on-surface/60">+850 reseñas Google</p>
+              <p class="font-label-md text-label-md font-bold text-on-surface">
+                4.9 / 5.0
+              </p>
+              <p class="font-body-sm text-body-sm text-on-surface/60">
+                +850 reseñas Google
+              </p>
             </div>
           </div>
 
           <!-- Badge flotante: delivery -->
-          <div class="absolute top-1/2 right-4 flex -translate-y-1/2 items-center gap-3 rounded-xl border border-outline-variant/40 bg-surface-container-high/95 px-4 py-3 shadow-xl backdrop-blur-md sm:-right-6">
-            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-container/20 text-primary">
-              <span class="material-symbols-outlined text-xl" aria-hidden="true">moped</span>
+          <div
+            class="absolute top-1/2 right-4 flex -translate-y-1/2 items-center gap-3 rounded-xl border border-outline-variant/40 bg-surface-container-high/95 px-4 py-3 shadow-xl backdrop-blur-md sm:-right-6"
+          >
+            <div
+              class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-container/20 text-primary"
+            >
+              <span class="material-symbols-outlined text-xl" aria-hidden="true"
+                >moped</span
+              >
             </div>
             <div>
-              <p class="font-label-md text-label-md font-bold text-on-surface">35 min</p>
-              <p class="font-body-sm text-body-sm text-on-surface/60">Delivery Express</p>
+              <p class="font-label-md text-label-md font-bold text-on-surface">
+                35 min
+              </p>
+              <p class="font-body-sm text-body-sm text-on-surface/60">
+                Delivery Express
+              </p>
             </div>
           </div>
 
           <!-- Badge flotante: frescura -->
-          <div class="absolute -bottom-5 right-6 hidden items-center gap-2 rounded-xl border border-secondary/40 bg-surface-container-high/95 px-4 py-2.5 text-secondary shadow-xl backdrop-blur-md sm:flex">
-            <span class="material-symbols-outlined text-lg" aria-hidden="true">verified</span>
-            <span class="font-label-sm text-label-sm font-bold text-on-surface">100% Fresco y Artesanal</span>
+          <div
+            class="absolute -bottom-5 right-6 hidden items-center gap-2 rounded-xl border border-secondary/40 bg-surface-container-high/95 px-4 py-2.5 text-secondary shadow-xl backdrop-blur-md sm:flex"
+          >
+            <span class="material-symbols-outlined text-lg" aria-hidden="true"
+              >verified</span
+            >
+            <span class="font-label-sm text-label-sm font-bold text-on-surface"
+              >100% Fresco y Artesanal</span
+            >
           </div>
         </div>
       </div>

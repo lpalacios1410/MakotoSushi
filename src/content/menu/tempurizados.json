@@ -1,0 +1,31 @@
+{
+  "titulo": "Roll's Tempurizados",
+  "grupo": "Sushi",
+  "descripcion": "Roll's rebosados en tempura crujiente, rellenos generosos y toppings de la casa.",
+  "orden": 4,
+  "items": [
+    { "id": "temp-tentacion", "nombre": "Tentación", "descripcion": "Relleno con salmón, cangrejo, aguacate y queso crema. Topping de crema dinamita, salsa japonesa y masago.", "precio": 10 },
+    { "id": "temp-tiger", "nombre": "Tiger", "descripcion": "Relleno con salmón, aguacate y queso crema. Topping de langostinos picantes y salsa anguila.", "precio": 11 },
+    { "id": "temp-american-crunch", "nombre": "American Crunch", "descripcion": "Relleno con salmón, atún, aguacate y queso crema. Topping de crema dinamita y salsa anguila.", "precio": 12 },
+    { "id": "temp-negui", "nombre": "Negui", "descripcion": "Relleno con atún, kakiage, aguacate y queso crema. Topping de kakiage, salsa dragon y salsa anguila.", "precio": 11 },
+    { "id": "temp-neko", "nombre": "Neko", "descripcion": "Relleno con cangrejo, aguacate y queso crema. Topping de pescado blanco, salsa dragon, salsa anguila y cebollín.", "precio": 11 },
+    { "id": "temp-ebi", "nombre": "Ebi", "descripcion": "Relleno con camarones al ajillo, aguacate y queso crema. Topping de pescado blanco, salsa dragon y salsa anguila.", "precio": 10 },
+    { "id": "temp-inari", "nombre": "Inari", "descripcion": "Relleno con pescado blanco, aguacate y queso crema. Topping de pescado blanco, salsa anguila y cebollín.", "precio": 12 },
+    { "id": "temp-platano", "nombre": "Plátano", "descripcion": "Relleno de plátano, salmón, cangrejo, aguacate y queso crema. Topping de crema dinamita y salsa anguila.", "precio": 12 },
+    { "id": "temp-kamikaze", "nombre": "Kamikaze", "descripcion": "Relleno con langostinos, atún, aguacate y queso crema. Topping de langostinos, atún, salsa dragon y salsa anguila.", "precio": 12 },
+    { "id": "temp-kani-crown", "nombre": "Kani Crown", "descripcion": "Relleno con cangrejo, salmón, aguacate y queso crema. Topping de crema dinamita, cangrejo y salsa anguila.", "precio": 12 },
+    {
+      "id": "temp-ebi-king",
+      "nombre": "Ebi King",
+      "descripcion": "Relleno con cangrejo, wakame, aguacate y queso crema. Topping de camarones, salsa naomi y salsa anguila.",
+      "precio": 10,
+      "badge": { "texto": "Más Pedido", "tipo": "fuego" }
+    },
+    { "id": "temp-kaki", "nombre": "Kaki", "descripcion": "Relleno con atún, cebollín, chispas tempura, aguacate y queso crema. Topping de tartar de atún y salsa anguila.", "precio": 11 },
+    { "id": "temp-lomito", "nombre": "Lomito", "descripcion": "Relleno con lomito, champiñones, aguacate y queso crema. Topping de lomito, champiñones y salsa teriyaki.", "precio": 13 },
+    { "id": "temp-pollo", "nombre": "Pollo", "descripcion": "Relleno con pollo, champiñones, aguacate y queso crema. Topping de pollo, champiñones y salsa teriyaki.", "precio": 14 },
+    { "id": "temp-sekai-especial", "nombre": "Sekai Especial", "descripcion": "Relleno con salmón, ensalada sunset, aguacate y queso crema. Topping de langostinos, salsa fuji y salsa anguila.", "precio": 13 },
+    { "id": "temp-apul", "nombre": "Apul", "descripcion": "Relleno con plátano, salmón, cangrejo, aguacate y queso crema. Topping de langostinos, cangrejo, salsa dragon, salsa anguila y cebollín.", "precio": 9 },
+    { "id": "temp-vulcano", "nombre": "Vulcano", "descripcion": "Relleno con salmón, cangrejo, aguacate y queso crema. Topping de langostinos, salsa fuji y salsa anguila.", "precio": 11 }
+  ]
+}

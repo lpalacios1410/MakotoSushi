@@ -2,8 +2,35 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 /**
+ * Categorías del menú con sus platos (fuente: página actual de Google Sites).
+ * Cada archivo JSON es una categoría; `precio` es la referencia en dólares.
+ */
+const menu = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './src/content/menu' }),
+  schema: z.object({
+    titulo: z.string(),
+    /** Agrupación superior: "Menú Ejecutivo", "Entradas", "Combos", "Sushi", "Platos Calientes" */
+    grupo: z.string(),
+    descripcion: z.string().optional(),
+    /** Orden de aparición en listados */
+    orden: z.number(),
+    items: z.array(
+      z.object({
+        id: z.string(),
+        nombre: z.string(),
+        descripcion: z.string(),
+        /** Referencia de precio en dólares (REF.) */
+        precio: z.number(),
+        badge: z.object({ texto: z.string(), tipo: z.string() }).optional(),
+        imagen: z.string().optional(),
+      }),
+    ),
+  }),
+});
+
+/**
  * Sedes del restaurante (fuente: página actual de Google Sites).
- * Fase 2: el campo `whatsapp` alimentará el envío de pedidos por sede.
+ * El campo `whatsapp` alimenta el envío de pedidos por sede (checkout del carrito).
  */
 const sedes = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/sedes' }),
@@ -29,4 +56,4 @@ const sedes = defineCollection({
   }),
 });
 
-export const collections = { sedes };
+export const collections = { menu, sedes };
