@@ -1,5 +1,7 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
+import { TIPOS_BADGE } from './lib/tipos';
 
 /**
  * Categorías del menú con sus platos (fuente: página actual de Google Sites).
@@ -20,9 +22,9 @@ const menu = defineCollection({
         nombre: z.string(),
         descripcion: z.string(),
         /** Referencia de precio en dólares (REF.) */
-        precio: z.number(),
-        badge: z.object({ texto: z.string(), tipo: z.string() }).optional(),
-        imagen: z.string().optional(),
+        precio: z.number().nonnegative(),
+        badge: z.object({ texto: z.string(), tipo: z.enum(TIPOS_BADGE) }).optional(),
+        imagen: z.url().optional(),
       }),
     ),
   }),
@@ -52,7 +54,7 @@ const sedes = defineCollection({
     local: z.string().optional(),
     comoLlegar: z.string().optional(),
     /** Número con código de país, p. ej. "582121234567". Null hasta confirmar. */
-    whatsapp: z.string().nullable(),
+    whatsapp: z.string().regex(/^\d{10,15}$/).nullable(),
   }),
 });
 
