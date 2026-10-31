@@ -50,7 +50,7 @@ const resenas = [
         resenas.map((resena) => (
           <div class="flex flex-col justify-between rounded-2xl border border-outline-variant/30 bg-surface-container-low p-6">
             <div>
-              <div class="mb-3 flex text-tertiary">
+              <div class="mb-3 flex text-tertiary" role="img" aria-label={`Valoración: ${resena.estrellas} de 5 estrellas`}>
                 {Array.from({ length: resena.estrellas }).map(() => (
                   <span class="material-symbols-outlined ms-fill text-sm" aria-hidden="true">
                     star

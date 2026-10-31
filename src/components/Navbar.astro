@@ -1,17 +1,15 @@
 ---
 /**
  * Barra de navegación superior (sticky, frosted glass).
- * Fase 2: el botón del carrito abrirá el drawer de pedidos.
  */
+import { LOGO_URL, MARCA, enlaceWhatsapp } from '../config';
+
 interface Props {
   /** Id de la sección activa para el subrayado del enlace */
   activo?: string;
 }
 
 const { activo } = Astro.props;
-
-const LOGO_URL =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuCAU1zHMukdShxQaC9RgKRpJIjjRp05B_QvFgQ4A0f2qKSpQYPPTRiuSXTtQETXyPZ0NCp0OdaX3fnBooPLq5MF9BkFqAeY_8vwIis36q3A77Iaf_thLyIwIjZXxPQdHENuJQeemR_xtR6LiBEIIeI5MgHconpI3MTFmC_VGP_Rx6oj82Q59LtSVRv_BsFO8d63ptkacenruyabAMywbniPfFuvyvUf8bTou3ccu0ohYSH1WFztyaFDfQ';
 
 const enlaces = [
   { href: '/#inicio', id: 'inicio', texto: 'Inicio' },
@@ -20,6 +18,15 @@ const enlaces = [
   { href: '/sedes/', id: 'sedes', texto: 'Sedes' },
   { href: '/#opiniones', id: 'opiniones', texto: 'Reseñas' },
 ];
+
+/**
+ * `aria-current` debe distinguir entre páginas (page) y secciones de la
+ * página actual (true).
+ */
+function current(href: string, id: string): 'page' | 'true' | undefined {
+  if (activo !== id) return undefined;
+  return href.includes('#') ? 'true' : 'page';
+}
 ---
 
 <header class="sticky top-0 z-50 border-b border-outline-variant/30 bg-surface/90 shadow-md backdrop-blur-md">
@@ -27,9 +34,9 @@ const enlaces = [
     <!-- Logo y nombre de la marca -->
     <a class="group flex items-center gap-3 transition-transform duration-150 active:scale-95" href="/#inicio">
       <div
-        class="relative h-11 w-11 overflow-hidden rounded-full border border-outline-variant/40 bg-surface-container-lowest p-0.5 transition-colors group-hover:border-primary-container"
+        class="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border border-outline-variant/40 bg-surface-container-lowest p-0.5 transition-colors group-hover:border-primary-container"
       >
-        <img src={LOGO_URL} alt="Logo Letsgo Sushi" class="h-full w-full object-contain" width="44" height="44" loading="eager" />
+        <img src={LOGO_URL} alt={`Logo de ${MARCA.nombreCompleto}`} class="h-full w-full object-contain" width="44" height="44" loading="eager" decoding="async" />
       </div>
       <div class="flex flex-col">
         <span class="font-headline-md text-headline-md font-extrabold leading-tight tracking-wider text-on-surface">
@@ -47,6 +54,7 @@ const enlaces = [
         enlaces.map((enlace) => (
           <a
             href={enlace.href}
+            aria-current={current(enlace.href, enlace.id)}
             class:list={[
               'pb-1 font-label-md text-label-md transition-colors duration-200 hover:text-primary',
               activo === enlace.id
@@ -65,7 +73,7 @@ const enlaces = [
       <!-- WhatsApp directo -->
       <a
         class="hidden items-center gap-2 rounded-lg border border-outline-variant/30 bg-surface-container-high px-3.5 py-2 font-label-sm text-label-sm text-secondary transition-all hover:border-secondary hover:bg-surface-container lg:flex"
-        href="https://wa.me/"
+        href={enlaceWhatsapp()}
         rel="noopener noreferrer"
         target="_blank"
       >
@@ -83,6 +91,7 @@ const enlaces = [
         <span
           data-cart-count
           class="absolute -top-1 -right-1 hidden h-5 w-5 items-center justify-center rounded-full border-2 border-surface bg-primary-container text-[10px] font-bold text-on-primary-container"
+          aria-hidden="true"
         >
           0
         </span>
@@ -116,6 +125,7 @@ const enlaces = [
         enlaces.map((enlace) => (
           <a
             href={enlace.href}
+            aria-current={current(enlace.href, enlace.id)}
             class:list={[
               'rounded-lg px-3 py-2.5 font-label-md text-label-md transition-colors hover:bg-surface-container hover:text-primary',
               activo === enlace.id ? 'bg-surface-container font-bold text-primary' : 'text-on-surface/80',
@@ -140,6 +150,13 @@ const enlaces = [
   const btn = document.getElementById('menuBtn');
   const menu = document.getElementById('menuMovil');
 
+  function cerrarMenuMovil() {
+    if (!menu || !btn) return;
+    menu.classList.add('hidden');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Abrir menú');
+  }
+
   btn?.addEventListener('click', () => {
     const abierto = !menu?.classList.toggle('hidden');
     btn.setAttribute('aria-expanded', String(abierto));
@@ -148,9 +165,14 @@ const enlaces = [
 
   // Al pulsar un enlace del menú móvil, este se cierra
   menu?.querySelectorAll('a').forEach((enlace) => {
-    enlace.addEventListener('click', () => {
-      menu.classList.add('hidden');
-      btn?.setAttribute('aria-expanded', 'false');
-    });
+    enlace.addEventListener('click', cerrarMenuMovil);
+  });
+
+  // Escape cierra el menú móvil
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu && !menu.classList.contains('hidden')) {
+      cerrarMenuMovil();
+      btn?.focus();
+    }
   });
 </script>

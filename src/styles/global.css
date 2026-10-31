@@ -165,5 +165,66 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Compensa la altura del header sticky al saltar a un ancla (#inicio, #sedes...) */
+    scroll-padding-top: 6rem;
+  }
+
+  /* Foco visible para navegación por teclado (WCAG 2.4.7 / 2.4.11).
+     Se usa :focus-visible para no penalizar la navegación con mouse. */
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Los elementos foco nunca deben quedar tapados por el header sticky */
+  :target {
+    scroll-margin-top: 6rem;
+  }
+
+  /* Los inputs del design system sustituyen el borde en :focus,
+     por eso mantenemos un anillo de foco explícito y visible. */
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 1px;
+  }
+}
+
+/* ── Preferencias del sistema ───────────────────────────────── */
+
+/* Respeta "reducir movimiento": desactiva animaciones y transiciones */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Utilidades de accesibilidad ────────────────────────────── */
+
+/* Enlace de salto al contenido principal (solo visible al enfocar) */
+@utility skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transform: translateY(-120%);
+  border-radius: 0 0 0.5rem 0;
+  background-color: var(--color-primary-container);
+  padding: 0.75rem 1.25rem;
+  font-family: var(--font-label-md);
+  font-size: var(--text-label-md);
+  font-weight: 700;
+  color: var(--color-on-primary-container);
+  transition: transform 150ms ease;
+
+  &:focus-visible {
+    transform: translateY(0);
   }
 }
