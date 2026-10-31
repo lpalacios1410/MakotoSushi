@@ -8,6 +8,7 @@ dist/
 # Entorno y sistema
 .env
 .env.*
+!.env.example
 .DS_Store
 Thumbs.db
 
@@ -18,3 +19,6 @@ Thumbs.db
 # SkillsSH
 .agents
 .claude
+
+# Runtime generado por el Studio de Sanity (pnpm studio)
+sanity/.sanity

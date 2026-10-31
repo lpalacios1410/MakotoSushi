@@ -2,10 +2,10 @@
 /**
  * Card resumen de una sede. Se usa en la landing y en /sedes.
  */
-import type { CollectionEntry } from 'astro:content';
+import type { EntradaSede } from '../lib/tipos';
 
 interface Props {
-  sede: CollectionEntry<'sedes'>;
+  sede: EntradaSede;
   /**
    * Nivel del encabezado de la card. En /sedes el título de la página es un
    * h1 y las sedes deben ser h2; en la landing (donde ya hay un h2 de sección)

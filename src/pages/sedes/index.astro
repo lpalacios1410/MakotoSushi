@@ -1,10 +1,10 @@
 ---
-import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import SedeCard from '../../components/SedeCard.astro';
 import { MARCA, URL_SITIO } from '../../config';
+import { obtenerSedes } from '../../lib/contenido';
 
-const sedes = (await getCollection('sedes')).sort((a, b) => a.data.orden - b.data.orden);
+const sedes = await obtenerSedes();
 
 const base = Astro.site?.href ?? URL_SITIO;
 

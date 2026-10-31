@@ -8,9 +8,9 @@
  * se abre con foco gestionado, atrapa el tabulador, se cierra con Escape
  * y queda fuera del orden de tabulación mientras está cerrado (`inert`).
  */
-import { getCollection } from 'astro:content';
+import { obtenerSedes } from '../lib/contenido';
 
-const sedes = (await getCollection('sedes')).sort((a, b) => a.data.orden - b.data.orden);
+const sedes = await obtenerSedes();
 ---
 
 <!-- Overlay de fondo -->

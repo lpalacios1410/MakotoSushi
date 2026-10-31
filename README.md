@@ -32,19 +32,24 @@ MakotoSushi/
 ├── README.md              # Este archivo
 ├── DESIGN.md              # Sistema de diseño (tokens, tipografía, componentes)
 ├── astro.config.mjs       # Configuración de Astro (+ Tailwind v4, sitemap, prefetch)
+├── .env.example           # Plantilla de variables de entorno (Sanity, SITE_URL)
+├── scripts/sembrar-sanity.mjs  # Vuelca el JSON local al CMS (idempotente)
+├── sanity/                # Studio de Sanity (panel del personal)
+│   ├── sanity.config.ts   # Proyecto, dataset y schemas del Studio
+│   └── schemas/           # categoriaMenu, sede, plato, badge, horario (en español)
 ├── package.json
 ├── tsconfig.json
 ├── public/                # Favicon y archivos estáticos
 └── src/
     ├── config.ts          # Datos de marca: nombre, WhatsApp, imágenes, redes
-    ├── lib/               # Tipos compartidos y utilidades (horarios → schema.org)
+    ├── lib/               # Tipos, esquemas zod, horarios (→ schema.org) y contenido (capa CMS)
     ├── styles/global.css  # Tokens del design system → @theme de Tailwind v4
     ├── layouts/           # Layout.astro (head + SEO + Navbar, Footer, Carrito)
     ├── scripts/carrito.ts # Núcleo del carrito (localStorage + eventos)
     ├── components/        # Hero, Pilares, Catalogo, DishCard, SedeCard, Carrito, MigasPan...
     ├── content/
-    │   ├── menu/          # 11 categorías del menú real (~100 platos)
-    │   └── sedes/         # 4 sedes (horarios, dirección, modalidades, whatsapp)
+    │   ├── menu/          # 11 categorías del menú real (~100 platos) — respaldo local
+    │   └── sedes/         # 4 sedes (horarios, dirección, modalidades, whatsapp) — respaldo local
     ├── data/              # destacados.json (platos de la landing)
     └── pages/
         ├── index.astro              # Landing
@@ -80,6 +85,38 @@ MakotoSushi/
 
 > Verificado con Lighthouse: **Accesibilidad 100 · SEO 100** en landing, menú, sedes y páginas legales.
 
+## ✏️ CMS (Sanity) — edición del personal
+
+El personal edita menú, precios y sedes desde el **Studio de Sanity** sin tocar código.
+La web sigue siendo 100% estática: el contenido se trae en el build.
+
+**Cómo funciona** (`src/lib/contenido.ts`):
+- Con `SANITY_PROJECT_ID` definido, el build lee el contenido publicado del CMS
+  (solo versiones publicadas, no borradores) y lo valida con los mismos esquemas
+  zod que el JSON local. Si un documento viene mal, el build falla con error claro.
+- Sin la variable, el sitio compila con el **JSON local** de `src/content/` —
+  el repo siempre funciona sin credenciales.
+
+**Puesta en marcha (una sola vez):**
+1. Crea el proyecto gratis en [sanity.io/manage](https://www.sanity.io/manage)
+   (plan Free, dataset `production`).
+2. Copia `.env.example` → `.env` y completa `SANITY_PROJECT_ID`.
+3. Crea un token de escritura (Manage → API → Tokens → "Editor") y ponlo en
+   `SANITY_API_WRITE_TOKEN`.
+4. `pnpm sembrar:sanity` — sube el menú y las sedes actuales al CMS (idempotente).
+5. Crea `sanity/.env` con `SANITY_STUDIO_PROJECT_ID=<id>` y ejecuta `pnpm studio`
+   (local) o `pnpm studio:deploy` (URL pública `*.sanity.studio` para el personal).
+6. Invita al personal desde Manage → Members (rol Editor; solo puede editar contenido).
+
+**Publicación de cambios del personal:**
+En Cloudflare Pages crea un *Deploy Hook* (Settings → Builds & deployments) y
+regístralo en Sanity (Manage → API → Webhooks) para que cada publicación en el
+Studio reconstruya el sitio automáticamente. Configura también
+`SANITY_PROJECT_ID`/`SANITY_DATASET` como variables de entorno del proyecto en Pages.
+
+> 🔒 Los tokens viven solo en `.env` (ignorado por git). El token de escritura
+> jamás va al hosting: solo lo usa el script local de siembra.
+
 ## 🗺️ Fases de desarrollo
 
 | Fase | Alcance | Estado |
@@ -87,7 +124,8 @@ MakotoSushi/
 | **1** | Proyecto Astro + Tailwind con tokens del design system, landing y páginas de sedes | ✅ Completada |
 | **2** | Menú desde datos + carrito → checkout → WhatsApp | ✅ Completada |
 | **3** | SEO técnico (sitemap, JSON-LD, OG), accesibilidad WCAG 2.2 AA y páginas legales | ✅ Completada |
-| **4** | CMS (Sanity) para el personal, SEO local (GBP) y analítica | ⏳ Pendiente |
+| **4a** | CMS (Sanity) para el personal: Studio + capa de contenido con respaldo JSON | ✅ Completada |
+| **4b** | SEO local (Google Business Profile por sede) y analítica | ⏳ Pendiente |
 
 ## 📝 Convenciones
 

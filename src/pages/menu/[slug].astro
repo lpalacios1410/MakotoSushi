@@ -2,15 +2,15 @@
 /**
  * Página de categoría del menú: lista de platos con botones "Añadir" al carrito.
  */
-import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import DishCard from '../../components/DishCard.astro';
 import MigasPan from '../../components/MigasPan.astro';
 import { MARCA, URL_SITIO } from '../../config';
+import { obtenerMenu } from '../../lib/contenido';
+import type { EntradaMenu } from '../../lib/tipos';
 
 export async function getStaticPaths() {
-  const categorias = await getCollection('menu');
+  const categorias = await obtenerMenu();
   return categorias.map((categoria) => ({
     params: { slug: categoria.id },
     props: { categoria },
@@ -18,14 +18,14 @@ export async function getStaticPaths() {
 }
 
 interface Props {
-  categoria: CollectionEntry<'menu'>;
+  categoria: EntradaMenu;
 }
 
 const { categoria } = Astro.props;
 const { titulo, grupo, descripcion, items } = categoria.data;
 
 // Navegación entre categorías (orden global)
-const todas = (await getCollection('menu')).sort((a, b) => a.data.orden - b.data.orden);
+const todas = await obtenerMenu();
 
 const base = Astro.site?.href ?? URL_SITIO;
 

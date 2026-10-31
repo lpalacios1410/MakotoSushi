@@ -1,0 +1,4 @@
+# Workspace de pnpm: el Studio de Sanity (sanity/) es un paquete propio con
+# sus dependencias enlazadas, compartiendo el store con la raíz.
+packages:
+  - 'sanity'

@@ -3,10 +3,10 @@
  * Vista previa de las sedes en la landing (sustituye la sección
  * "Nuestro Local" del prototipo por el listado real del negocio).
  */
-import { getCollection } from 'astro:content';
+import { obtenerSedes } from '../lib/contenido';
 import SedeCard from './SedeCard.astro';
 
-const sedes = (await getCollection('sedes')).sort((a, b) => a.data.orden - b.data.orden);
+const sedes = await obtenerSedes();
 ---
 
 <section id="sedes" class="border-y border-outline-variant/20 bg-surface-container-lowest py-16 md:py-24">
