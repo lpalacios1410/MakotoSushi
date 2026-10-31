@@ -2,14 +2,42 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import SedeCard from '../../components/SedeCard.astro';
+import { MARCA, URL_SITIO } from '../../config';
 
 const sedes = (await getCollection('sedes')).sort((a, b) => a.data.orden - b.data.orden);
+
+const base = Astro.site?.href ?? URL_SITIO;
+
+/** Listado de sedes (LocalBusiness) para los buscadores. */
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: `Sedes de ${MARCA.nombreCompleto}`,
+  itemListElement: sedes.map((sede, indice) => ({
+    '@type': 'ListItem',
+    position: indice + 1,
+    item: {
+      '@type': 'Restaurant',
+      '@id': `${base}sedes/${sede.id}/#sede`,
+      name: sede.data.nombre,
+      url: new URL(`/sedes/${sede.id}/`, base).href,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: sede.data.direccion,
+        addressLocality: sede.data.ciudad,
+        addressCountry: MARCA.pais,
+      },
+      ...(sede.data.whatsapp ? { telephone: `+${sede.data.whatsapp}` } : {}),
+    },
+  })),
+};
 ---
 
 <Layout
-  title="Nuestras Sedes — Makoto Sushi"
-  description="Conoce las 4 sedes de Makoto Sushi / Letsgo Sushi en Caracas: horarios, direcciones, modalidades de atención y cómo llegar."
+  title={`Nuestras Sedes — ${MARCA.nombre}`}
+  description={`Conoce las ${sedes.length} sedes de ${MARCA.nombreCompleto} en Caracas: horarios, direcciones, modalidades de atención y cómo llegar.`}
   activo="sedes"
+  schema={schema}
 >
   <section class="bg-surface-container-lowest py-12 md:py-20">
     <div class="mx-auto max-w-7xl px-6">
@@ -17,14 +45,14 @@ const sedes = (await getCollection('sedes')).sort((a, b) => a.data.orden - b.dat
       <div class="mx-auto mb-12 max-w-2xl text-center">
         <span class="mb-2 block font-label-sm text-label-sm uppercase tracking-widest text-primary">Puntos de Encuentro</span>
         <h1 class="font-headline-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">Nuestras Sedes</h1>
-        <p class="mt-2 font-body-md text-body-md text-on-surface/70">
-          Cuatro puntos en Caracas para disfrutar en barra, recoger tu pedido o recibirlo en casa.
+        <p class="mt-2 font-body-md text-body-md text-on-surface/80">
+          {sedes.length} puntos en Caracas para disfrutar en barra, recoger tu pedido o recibirlo en casa.
         </p>
       </div>
 
       <!-- Grilla de sedes -->
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {sedes.map((sede) => <SedeCard sede={sede} />)}
+        {sedes.map((sede) => <SedeCard sede={sede} nivel="h2" />)}
       </div>
     </div>
   </section>

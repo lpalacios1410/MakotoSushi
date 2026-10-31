@@ -2,10 +2,12 @@
 /**
  * Índice del menú: todas las categorías agrupadas por grupo.
  */
-import { getCollection } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import MigasPan from '../../components/MigasPan.astro';
+import { MARCA, URL_SITIO } from '../../config';
 
-const categorias = (await getCollection("menu")).sort(
+const categorias = (await getCollection('menu')).sort(
   (a, b) => a.data.orden - b.data.orden,
 );
 
@@ -18,21 +20,42 @@ for (const cat of categorias) {
 }
 
 const iconos: Record<string, string> = {
-  "Menú Ejecutivo": "work",
-  Entradas: "restaurant_menu",
-  Sushi: "set_meal",
-  "Platos Calientes": "soup_kitchen",
-  Combos: "fastfood",
+  'Menú Ejecutivo': 'work',
+  Entradas: 'restaurant_menu',
+  Sushi: 'set_meal',
+  'Platos Calientes': 'soup_kitchen',
+  Combos: 'fastfood',
+};
+
+const base = Astro.site?.href ?? URL_SITIO;
+
+/** Listado de categorías de la carta. */
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: `Carta de ${MARCA.nombreCompleto}`,
+  itemListElement: categorias.map((cat, indice) => ({
+    '@type': 'ListItem',
+    position: indice + 1,
+    item: {
+      '@type': 'MenuSection',
+      name: cat.data.titulo,
+      url: new URL(`/menu/${cat.id}/`, base).href,
+      ...(cat.data.descripcion ? { description: cat.data.descripcion } : {}),
+    },
+  })),
 };
 ---
 
 <Layout
-  title="Menú — Makoto Sushi"
-  description="Carta completa de Makoto Sushi / Letsgo Sushi: menú ejecutivo, entradas, poke, rolls fríos y tempurizados, barcos, platos calientes y más."
+  title={`Menú — ${MARCA.nombre}`}
+  description={`Carta completa de ${MARCA.nombreCompleto}: menú ejecutivo, entradas, poke, rolls fríos y tempurizados, barcos, platos calientes y más.`}
   activo="catalogo"
+  schema={schema}
 >
   <section class="bg-surface-container-lowest py-12 md:py-16">
     <div class="mx-auto max-w-7xl px-6">
+      <MigasPan items={[{ href: '/', texto: 'Inicio' }, { texto: 'Menú' }]} />
       <div class="mx-auto max-w-2xl text-center">
         <span
           class="mb-2 block font-label-sm text-label-sm uppercase tracking-widest text-primary"
@@ -43,7 +66,7 @@ const iconos: Record<string, string> = {
         >
           Nuestro Menú Completo
         </h1>
-        <p class="mt-2 font-body-md text-body-md text-on-surface/70">
+        <p class="mt-2 font-body-md text-body-md text-on-surface/80">
           Arma tu pedido por categoría y envíalo directo al WhatsApp de tu sede.
           Los precios no incluyen IVA ni el 10% de servicio.
         </p>
@@ -62,7 +85,7 @@ const iconos: Record<string, string> = {
                   class="material-symbols-outlined text-xl"
                   aria-hidden="true"
                 >
-                  {iconos[grupo] ?? "restaurant"}
+                  {iconos[grupo] ?? 'restaurant'}
                 </span>
               </div>
               <h2 class="font-headline-md text-headline-md text-on-surface">
@@ -79,12 +102,12 @@ const iconos: Record<string, string> = {
                     <h3 class="font-headline-sm text-headline-sm text-on-surface transition-colors group-hover:text-primary">
                       {cat.data.titulo}
                     </h3>
-                    <p class="mt-1 font-body-sm text-body-sm text-on-surface/60">
+                    <p class="mt-1 font-body-sm text-body-sm text-on-surface/80">
                       {cat.data.items.length} platos
                     </p>
                   </div>
                   <span
-                    class="material-symbols-outlined text-on-surface/40 transition-all group-hover:translate-x-1 group-hover:text-primary"
+                    class="material-symbols-outlined text-on-surface/60 transition-all group-hover:translate-x-1 group-hover:text-primary"
                     aria-hidden="true"
                   >
                     arrow_forward

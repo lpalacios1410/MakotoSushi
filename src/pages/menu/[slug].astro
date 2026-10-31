@@ -6,6 +6,8 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import DishCard from '../../components/DishCard.astro';
+import MigasPan from '../../components/MigasPan.astro';
+import { MARCA, URL_SITIO } from '../../config';
 
 export async function getStaticPaths() {
   const categorias = await getCollection('menu');
@@ -24,22 +26,64 @@ const { titulo, grupo, descripcion, items } = categoria.data;
 
 // Navegación entre categorías (orden global)
 const todas = (await getCollection('menu')).sort((a, b) => a.data.orden - b.data.orden);
+
+const base = Astro.site?.href ?? URL_SITIO;
+
+/** Migas de pan (visibles + datos estructurados). */
+const migas = [
+  { href: '/', texto: 'Inicio' },
+  { href: '/menu/', texto: 'Menú' },
+  { texto: titulo },
+];
+
+/** Datos estructurados: breadcrumb + lista de platos de la categoría. */
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: migas.map((miga, indice) => ({
+      '@type': 'ListItem',
+      position: indice + 1,
+      name: miga.texto,
+      ...(miga.href ? { item: new URL(miga.href, base).href } : {}),
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `${titulo} — ${MARCA.nombreCompleto}`,
+    itemListElement: items.map((item, indice) => ({
+      '@type': 'ListItem',
+      position: indice + 1,
+      item: {
+        '@type': 'MenuItem',
+        name: item.nombre,
+        description: item.descripcion,
+        offers: {
+          '@type': 'Offer',
+          price: item.precio,
+          priceCurrency: 'USD',
+        },
+      },
+    })),
+  },
+];
 ---
 
-<Layout title={`${titulo} — Menú Makoto Sushi`} description={`${titulo}: ${descripcion ?? `Carta de ${titulo} de Makoto Sushi / Letsgo Sushi.`}`} activo="catalogo">
+<Layout
+  title={`${titulo} — Menú ${MARCA.nombre}`}
+  description={`${titulo}: ${descripcion ?? `Carta de ${titulo} de ${MARCA.nombreCompleto}.`} Precios en USD, delivery y pick-up en Caracas.`}
+  activo="catalogo"
+  ogType="website"
+  schema={schema}
+>
   <!-- Encabezado de la categoría -->
   <section class="border-b border-outline-variant/20 bg-surface-container-lowest py-10 md:py-14">
     <div class="mx-auto max-w-7xl px-6">
-      <a
-        href="/menu/"
-        class="mb-5 inline-flex items-center gap-1.5 font-label-sm text-label-sm uppercase tracking-wider text-on-surface/60 transition-colors hover:text-primary"
-      >
-        <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_back</span>
-        Todo el menú
-      </a>
+      <MigasPan items={migas} />
       <span class="mb-2 block font-label-sm text-label-sm uppercase tracking-widest text-primary">{grupo}</span>
       <h1 class="font-headline-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">{titulo}</h1>
-      {descripcion && <p class="mt-2 max-w-2xl font-body-md text-body-md text-on-surface/70">{descripcion}</p>}
+      {descripcion && <p class="mt-2 max-w-2xl font-body-md text-body-md text-on-surface/80">{descripcion}</p>}
     </div>
   </section>
 
@@ -50,6 +94,7 @@ const todas = (await getCollection('menu')).sort((a, b) => a.data.orden - b.data
         todas.map((cat) => (
           <a
             href={`/menu/${cat.id}/`}
+            aria-current={cat.id === categoria.id ? 'page' : undefined}
             class:list={[
               'whitespace-nowrap rounded-full px-4 py-2 font-label-sm text-label-sm transition-all',
               cat.id === categoria.id
@@ -67,10 +112,11 @@ const todas = (await getCollection('menu')).sort((a, b) => a.data.orden - b.data
   <!-- Platos -->
   <section class="bg-surface py-12 md:py-16">
     <div class="mx-auto max-w-7xl px-6">
+      <h2 class="sr-only">Platos de {titulo}</h2>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {items.map((platillo) => <DishCard platillo={platillo} />)}
       </div>
-      <p class="mt-10 text-center font-body-sm text-body-sm text-on-surface/50">
+      <p class="mt-10 text-center font-body-sm text-body-sm text-on-surface/70">
         Nuestros precios no incluyen IVA ni el 10% de servicio.
       </p>
     </div>

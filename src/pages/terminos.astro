@@ -1,0 +1,85 @@
+---
+/**
+ * Términos y condiciones del sitio y del servicio de pedidos.
+ */
+import Layout from '../layouts/Layout.astro';
+import { MARCA } from '../config';
+
+const seccion = (titulo: string, contenido: string[]) => ({ titulo, contenido });
+---
+
+<Layout
+  title={`Términos y Condiciones — ${MARCA.nombreCompleto}`}
+  description="Condiciones de uso del sitio de Makoto Sushi / Letsgo Sushi: precios, disponibilidad de platos, promociones y pedidos por WhatsApp."
+>
+  <section class="bg-surface-container-lowest py-12 md:py-16">
+    <div class="mx-auto max-w-3xl px-6">
+      <span class="mb-2 block font-label-sm text-label-sm uppercase tracking-widest text-primary">Información Legal</span>
+      <h1 class="font-headline-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">Términos y Condiciones</h1>
+      <p class="mt-2 font-body-md text-body-md text-on-surface/80">
+        Última actualización: {new Date().getFullYear()}. Al usar este sitio aceptas las condiciones que se describen a continuación.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-surface py-12 md:py-16">
+    <div class="mx-auto max-w-3xl space-y-8 px-6">
+      {
+        [
+          seccion('Pedidos y pagos', [
+            `Los pedidos se realizan exclusivamente a través de WhatsApp, desde el carrito de este sitio o desde el número de ${MARCA.nombreCompleto}.`,
+            'No se procesan pagos en línea: el pago se realiza en efectivo al recibir el pedido, en dólares (USD) o en bolívares, según lo acordado con la sede.',
+            'Los precios publicados son precios de referencia y pueden variar según la sede, la disponibilidad de pesca del día y las promociones vigentes.',
+          ]),
+          seccion('Precios', [
+            'Todos los precios están expresados en dólares (USD) y no incluyen el IVA ni el 10% de servicio, salvo que se indique lo contrario.',
+            'El precio final se confirma con la sede al momento de preparar el pedido.',
+          ]),
+          seccion('Disponibilidad de platos', [
+            'La carta puede variar de forma diaria según la pesca y los proveedores. Un plato del menú no garantiza disponibilidad permanente.',
+            'Las imágenes de los platos son ilustrativas: la presentación puede variar según la preparación y la disponibilidad de ingredientes.',
+          ]),
+          seccion('Promociones', [
+            'Las promociones (por ejemplo, 2x1 en rolls los martes y jueves) tienen vigencia, cobertura y productos específicos, comunicados en la sección de promociones de este sitio.',
+            'El código de promoción se aplica al confirmar el pedido por WhatsApp y no es acumulable con otras ofertas, salvo indicación contraria.',
+          ]),
+          seccion('Entregas y horarios', [
+            'Los horarios de atención, las modalidades disponibles y la zona de cobertura se detallan en la sección de sedes.',
+            'Los tiempos de entrega son estimados y pueden variar según la preparación, el tráfico y la disponibilidad del repartidor.',
+          ]),
+          seccion('Sedes', [
+            `${MARCA.nombreCompleto} opera en Caracas y sus sedes pueden ser actualizadas en cualquier momento. La información vigente es la que figura en la sección de sedes de este sitio.`,
+          ]),
+        ].map((bloque) => (
+          <div>
+            <h2 class="font-headline-md text-headline-md text-on-surface">{bloque.titulo}</h2>
+            <ul class="mt-3 flex flex-col gap-2">
+              {bloque.contenido.map((parrafo) => (
+                <li class="flex gap-3 font-body-md text-body-md text-on-surface/80">
+                  <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                  <span>{parrafo}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+
+      <div class="rounded-2xl border border-outline-variant/30 bg-surface-container p-6">
+        <h2 class="font-headline-sm text-headline-sm text-on-surface">¿Dudas sobre un pedido?</h2>
+        <p class="mt-2 font-body-md text-body-md text-on-surface/80">
+          Escríbenos por WhatsApp y te ayudamos con disponibilidad, promociones y entregas.
+        </p>
+        <a
+          class="mt-4 inline-flex items-center gap-2 rounded-lg bg-secondary px-5 py-3 font-label-md text-label-md font-bold tracking-wider text-on-secondary transition-all hover:opacity-90 active:scale-95"
+          href={`https://wa.me/${MARCA.whatsapp}?text=${encodeURIComponent(MARCA.whatsappMensaje)}`}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <span class="material-symbols-outlined" aria-hidden="true">chat</span>
+          Contactar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
