@@ -4,14 +4,7 @@
  * Sin `imagen` renderiza un placeholder (la mayoría del menú real no tiene foto).
  * El botón "Añadir" dispara el carrito vía data-attributes (delegación en Carrito.astro).
  */
-interface Platillo {
-  id: string;
-  nombre: string;
-  descripcion: string;
-  precio: number;
-  badge?: { texto: string; tipo: string };
-  imagen?: string;
-}
+import type { Platillo } from '../lib/tipos';
 
 interface Props {
   platillo: Platillo;
@@ -20,16 +13,16 @@ interface Props {
 const { platillo } = Astro.props;
 
 /** Estilos de badge según tipo (paleta del design system) */
-const badgeEstilos: Record<string, string> = {
+const badgeEstilos = {
   oro: 'bg-tertiary text-on-tertiary-fixed',
   fuego: 'bg-primary-container text-on-primary-container',
   picante: 'bg-error-container text-on-error-container',
   fresco: 'bg-secondary-container text-on-secondary-container',
   neutro: 'border border-outline-variant/30 bg-surface-container-highest text-on-surface',
   flameado: 'bg-tertiary-container text-on-tertiary-container',
-};
+} satisfies Record<string, string>;
 
-const claseBadge = platillo.badge ? (badgeEstilos[platillo.badge.tipo] ?? badgeEstilos.neutro) : '';
+const claseBadge = platillo.badge ? badgeEstilos[platillo.badge.tipo] : '';
 const precio = '$' + platillo.precio.toLocaleString('es-VE');
 ---
 
@@ -39,14 +32,15 @@ const precio = '$' + platillo.precio.toLocaleString('es-VE');
       platillo.imagen ? (
         <img
           src={platillo.imagen}
-          alt={platillo.nombre}
+          alt={`${platillo.nombre} — Makoto Sushi`}
           class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           width="400"
           height="176"
           loading="lazy"
+          decoding="async"
         />
       ) : (
-        <div class="flex h-full w-full items-center justify-center bg-gradient-to-br from-surface-container to-surface-container-lowest text-on-surface/20">
+        <div class="flex h-full w-full items-center justify-center bg-linear-to-br from-surface-container to-surface-container-lowest text-on-surface/30">
           <span class="material-symbols-outlined text-5xl" aria-hidden="true">
             set_meal
           </span>
@@ -67,11 +61,14 @@ const precio = '$' + platillo.precio.toLocaleString('es-VE');
       <h3 class="font-headline-sm text-headline-sm text-on-surface transition-colors group-hover:text-primary">
         {platillo.nombre}
       </h3>
-      <p class="mt-1 line-clamp-3 font-body-sm text-body-sm text-on-surface/70">{platillo.descripcion}</p>
+      <p class="mt-1 line-clamp-3 font-body-sm text-body-sm text-on-surface/80">{platillo.descripcion}</p>
     </div>
 
     <div class="mt-4 flex items-center justify-between border-t border-outline-variant/20 pt-5">
-      <span class="font-headline-md text-headline-md font-extrabold text-on-surface">{precio}</span>
+      <span class="font-headline-md text-headline-md font-extrabold text-on-surface">
+        <span class="sr-only">Precio:</span>
+        {precio}
+      </span>
       <button
         type="button"
         class="inline-flex items-center gap-1.5 rounded-lg bg-primary-container px-4 py-2 font-label-sm text-label-sm font-bold text-on-primary-container transition-all hover:opacity-90 active:scale-95"

@@ -2,8 +2,7 @@
 /**
  * Hero principal de la landing.
  */
-const IMAGEN_PLATO =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDwXrb3oVtw-pOmOqjtAUSQzDZfHE0AS6mnJrvF6IeK_l5NEDhYx5qQxKp1H0gCdHtrAnL_KT71QPKN3WDaubK8wkLW6xBZeDEZhQpZ0EivgRQasrRVctp_ZnpQpeWbR2p_LwMM-0hcSjDtkSxuC0SYw_y91PWVu5WBOIZeJPUgMoaRbm6Y9fxJ0d-quNuMgyKfNN8fq6YhYpjt-Dxjn-1EVSr9GGClBH-pY-rO_v4EI-RTww_fesvTGQ";
+import { IMAGEN_PLATO } from '../config';
 ---
 
 <section
@@ -115,11 +114,13 @@ const IMAGEN_PLATO =
           >
             <img
               src={IMAGEN_PLATO}
-              alt="Sushi de Autor y Rolls Makoto Sushi"
+              alt="Sushi de autor y rolls Makoto Sushi"
               class="h-95 w-full object-cover object-center transition-transform duration-500 group-hover:scale-105 sm:h-115"
               width="512"
               height="460"
               loading="eager"
+              decoding="async"
+              fetchpriority="high"
             />
             <div
               class="absolute inset-0 bg-linear-to-t from-surface-container-lowest via-transparent to-transparent opacity-80"
@@ -133,9 +134,9 @@ const IMAGEN_PLATO =
                   class="block font-label-sm text-label-sm font-bold uppercase tracking-wider text-tertiary"
                   >Recomendación del Itamae</span
                 >
-                <h4 class="font-headline-sm text-headline-sm text-on-surface">
+                <p class="font-headline-sm text-headline-sm text-on-surface">
                   Tabla Degustación de Autor
-                </h4>
+                </p>
               </div>
               <span
                 class="font-headline-sm text-headline-sm font-bold text-primary"
