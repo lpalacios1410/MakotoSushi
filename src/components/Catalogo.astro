@@ -1,13 +1,27 @@
 ---
 /**
  * Sección de catálogo con platos destacados.
- * Fase 2: se alimentará del menú completo (src/content/menu) y los chips filtrarán por categoría.
+ * Los chips filtran por categoría y enlazan con la carta completa.
  */
+import { z } from 'astro/zod';
 import CategoryChips from './CategoryChips.astro';
 import DishCard from './DishCard.astro';
 import destacados from '../data/destacados.json';
+import { TIPOS_BADGE } from '../lib/tipos';
 
-const platillos = destacados;
+/** El JSON de destacados se valida en build: si alguien edita el archivo mal, falla el build. */
+const schemaDestacados = z.array(
+  z.object({
+    id: z.string(),
+    nombre: z.string(),
+    descripcion: z.string(),
+    precio: z.number().nonnegative(),
+    badge: z.object({ texto: z.string(), tipo: z.enum(TIPOS_BADGE) }).optional(),
+    imagen: z.url().optional(),
+  }),
+);
+
+const platillos = schemaDestacados.parse(destacados);
 ---
 
 <section id="catalogo" class="bg-surface py-16 md:py-24">
@@ -17,7 +31,7 @@ const platillos = destacados;
       <div>
         <span class="mb-2 block font-label-sm text-label-sm uppercase tracking-widest text-primary">Carta Gastronómica</span>
         <h2 class="font-headline-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">Nuestro Catálogo Exclusivo</h2>
-        <p class="mt-2 max-w-xl font-body-md text-body-md text-on-surface/70">
+        <p class="mt-2 max-w-xl font-body-md text-body-md text-on-surface/80">
           Preparaciones minuciosas elaboradas con arroz sazonado a punto, palta Hass seleccionada y toppings que desafían lo
           convencional.
         </p>
