@@ -1,0 +1,77 @@
+---
+/**
+ * Aviso de privacidad.
+ */
+import Layout from '../layouts/Layout.astro';
+import { MARCA } from '../config';
+---
+
+<Layout
+  title={`Aviso de Privacidad — ${MARCA.nombreCompleto}`}
+  description="Cómo se tratan los datos personales que compartes al hacer un pedido en el sitio de Makoto Sushi / Letsgo Sushi."
+>
+  <section class="bg-surface-container-lowest py-12 md:py-16">
+    <div class="mx-auto max-w-3xl px-6">
+      <span class="mb-2 block font-label-sm text-label-sm uppercase tracking-widest text-primary">Información Legal</span>
+      <h1 class="font-headline-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">Aviso de Privacidad</h1>
+      <p class="mt-2 font-body-md text-body-md text-on-surface/80">
+        Última actualización: {new Date().getFullYear()}. Esta página explica qué datos recogemos y para qué los usamos.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-surface py-12 md:py-16">
+    <div class="mx-auto max-w-3xl space-y-8 px-6">
+      <div>
+        <h2 class="font-headline-md text-headline-md text-on-surface">Qué datos recogemos</h2>
+        <p class="mt-3 font-body-md text-body-md text-on-surface/80">
+          Cuando completas el formulario de pedido, el sitio recoge el nombre, el teléfono, la cédula, la dirección de entrega
+          (si aplica) y la sede elegida. Estos datos se envían únicamente a la sede seleccionada a través de WhatsApp para
+          gestionar tu pedido.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-headline-md text-headline-md text-on-surface">Cookies y almacenamiento local</h2>
+        <p class="mt-3 font-body-md text-body-md text-on-surface/80">
+          Este sitio no utiliza cookies publicitarias ni de seguimiento. Solo guarda en el <strong class="text-on-surface">almacenamiento
+          local</strong> de tu navegador (localStorage) el contenido de tu carrito para que no se pierda al recargar la página.
+          Esa información nunca se envía a un servidor: se queda en tu dispositivo y puedes borrarla vaciando el carrito.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-headline-md text-headline-md text-on-surface">Terceros</h2>
+        <p class="mt-3 font-body-md text-body-md text-on-surface/80">
+          El pedido se completa en WhatsApp, por lo que la conversación se rige por las políticas de privacidad de Meta.
+          También se cargan tipografías e iconografías desde Google Fonts y se incrustan mapas de Google para mostrar la ubicación
+          de cada sede. Ninguna de estas plataformas recibe datos del formulario de pedido desde este sitio.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-headline-md text-headline-md text-on-surface">Tus derechos</h2>
+        <p class="mt-3 font-body-md text-body-md text-on-surface/80">
+          Puedes solicitar acceso, corrección o eliminación de tus datos escribiendo a la sede que atendió tu pedido. Responderemos
+          a la mayor brevedad posible.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border border-outline-variant/30 bg-surface-container p-6">
+        <h2 class="font-headline-sm text-headline-sm text-on-surface">Solicitudes de datos</h2>
+        <p class="mt-2 font-body-md text-body-md text-on-surface/80">
+          Escríbenos por WhatsApp para cualquier consulta sobre tus datos personales.
+        </p>
+        <a
+          class="mt-4 inline-flex items-center gap-2 rounded-lg bg-secondary px-5 py-3 font-label-md text-label-md font-bold tracking-wider text-on-secondary transition-all hover:opacity-90 active:scale-95"
+          href={`https://wa.me/${MARCA.whatsapp}?text=${encodeURIComponent('Hola, tengo una consulta sobre el tratamiento de mis datos personales.')}`}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <span class="material-symbols-outlined" aria-hidden="true">chat</span>
+          Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

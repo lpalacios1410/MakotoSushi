@@ -2,6 +2,9 @@
 /**
  * Banner de promoción semanal (2x1 en delivery).
  */
+import { MARCA, enlaceWhatsapp } from '../config';
+
+const mensajePromo = `Hola ${MARCA.nombre}, quiero usar el código SUSHIFANS24 para el 2x1 en rolls.`;
 ---
 
 <section id="promociones" class="relative overflow-hidden bg-surface py-14">
@@ -52,7 +55,7 @@
         <div class="flex shrink-0 flex-col gap-4 sm:flex-row">
           <a
             class="flex items-center justify-center gap-2 rounded-xl bg-secondary px-8 py-4 font-label-md text-label-md font-bold tracking-wider text-on-secondary shadow-lg transition-all hover:opacity-90 active:scale-95"
-            href="https://wa.me/?text=Quiero%20usar%20el%20codigo%20SUSHIFANS24"
+            href={enlaceWhatsapp(mensajePromo)}
             rel="noopener noreferrer"
             target="_blank"
           >

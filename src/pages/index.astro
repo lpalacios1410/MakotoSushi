@@ -6,9 +6,28 @@ import Catalogo from '../components/Catalogo.astro';
 import SedesPreview from '../components/SedesPreview.astro';
 import Promociones from '../components/Promociones.astro';
 import Resenas from '../components/Resenas.astro';
+import { MARCA, URL_SITIO } from '../config';
+
+const base = Astro.site?.href ?? URL_SITIO;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${base}#website`,
+  url: base,
+  name: MARCA.nombreCompleto,
+  description: MARCA.descripcion,
+  inLanguage: 'es-VE',
+  publisher: { '@id': `${base}#restaurante` },
+};
 ---
 
-<Layout title="Makoto Sushi - Letsgo Sushi | Adictos al Verdadero Sabor" activo="inicio">
+<Layout
+  title={`${MARCA.nombre} - Letsgo Sushi | ${MARCA.lema}`}
+  description="Makoto Sushi / Letsgo Sushi: sushi de autor, pesca del día y rolls artesanales. Delivery y pick-up en Caracas. Pide online y recibe tu pedido por WhatsApp."
+  activo="inicio"
+  schema={schema}
+>
   <Hero />
   <Pilares />
   <Catalogo />

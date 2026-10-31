@@ -1,0 +1,36 @@
+---
+/**
+ * Migas de pan (breadcrumb) reutilizables.
+ * El último elemento es la página actual y no es un enlace.
+ */
+interface Props {
+  items: { href?: string; texto: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<nav aria-label="Migas de pan" class="mb-5">
+  <ol class="flex flex-wrap items-center gap-1.5 font-body-sm text-body-sm text-on-surface/70">
+    {
+      items.map((item, indice) => (
+        <li class="flex items-center gap-1.5">
+          {item.href ? (
+            <a href={item.href} class="transition-colors hover:text-primary">
+              {item.texto}
+            </a>
+          ) : (
+            <span aria-current="page" class="text-on-surface">
+              {item.texto}
+            </span>
+          )}
+          {indice < items.length - 1 && (
+            <span class="material-symbols-outlined text-base text-on-surface/50" aria-hidden="true">
+              chevron_right
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
