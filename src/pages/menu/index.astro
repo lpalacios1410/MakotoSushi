@@ -2,14 +2,12 @@
 /**
  * Índice del menú: todas las categorías agrupadas por grupo.
  */
-import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import MigasPan from '../../components/MigasPan.astro';
 import { MARCA, URL_SITIO } from '../../config';
+import { obtenerMenu } from '../../lib/contenido';
 
-const categorias = (await getCollection('menu')).sort(
-  (a, b) => a.data.orden - b.data.orden,
-);
+const categorias = await obtenerMenu();
 
 // Agrupar por grupo superior respetando el orden de aparición
 const grupos = new Map<string, typeof categorias>();

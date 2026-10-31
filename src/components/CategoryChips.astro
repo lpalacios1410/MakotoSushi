@@ -3,9 +3,9 @@
  * Chips de categoría: enlaces a cada página del menú.
  * Se generan desde la colección "menu" (orden por `orden`).
  */
-import { getCollection } from 'astro:content';
+import { obtenerMenu } from '../lib/contenido';
 
-const categorias = (await getCollection('menu')).sort((a, b) => a.data.orden - b.data.orden);
+const categorias = await obtenerMenu();
 ---
 
 <div class="scrollbar-none mb-10 flex items-center gap-2 overflow-x-auto pb-4" aria-label="Categorías del menú">

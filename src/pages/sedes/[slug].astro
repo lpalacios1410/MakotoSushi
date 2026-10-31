@@ -1,13 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import MigasPan from '../../components/MigasPan.astro';
 import { MARCA, URL_SITIO } from '../../config';
 import { aHora24, diasSchema } from '../../lib/horarios';
+import { obtenerSedes } from '../../lib/contenido';
+import type { EntradaSede } from '../../lib/tipos';
 
 export async function getStaticPaths() {
-  const sedes = await getCollection('sedes');
+  const sedes = await obtenerSedes();
   return sedes.map((sede) => ({
     params: { slug: sede.id },
     props: { sede },
@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 }
 
 interface Props {
-  sede: CollectionEntry<'sedes'>;
+  sede: EntradaSede;
 }
 
 const { sede } = Astro.props;
