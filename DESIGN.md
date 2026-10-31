@@ -193,3 +193,14 @@ The interface embraces a balanced, contemporary corner curvature. With roundedne
 
 ### Form Inputs & Search Bar
 - Inputs use `#16161A` filled surfaces, inset light border, and Montserrat placeholder text. Active focus states replace the border with a sharp crimson line.
+
+## Accessibility (WCAG 2.2 AA)
+
+- **Focus ring:** every focusable element shows a `2px` outline in `primary` with `2px` offset via `:focus-visible`. Outlines are never removed.
+- **Skip link:** a `skip-link` utility renders the "Ir al contenido principal" link off-canvas until it receives focus; `<main>` carries `id="contenido-principal"`.
+- **Contrast:** body copy never drops below `text-on-surface/70` on dark surfaces (≈7:1). Small helper text and placeholders use `/70` or higher; decorative icons use `aria-hidden`.
+- **Target size:** interactive controls keep a minimum of 24×24 px (WCAG 2.5.8); primary CTAs are ≥44 px tall.
+- **Motion:** `prefers-reduced-motion: reduce` collapses animation and transition durations, and disables smooth scrolling.
+- **Anchors:** `scroll-padding-top` and `scroll-margin-top` keep focused targets clear of the sticky header (WCAG 2.4.11).
+- **Modal drawer:** the cart is a true modal dialog — the page behind is `inert`, focus is trapped inside, `Escape` closes it and focus returns to the trigger.
+- **Semantics:** headings never skip levels (`h1 → h2 → h3`); `aria-current="page"` marks the active navigation item; the review stars expose a `role="img"` label with the rating.
