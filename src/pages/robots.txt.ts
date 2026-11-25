@@ -5,7 +5,7 @@ import type { APIRoute } from 'astro';
  * Permite el rastreo completo y declara el sitemap XML para los buscadores.
  */
 export const GET: APIRoute = ({ site }) => {
-  const base = site?.href ?? 'https://makotosushi.com/';
+  const base = site?.href ?? 'https://makotosushive.com.ve/';
   const sitemap = new URL('sitemap-index.xml', base).href;
 
   const cuerpo = [

@@ -6,8 +6,14 @@
  * facilitar la edición por parte del negocio.
  */
 
-/** URL pública del sitio. Debe coincidir con `site` de astro.config.mjs. */
-export const URL_SITIO = 'https://makotosushi.com';
+/**
+ * URL pública del sitio.
+ *
+ * Prioridad: variable de entorno `SITE_URL` (la define el hosting en el build)
+ * y, como respaldo, el dominio oficial. Debe coincidir con `site` de
+ * astro.config.mjs para que canónicos y sitemap nunca se contradigan.
+ */
+export const URL_SITIO = import.meta.env.SITE_URL ?? 'https://makotosushive.com.ve';
 
 export const MARCA = {
   /** Nombre comercial corto (para <title> y JSON-LD). */
