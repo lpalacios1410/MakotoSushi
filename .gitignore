@@ -22,3 +22,5 @@ Thumbs.db
 
 # Runtime generado por el Studio de Sanity (pnpm studio)
 sanity/.sanity
+# Volcado local del schema (sanity schema extract)
+sanity/schema.local.json
