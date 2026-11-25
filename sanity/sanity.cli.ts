@@ -11,9 +11,10 @@ const dataset =
 
 export default defineCliConfig({
   // URL pública del Studio tras "pnpm studio:deploy": https://makoto-sushi.sanity.studio
-  // appId: evita que el CLI pregunte el identificador en cada deploy.
+  // studioHost va en la raíz (no dentro de "deployment") y el appId evita que
+  // el CLI pregunte el identificador de la aplicación en cada deploy.
+  studioHost: 'makoto-sushi',
   deployment: {
-    studioHost: 'makoto-sushi',
     autoUpdates: true,
     appId: 'qf4jwcnnb96m8za0pwhihved',
   },
