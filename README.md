@@ -149,7 +149,7 @@ pnpm preview    # previsualizar el build de producción
 ```
 
 > **Nota de despliegue:** define `SITE_URL` en el entorno de build para apuntar al
-> dominio real (por ejemplo `SITE_URL=https://makotosushi.com pnpm build`). Si no se
+> dominio real (por ejemplo `SITE_URL=https://makotosushive.com.ve pnpm build`). Si no se
 > define, se usa el valor por defecto de `astro.config.mjs`.
 
 ---
