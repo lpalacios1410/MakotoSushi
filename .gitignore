@@ -24,3 +24,6 @@ Thumbs.db
 sanity/.sanity
 # Volcado local del schema (sanity schema extract)
 sanity/schema.local.json
+
+# Config local del MCP de Sanity (definida en ~/.config/opencode)
+mcp.json
