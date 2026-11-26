@@ -1,0 +1,57 @@
+---
+/**
+ * Página 404 del sitio.
+ *
+ * Astro la genera como dist/404.html, y Cloudflare Workers la sirve con
+ * estado 404 real gracias a `assets.not_found_handling: "404-page"` en
+ * wrangler.jsonc. Sin este archivo, un enlace roto devolvería una página
+ * genérica sin estilo ni forma de volver al menú.
+ */
+import Layout from '../layouts/Layout.astro';
+import { MARCA, enlaceWhatsapp } from '../config';
+
+const paginas = [
+  { href: '/', etiqueta: 'Inicio' },
+  { href: '/menu/', etiqueta: 'Ver el menú' },
+  { href: '/sedes/', etiqueta: 'Nuestras sedes' },
+];
+---
+
+<Layout
+  title={`Página no encontrada — ${MARCA.nombre}`}
+  description="La página que buscas no existe. Vuelve al menú de Makoto Sushi / Letsgo Sushi o escríbenos por WhatsApp."
+>
+  <section class="bg-surface-container-lowest py-16 md:py-24">
+    <div class="mx-auto max-w-3xl px-6 text-center">
+      <p class="font-headline-lg text-headline-lg-mobile text-primary md:text-headline-lg" aria-hidden="true">404</p>
+      <h1 class="mt-2 font-headline-md text-headline-md text-on-surface">Esta página no existe</h1>
+      <p class="mt-3 font-body-md text-body-md text-on-surface/80">
+        Puede que el enlace esté desactualizado o que el plato ya no esté en la carta.
+        Vuelve al menú y sigue explorando.
+      </p>
+
+      <nav aria-label="Enlaces rápidos" class="mt-8 flex flex-wrap justify-center gap-3">
+        {
+          paginas.map((pagina) => (
+            <a
+              href={pagina.href}
+              class="inline-flex items-center gap-2 rounded-lg border border-outline-variant/40 bg-surface px-5 py-3 font-label-md text-label-md font-bold tracking-wider text-on-surface transition-all hover:bg-surface-container active:scale-95"
+            >
+              {pagina.etiqueta}
+            </a>
+          ))
+        }
+      </nav>
+
+      <a
+        class="mt-4 inline-flex items-center gap-2 rounded-lg bg-secondary px-5 py-3 font-label-md text-label-md font-bold tracking-wider text-on-secondary transition-all hover:opacity-90 active:scale-95"
+        href={enlaceWhatsapp()}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <span class="material-symbols-outlined" aria-hidden="true">chat</span>
+        Contactar por WhatsApp
+      </a>
+    </div>
+  </section>
+</Layout>
