@@ -1,0 +1,22 @@
+{
+  // Configuración de Cloudflare Workers para el sitio estático de Makoto Sushi.
+  //
+  // Sin este archivo, `wrangler deploy` falla con:
+  //   "The Cloudflare application detection logic has been run in the root of a
+  //    workspace instead of targeting a specific project."
+  // porque el repo es un workspace de pnpm (raíz + sanity/) y Wrangler no sabe
+  // a qué proyecto apuntar. Aquí le decimos explícitamente dónde están los
+  // archivos estáticos generados por Astro.
+  "name": "makotosushi",
+  // Fecha de compatibilidad del runtime de Workers (fijada para que los
+  // despliegues futuros no cambien el comportamiento sin avisar).
+  "compatibility_date": "2026-11-26",
+  "assets": {
+    // Salida de `pnpm build` (Astro). Debe coincidir con `outDir` de astro.config.mjs.
+    "directory": "./dist/",
+    // Sirve dist/404.html con estado 404 cuando la ruta no existe.
+    "not_found_handling": "404-page",
+    // /menu/ sirve dist/menu/index.html; /menu (sin barra) redirige a /menu/.
+    "html_handling": "auto-trailing-slash"
+  }
+}
