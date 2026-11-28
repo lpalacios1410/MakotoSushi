@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "accessibility": {
       "source": "addyosmani/web-quality-skills",
@@ -15,6 +15,13 @@
       "source": "anthropics/skills",
       "sourceType": "autoskills-registry",
       "computedHash": "a4e6516a601f72ffd8bcd0d64609e8ba724d2ce92569a059a6890a5caadf072b"
+    },
+    "japanese-ui": {
+      "source": "elrincondeldev/skills",
+      "commit": "3f8baf9ed91c27733e83774c71c7956106c989d9",
+      "sourceType": "github",
+      "skillPath": "skills/japanese-ui/SKILL.md",
+      "computedHash": "ef74b8d2a5500a98a8cb653f6bc3a25b4c75bf37f5c291ba2b1a7b9712863df3"
     },
     "nodejs-backend-patterns": {
       "source": "wshobson/agents",
