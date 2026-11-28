@@ -18,7 +18,7 @@ Hoy el negocio funciona con una página de Google Sites que envían a los client
 | Capa | Tecnología | Rol |
 |---|---|---|
 | Framework | **Astro 7** | Sitio estático, ultrarrápido, JS solo donde hace falta |
-| Estilos | **Tailwind CSS v4** | Sistema de diseño "Urban Tokyo Dark Fusion" (ver `DESIGN.md`) |
+| Estilos | **Tailwind CSS v4** | Sistema de diseño "Japanese UI": papel washi, tinta sumi y un acento (ver `DESIGN.md`) |
 | Interactividad | **Script de cliente + localStorage** | Carrito y checkout → WhatsApp (sin framework de UI) |
 | Contenido | **JSON en el repo** (+ CMS Sanity para el personal) | Menú y sedes editables sin tocar código |
 | SEO | **@astrojs/sitemap + JSON-LD + OG/Twitter cards** | Sitemap XML, canonical, datos estructurados `Restaurant` |
@@ -43,8 +43,10 @@ MakotoSushi/
 └── src/
     ├── config.ts          # Datos de marca: nombre, WhatsApp, imágenes, redes
     ├── lib/               # Tipos, esquemas zod, horarios (→ schema.org) y contenido (capa CMS)
-    ├── styles/global.css  # Tokens del design system → @theme de Tailwind v4
+    ├── styles/global.css  # Roles de color y tipografía → @theme de Tailwind v4
+    ├── styles/japanese.css # Componentes y motivos del design system (capa components)
     ├── layouts/           # Layout.astro (head + SEO + Navbar, Footer, Carrito)
+    ├── scripts/reveal.ts  # Revelado de secciones al hacer scroll
     ├── scripts/carrito.ts # Núcleo del carrito (localStorage + eventos)
     ├── components/        # Hero, Pilares, Catalogo, DishCard, SedeCard, Carrito, MigasPan...
     ├── content/
