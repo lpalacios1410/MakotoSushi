@@ -78,17 +78,19 @@ const schema = [
   schema={schema}
 >
   <!-- Encabezado de la categoría -->
-  <section class="border-b border-outline-variant/20 bg-surface-container-lowest py-10 md:py-14">
-    <div class="mx-auto max-w-7xl px-6">
-      <MigasPan items={migas} />
-      <span class="mb-2 block font-label-sm text-label-sm uppercase tracking-widest text-primary">{grupo}</span>
-      <h1 class="font-headline-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">{titulo}</h1>
-      {descripcion && <p class="mt-2 max-w-2xl font-body-md text-body-md text-on-surface/80">{descripcion}</p>}
+  <section class="j-band border-b border-hairline">
+    <div class="j-container">
+      <div class="j-page-head j-page-head--plain">
+        <MigasPan items={migas} />
+        <span class="font-label-sm text-label-sm uppercase tracking-widest text-accent-strong">{grupo}</span>
+        <h1>{titulo}</h1>
+        {descripcion && <p>{descripcion}</p>}
+      </div>
     </div>
   </section>
 
   <!-- Navegación por categorías -->
-  <div class="border-b border-outline-variant/20 bg-surface">
+  <div class="border-b border-hairline bg-surface">
     <div class="scrollbar-none mx-auto flex max-w-7xl items-center gap-2 overflow-x-auto px-6 py-4" aria-label="Categorías del menú">
       {
         todas.map((cat) => (
@@ -96,10 +98,10 @@ const schema = [
             href={`/menu/${cat.id}/`}
             aria-current={cat.id === categoria.id ? 'page' : undefined}
             class:list={[
-              'whitespace-nowrap rounded-full px-4 py-2 font-label-sm text-label-sm transition-all',
+              'j-tag whitespace-nowrap px-4 py-2 text-label-sm font-semibold transition-colors duration-300',
               cat.id === categoria.id
-                ? 'glow-primary bg-primary-container font-bold text-on-primary-container'
-                : 'border border-outline-variant/30 bg-surface-container-high font-semibold text-on-surface/80 hover:bg-surface-container-highest hover:text-on-surface',
+                ? 'border-accent-line bg-accent-soft font-bold text-accent-strong'
+                : 'text-ink-2 hover:border-accent-line hover:text-on-surface',
             ]}
           >
             {cat.data.titulo}
@@ -110,13 +112,13 @@ const schema = [
   </div>
 
   <!-- Platos -->
-  <section class="bg-surface py-12 md:py-16">
-    <div class="mx-auto max-w-7xl px-6">
+  <section class="relative">
+    <div class="j-container j-section">
       <h2 class="sr-only">Platos de {titulo}</h2>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {items.map((platillo) => <DishCard platillo={platillo} />)}
       </div>
-      <p class="mt-10 text-center font-body-sm text-body-sm text-on-surface/70">
+      <p class="mt-10 text-center text-body-sm text-ink-3">
         Nuestros precios no incluyen IVA ni el 10% de servicio.
       </p>
     </div>

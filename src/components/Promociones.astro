@@ -7,23 +7,20 @@ import { MARCA, enlaceWhatsapp } from '../config';
 const mensajePromo = `Hola ${MARCA.nombre}, quiero usar el código SUSHIFANS24 para el 2x1 en rolls.`;
 ---
 
-<section id="promociones" class="relative overflow-hidden bg-surface py-14">
-  <div class="mx-auto max-w-7xl px-6">
+<section id="promociones" class="relative">
+  <div class="j-container j-section-tight">
     <div
-      class="relative overflow-hidden rounded-3xl border border-primary-container/40 bg-linear-to-r from-surface-container-lowest via-surface-container-high to-surface-container-lowest p-8 shadow-2xl md:p-12"
+      class="relative overflow-hidden rounded-[22px] border border-accent-line bg-card p-8 shadow-[var(--shadow-soft)] md:p-12"
     >
-      <!-- Acento de luz de fondo -->
-      <div
-        class="pointer-events-none absolute -right-10 -bottom-10 h-80 w-80 rounded-full bg-primary-container/20 blur-3xl"
-      >
-      </div>
+      <!-- Motivo de fondo: olas tenues -->
+      <div class="j-pattern-shippo pointer-events-none absolute inset-0 opacity-40" aria-hidden="true"></div>
 
       <div
         class="relative z-10 flex flex-col items-center justify-between gap-8 text-center lg:flex-row lg:text-left"
       >
         <div class="max-w-2xl">
           <div
-            class="mb-4 inline-flex items-center gap-2 rounded-full bg-primary-container px-3 py-1 font-label-sm text-label-sm font-bold tracking-wider uppercase text-on-primary-container"
+            class="mb-4 inline-flex items-center gap-2 rounded-full bg-accent-soft px-3.5 py-1.5 font-label-sm text-label-sm font-bold tracking-widest text-accent-strong"
           >
             <span class="material-symbols-outlined text-sm" aria-hidden="true"
               >local_fire_department</span
@@ -33,20 +30,17 @@ const mensajePromo = `Hola ${MARCA.nombre}, quiero usar el código SUSHIFANS24 p
           <h2
             class="font-headline-lg text-headline-lg-mobile leading-tight text-on-surface md:text-headline-lg"
           >
-            ¡Martes &amp; Jueves de Rolls 2x1 en Delivery!
+            ¡Martes &amp; Jueves de Rolls <span class="text-accent">2x1</span> en Delivery!
           </h2>
-          <p class="mt-2 font-body-md text-body-md text-on-surface/80">
+          <p class="mt-3 text-body-md text-ink-2">
             Aplica en todos nuestros rolls tradicionales y de autor al pedir por
             nuestro canal directo. Utiliza el código al confirmar tu orden.
           </p>
           <div
-            class="mt-4 inline-flex items-center gap-3 rounded-xl border border-dashed border-primary-container bg-surface-container-lowest px-4 py-2"
+            class="mt-5 inline-flex items-center gap-3 rounded-[14px] border border-dashed border-accent-line bg-paper px-4 py-2.5"
           >
-            <span class="font-body-sm text-body-sm text-on-surface/70"
-              >Código cupón:</span
-            >
-            <span
-              class="font-label-md text-label-md font-extrabold tracking-widest text-primary"
+            <span class="text-body-sm text-ink-2">Código cupón:</span>
+            <span class="font-mono text-label-md font-bold tracking-widest text-accent-strong"
               >SUSHIFANS24</span
             >
           </div>
@@ -54,7 +48,7 @@ const mensajePromo = `Hola ${MARCA.nombre}, quiero usar el código SUSHIFANS24 p
 
         <div class="flex shrink-0 flex-col gap-4 sm:flex-row">
           <a
-            class="flex items-center justify-center gap-2 rounded-xl bg-secondary px-8 py-4 font-label-md text-label-md font-bold tracking-wider text-on-secondary shadow-lg transition-all hover:opacity-90 active:scale-95"
+            class="j-btn j-btn-accent"
             href={enlaceWhatsapp(mensajePromo)}
             rel="noopener noreferrer"
             target="_blank"

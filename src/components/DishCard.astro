@@ -14,33 +14,33 @@ const { platillo } = Astro.props;
 
 /** Estilos de badge según tipo (paleta del design system) */
 const badgeEstilos = {
-  oro: 'bg-tertiary text-on-tertiary-fixed',
-  fuego: 'bg-primary-container text-on-primary-container',
+  oro: 'bg-gold-soft text-on-surface',
+  fuego: 'bg-accent-soft text-accent-strong',
   picante: 'bg-error-container text-on-error-container',
-  fresco: 'bg-secondary-container text-on-secondary-container',
-  neutro: 'border border-outline-variant/30 bg-surface-container-highest text-on-surface',
-  flameado: 'bg-tertiary-container text-on-tertiary-container',
+  fresco: 'bg-leaf-soft text-on-surface',
+  neutro: 'border border-hairline bg-paper-deep text-ink-2',
+  flameado: 'bg-gold-soft text-on-surface',
 } satisfies Record<string, string>;
 
 const claseBadge = platillo.badge ? badgeEstilos[platillo.badge.tipo] : '';
 const precio = '$' + platillo.precio.toLocaleString('es-VE');
 ---
 
-<article class="group flex flex-col overflow-hidden rounded-2xl border border-outline-variant/30 bg-surface-container-low shadow-lg transition-all duration-300 hover:border-primary-container/80 hover:shadow-2xl">
-  <div class="relative h-44 overflow-hidden bg-surface-container">
+<article class="j-card group overflow-hidden" data-reveal>
+  <div class="relative h-44 overflow-hidden bg-paper-deep">
     {
       platillo.imagen ? (
         <img
           src={platillo.imagen}
           alt={`${platillo.nombre} — Makoto Sushi`}
-          class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
           width="400"
           height="176"
           loading="lazy"
           decoding="async"
         />
       ) : (
-        <div class="flex h-full w-full items-center justify-center bg-linear-to-br from-surface-container to-surface-container-lowest text-on-surface/30">
+        <div class="flex h-full w-full items-center justify-center bg-linear-to-br from-paper-deep to-paper text-ink-3">
           <span class="material-symbols-outlined text-5xl" aria-hidden="true">
             set_meal
           </span>
@@ -49,7 +49,7 @@ const precio = '$' + platillo.precio.toLocaleString('es-VE');
     }
     {
       platillo.badge && (
-        <div class={`absolute top-3 right-3 rounded-full px-3 py-1 font-label-sm text-label-sm font-bold tracking-wider uppercase shadow-md ${claseBadge}`}>
+        <div class={`absolute top-3 right-3 rounded-full px-3 py-1 font-label-sm text-label-sm font-bold tracking-widest uppercase ${claseBadge}`}>
           {platillo.badge.texto}
         </div>
       )
@@ -58,20 +58,18 @@ const precio = '$' + platillo.precio.toLocaleString('es-VE');
 
   <div class="flex flex-1 flex-col justify-between p-5">
     <div>
-      <h3 class="font-headline-sm text-headline-sm text-on-surface transition-colors group-hover:text-primary">
-        {platillo.nombre}
-      </h3>
-      <p class="mt-1 line-clamp-3 font-body-sm text-body-sm text-on-surface/80">{platillo.descripcion}</p>
+      <h3 class="font-headline-sm text-headline-sm text-on-surface">{platillo.nombre}</h3>
+      <p class="mt-1 line-clamp-3 text-body-sm text-ink-2">{platillo.descripcion}</p>
     </div>
 
-    <div class="mt-4 flex items-center justify-between border-t border-outline-variant/20 pt-5">
-      <span class="font-headline-md text-headline-md font-extrabold text-on-surface">
+    <div class="mt-4 flex items-center justify-between border-t border-hairline pt-5">
+      <span class="j-price">
         <span class="sr-only">Precio:</span>
         {precio}
       </span>
       <button
         type="button"
-        class="inline-flex items-center gap-1.5 rounded-lg bg-primary-container px-4 py-2 font-label-sm text-label-sm font-bold text-on-primary-container transition-all hover:opacity-90 active:scale-95"
+        class="j-btn j-btn-line j-btn-sm"
         data-add-to-cart={platillo.id}
         data-nombre={platillo.nombre}
         data-precio={platillo.precio}

@@ -1,138 +1,272 @@
 /*
-  Sistema de diseño "Urban Tokyo Dark Fusion" (ver DESIGN.md).
-  Tokens migrados 1:1 al formato @theme de Tailwind CSS v4.
+  Sistema de diseño "japanese-ui": papel washi, tinta sumi y un único acento.
+  Los roles de color viven en `:root` (paleta `haru` de día, `yoru` de noche)
+  y se mapean a utilidades de Tailwind v4 en `@theme`, de modo que cambiar de
+  paleta happens en un solo lugar.
 */
 @import "tailwindcss";
 
-@theme {
-  /* ── Superficies ─────────────────────────────────────────── */
-  --color-surface: #131315;
-  --color-surface-dim: #131315;
-  --color-surface-bright: #39393b;
-  --color-surface-variant: #353437;
-  --color-surface-container-lowest: #0e0e10;
-  --color-surface-container-low: #1b1b1d;
-  --color-surface-container: #201f21;
-  --color-surface-container-high: #2a2a2c;
-  --color-surface-container-highest: #353437;
+/* ── Roles de color ────────────────────────────────────────────────── */
+:root {
+  color-scheme: light;
 
-  /* ── Texto sobre superficies ─────────────────────────────── */
-  --color-on-surface: #e5e1e4;
-  --color-on-surface-variant: #e6bdb8;
-  --color-on-background: #e5e1e4;
-  --color-inverse-surface: #e5e1e4;
-  --color-inverse-on-surface: #313032;
+  /* Papel washi y tinta sumi. */
+  --paper: #f7f3eb;
+  --paper-deep: #efe7d8;
+  --card: #fffdf8;
+  --ink: #26222b;
+  --ink-2: #554e5b;
+  --ink-3: #6e6672;
+  --hairline: rgba(38, 34, 43, 0.1);
+  --hairline-strong: rgba(38, 34, 43, 0.18);
+  --tint: rgba(38, 34, 43, 0.06);
+  --glass: rgba(255, 253, 248, 0.72);
+  --halo: rgba(255, 253, 248, 0.7);
 
-  /* ── Bordes ──────────────────────────────────────────────── */
-  --color-outline: #ac8884;
-  --color-outline-variant: #5c403c;
+  /* El único color fuerte, y la estación alrededor. */
+  --accent: #d4492c;
+  --accent-strong: #b23a1f;
+  --accent-ink: #fff6ef;
+  --accent-soft: #f6d9cf;
+  --accent-line: rgba(212, 73, 44, 0.45);
+  --accent-glow: rgba(212, 73, 44, 0.12);
+  --bloom: #f2b9c6;
+  --bloom-soft: #fbe9ed;
+  --bloom-pale: #f7d3db;
+  --leaf: #7e9a62;
+  --leaf-glow: rgba(126, 154, 98, 0.18);
+  --deep: #2f4b7c;
+  --mist: #dde7ee;
+  --gold: #c39b52;
+  --sun-1: #f7c2b2;
+  --sun-2: #ee9a82;
+  --sun-3: #e67d64;
 
-  /* ── Primario (rojo torched) ─────────────────────────────── */
-  --color-primary: #ffb4ab;
-  --color-on-primary: #690005;
-  --color-primary-container: #dc2626;
-  --color-on-primary-container: #fff6f5;
-  --color-inverse-primary: #bf0715;
-  --color-primary-fixed: #ffdad6;
-  --color-primary-fixed-dim: #ffb4ab;
-  --color-on-primary-fixed: #410002;
-  --color-on-primary-fixed-variant: #93000b;
+  /* La isla oscura. */
+  --night: #24212a;
+  --night-ink: #e9e3da;
+  --night-dim: #9a92a0;
 
-  /* ── Secundario (wasabi) ─────────────────────────────────── */
-  --color-secondary: #4ae176;
-  --color-on-secondary: #003915;
-  --color-secondary-container: #00b954;
-  --color-on-secondary-container: #004119;
-  --color-secondary-fixed: #6bff8f;
-  --color-secondary-fixed-dim: #4ae176;
-  --color-on-secondary-fixed: #002109;
-  --color-on-secondary-fixed-variant: #005321;
+  /* Tipografía y movimiento. */
+  --font-display: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+  --font-body: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", ui-rounded, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-  /* ── Terciario (sésamo dorado) ───────────────────────────── */
-  --color-tertiary: #f7be1d;
-  --color-on-tertiary: #3f2e00;
-  --color-tertiary-container: #906d00;
-  --color-on-tertiary-container: #fff8f0;
-  --color-tertiary-fixed: #ffdf9a;
-  --color-tertiary-fixed-dim: #f7be1d;
-  --color-on-tertiary-fixed: #251a00;
-  --color-on-tertiary-fixed-variant: #5a4300;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 
-  /* ── Error ───────────────────────────────────────────────── */
-  --color-error: #ffb4ab;
-  --color-on-error: #690005;
-  --color-error-container: #93000a;
-  --color-on-error-container: #ffdad6;
-
-  /* ── Fondo global ────────────────────────────────────────── */
-  --color-background: #131315;
-  --color-surface-tint: #ffb4ab;
-
-  /* ── Familias tipográficas ───────────────────────────────── */
-  --font-headline-xl: "Montserrat", ui-sans-serif, system-ui, sans-serif;
-  --font-headline-xl-mobile: "Montserrat", ui-sans-serif, system-ui, sans-serif;
-  --font-headline-lg: "Montserrat", ui-sans-serif, system-ui, sans-serif;
-  --font-headline-lg-mobile: "Montserrat", ui-sans-serif, system-ui, sans-serif;
-  --font-headline-md: "Montserrat", ui-sans-serif, system-ui, sans-serif;
-  --font-headline-sm: "Montserrat", ui-sans-serif, system-ui, sans-serif;
-  --font-body-lg: "DM Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-body-md: "DM Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-body-sm: "DM Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-label-md: "Montserrat", ui-sans-serif, system-ui, sans-serif;
-  --font-label-sm: "Montserrat", ui-sans-serif, system-ui, sans-serif;
-
-  /* ── Escala tipográfica ──────────────────────────────────── */
-  --text-headline-xl: 48px;
-  --text-headline-xl--line-height: 56px;
-  --text-headline-xl--letter-spacing: -0.02em;
-  --text-headline-xl--font-weight: 800;
-
-  --text-headline-xl-mobile: 32px;
-  --text-headline-xl-mobile--line-height: 38px;
-  --text-headline-xl-mobile--letter-spacing: -0.01em;
-  --text-headline-xl-mobile--font-weight: 800;
-
-  --text-headline-lg: 36px;
-  --text-headline-lg--line-height: 44px;
-  --text-headline-lg--letter-spacing: -0.01em;
-  --text-headline-lg--font-weight: 700;
-
-  --text-headline-lg-mobile: 26px;
-  --text-headline-lg-mobile--line-height: 32px;
-  --text-headline-lg-mobile--font-weight: 700;
-
-  --text-headline-md: 24px;
-  --text-headline-md--line-height: 30px;
-  --text-headline-md--font-weight: 700;
-
-  --text-headline-sm: 18px;
-  --text-headline-sm--line-height: 24px;
-  --text-headline-sm--font-weight: 600;
-
-  --text-body-lg: 18px;
-  --text-body-lg--line-height: 28px;
-  --text-body-lg--font-weight: 400;
-
-  --text-body-md: 15px;
-  --text-body-md--line-height: 22px;
-  --text-body-md--font-weight: 400;
-
-  --text-body-sm: 13px;
-  --text-body-sm--line-height: 18px;
-  --text-body-sm--font-weight: 400;
-
-  --text-label-md: 13px;
-  --text-label-md--line-height: 16px;
-  --text-label-md--letter-spacing: 0.06em;
-  --text-label-md--font-weight: 700;
-
-  --text-label-sm: 11px;
-  --text-label-sm--line-height: 14px;
-  --text-label-sm--letter-spacing: 0.08em;
-  --text-label-sm--font-weight: 700;
+  --gutter: clamp(16px, 4.5vw, 56px);
+  --max: 1160px;
+  --radius: 22px;
+  --radius-sm: 14px;
+  --shadow-rgb: 84 52 30;
+  --shadow-soft: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 24px 60px -32px rgb(var(--shadow-rgb) / 0.28);
+  --shadow-lift: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 36px 80px -36px rgb(var(--shadow-rgb) / 0.38);
+  --grain-opacity: 0.3;
+  --grain-blend: multiply;
 }
 
-/* ── Utilidades personalizadas ─────────────────────────────── */
+/* Paleta `yoru`: la misma página de noche. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --paper: #1b191f;
+    --paper-deep: #141217;
+    --card: #24212a;
+    --ink: #f1ebe1;
+    --ink-2: #c4bcb2;
+    --ink-3: #a39b93;
+    --hairline: rgba(241, 235, 225, 0.1);
+    --hairline-strong: rgba(241, 235, 225, 0.18);
+    --tint: rgba(241, 235, 225, 0.07);
+    --glass: rgba(36, 33, 42, 0.72);
+    --halo: rgba(255, 255, 255, 0.06);
+    --accent: #ec6a4c;
+    --accent-strong: #f08a70;
+    --accent-ink: #1b191f;
+    --accent-soft: #4a2a24;
+    --accent-line: rgba(236, 106, 76, 0.5);
+    --accent-glow: rgba(236, 106, 76, 0.16);
+    --bloom: #d98fa2;
+    --bloom-soft: #33262c;
+    --bloom-pale: #b97a8a;
+    --leaf: #9bb87e;
+    --leaf-glow: rgba(155, 184, 126, 0.2);
+    --deep: #8fa8d6;
+    --mist: #2a2e36;
+    --gold: #d8b46a;
+    --sun-1: #f6efe0;
+    --sun-2: #e6dac2;
+    --sun-3: #cdbd9a;
+    --night: #0f0e12;
+    --night-ink: #ece6dc;
+    --night-dim: #8f8796;
+    --shadow-rgb: 0 0 0;
+    --grain-opacity: 0.45;
+    --grain-blend: soft-light;
+  }
+}
+
+/* ── Mapeo de roles a utilidades ──────────────────────────────────── */
+@theme {
+  /* Roles nuevos (útiles directos: bg-paper, text-ink-2, border-hairline…). */
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-line: var(--accent-line);
+  --color-tint: var(--tint);
+  --color-bloom: var(--bloom);
+  --color-bloom-soft: var(--bloom-soft);
+  --color-leaf: var(--leaf);
+  --color-deep: var(--deep);
+  --color-mist: var(--mist);
+  --color-gold: var(--gold);
+  /* Lavados de color para fondos suaves (el modificador /NN no funciona
+     sobre tokens con `var()`, así que se predefinen como mixtures). */
+  --color-gold-soft: color-mix(in srgb, var(--gold) 22%, var(--card));
+  --color-leaf-soft: color-mix(in srgb, var(--leaf) 22%, var(--card));
+  --color-night: var(--night);
+  --color-hairline: var(--hairline);
+
+  /* Superficies (mismo nombre que el sistema anterior para no romper markup). */
+  --color-surface: var(--paper);
+  --color-surface-dim: var(--paper-deep);
+  --color-surface-bright: var(--card);
+  --color-surface-variant: var(--paper-deep);
+  --color-surface-container-lowest: var(--paper);
+  --color-surface-container-low: color-mix(in srgb, var(--paper-deep) 55%, var(--paper));
+  --color-surface-container: var(--paper-deep);
+  --color-surface-container-high: color-mix(in srgb, var(--card) 55%, var(--paper-deep));
+  --color-surface-container-highest: var(--card);
+
+  /* Texto sobre superficies. */
+  --color-on-surface: var(--ink);
+  --color-on-surface-variant: var(--ink-2);
+  --color-on-background: var(--ink);
+  --color-inverse-surface: var(--card);
+  --color-inverse-on-surface: var(--ink);
+
+  /* Bordes: filetes, no cajas. */
+  --color-outline: var(--hairline-strong);
+  --color-outline-variant: var(--hairline);
+
+  /* Acento. */
+  --color-primary: var(--accent);
+  --color-on-primary: var(--accent-ink);
+  --color-primary-container: var(--accent-strong);
+  --color-on-primary-container: var(--accent-ink);
+  --color-inverse-primary: var(--accent);
+  --color-primary-fixed: var(--accent-soft);
+  --color-primary-fixed-dim: var(--accent-soft);
+  --color-on-primary-fixed: var(--accent-strong);
+  --color-on-primary-fixed-variant: var(--accent-strong);
+
+  /* Matcha (verde lavado) y oro de la estación. */
+  --color-secondary: var(--leaf);
+  --color-on-secondary: var(--ink);
+  --color-secondary-container: var(--leaf);
+  --color-on-secondary-container: var(--ink);
+  --color-secondary-fixed: var(--leaf);
+  --color-secondary-fixed-dim: var(--leaf);
+  --color-on-secondary-fixed: var(--ink);
+  --color-on-secondary-fixed-variant: var(--ink);
+  --color-tertiary: var(--gold);
+  --color-on-tertiary: var(--ink);
+  --color-tertiary-container: var(--gold);
+  --color-on-tertiary-container: var(--ink);
+  --color-tertiary-fixed: var(--accent-soft);
+  --color-tertiary-fixed-dim: var(--accent-soft);
+  --color-on-tertiary-fixed: var(--accent-strong);
+  --color-on-tertiary-fixed-variant: var(--accent-strong);
+
+  /* Errores. */
+  --color-error: var(--accent-strong);
+  --color-on-error: var(--accent-ink);
+  --color-error-container: var(--accent-soft);
+  --color-on-error-container: var(--accent-strong);
+
+  /* Fondo global y tinta de acento. */
+  --color-background: var(--paper);
+  --color-surface-tint: var(--accent);
+
+  /* Familias tipográficas. */
+  --font-display: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+  --font-body: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", ui-rounded, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-headline-xl: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+  --font-headline-xl-mobile: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+  --font-headline-lg: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+  --font-headline-lg-mobile: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+  --font-headline-md: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+  --font-headline-sm: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+  --font-body-lg: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", ui-rounded, system-ui, sans-serif;
+  --font-body-md: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", ui-rounded, system-ui, sans-serif;
+  --font-body-sm: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", ui-rounded, system-ui, sans-serif;
+  --font-label-md: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", ui-rounded, system-ui, sans-serif;
+  --font-label-sm: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", ui-rounded, system-ui, sans-serif;
+
+  /* Escala tipográfica fluida. */
+  --text-headline-xl: clamp(2.25rem, 4.4vw, 3.8rem);
+  --text-headline-xl--line-height: 1.08;
+  --text-headline-xl--letter-spacing: -0.025em;
+  --text-headline-xl--font-weight: 600;
+
+  --text-headline-xl-mobile: clamp(1.95rem, 7.4vw, 2.6rem);
+  --text-headline-xl-mobile--line-height: 1.12;
+  --text-headline-xl-mobile--letter-spacing: -0.02em;
+  --text-headline-xl-mobile--font-weight: 600;
+
+  --text-headline-lg: clamp(1.8rem, 3.8vw, 2.9rem);
+  --text-headline-lg--line-height: 1.14;
+  --text-headline-lg--letter-spacing: -0.02em;
+  --text-headline-lg--font-weight: 600;
+
+  --text-headline-lg-mobile: clamp(1.6rem, 6vw, 2.15rem);
+  --text-headline-lg-mobile--line-height: 1.18;
+  --text-headline-lg-mobile--letter-spacing: -0.015em;
+  --text-headline-lg-mobile--font-weight: 600;
+
+  --text-headline-md: clamp(1.3rem, 2.4vw, 1.7rem);
+  --text-headline-md--line-height: 1.25;
+  --text-headline-md--letter-spacing: -0.01em;
+  --text-headline-md--font-weight: 600;
+
+  --text-headline-sm: 1.18rem;
+  --text-headline-sm--line-height: 1.35;
+  --text-headline-sm--letter-spacing: -0.01em;
+  --text-headline-sm--font-weight: 600;
+
+  --text-body-lg: 1.06rem;
+  --text-body-lg--line-height: 1.75;
+  --text-body-lg--font-weight: 400;
+
+  --text-body-md: 1rem;
+  --text-body-md--line-height: 1.75;
+  --text-body-md--font-weight: 400;
+
+  --text-body-sm: 0.9rem;
+  --text-body-sm--line-height: 1.7;
+  --text-body-sm--font-weight: 400;
+
+  --text-label-md: 0.82rem;
+  --text-label-md--line-height: 1.5;
+  --text-label-md--letter-spacing: 0.12em;
+  --text-label-md--font-weight: 600;
+
+  --text-label-sm: 0.72rem;
+  --text-label-sm--line-height: 1.5;
+  --text-label-sm--letter-spacing: 0.16em;
+  --text-label-sm--font-weight: 600;
+}
+
+/* ── Utilidades personalizadas ─────────────────────────────────────── */
 
 /* Oculta la barra de scroll en contenedores de scroll horizontal */
 @utility scrollbar-none {
@@ -142,14 +276,9 @@
   }
 }
 
-/* Resplandor carmesí para CTAs de alta intención (DESIGN.md) */
+/* Resplandor cálido para CTAs de alta intención */
 @utility glow-primary {
-  box-shadow: 0 0 25px rgb(220 38 38 / 0.35);
-}
-
-/* Brillo de neón para texto destacado */
-@utility neon-text-glow {
-  text-shadow: 0 0 12px rgb(255 180 171 / 0.4);
+  box-shadow: 0 14px 34px -16px var(--accent-line);
 }
 
 /* Iconos Material Symbols en versión "filled" (estrellas, checks...) */
@@ -161,20 +290,57 @@
     'opsz' 24;
 }
 
-/* ── Base ──────────────────────────────────────────────────── */
+/* ── Base ─────────────────────────────────────────────────────────── */
 @layer base {
   html {
     scroll-behavior: smooth;
     /* Compensa la altura del header sticky al saltar a un ancla (#inicio, #sedes...) */
     scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
   }
 
-  /* Foco visible para navegación por teclado (WCAG 2.4.7 / 2.4.11).
-     Se usa :focus-visible para no penalizar la navegación con mouse. */
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1.06rem;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  /* Grano de papel washi sobre toda la página. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    opacity: var(--grain-opacity);
+    mix-blend-mode: var(--grain-blend);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.36 0 0 0 0 0.27 0 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: var(--bloom);
+    color: var(--ink);
+  }
+
+  /* Foco visible para navegación por teclado (WCAG 2.4.7 / 2.4.11). */
   :focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-    border-radius: 2px;
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
   }
 
   /* Los elementos foco nunca deben quedar tapados por el header sticky */
@@ -182,17 +348,17 @@
     scroll-margin-top: 6rem;
   }
 
-  /* Los inputs del design system sustituyen el borde en :focus,
-     por eso mantenemos un anillo de foco explícito y visible. */
+  /* Los inputs sustituyen el borde en :focus, por eso mantenemos un anillo
+     de foco explícito y visible. */
   input:focus-visible,
   select:focus-visible,
   textarea:focus-visible {
-    outline: 2px solid var(--color-primary);
+    outline: 2px solid var(--accent);
     outline-offset: 1px;
   }
 }
 
-/* ── Preferencias del sistema ───────────────────────────────── */
+/* ── Preferencias del sistema ──────────────────────────────────────── */
 
 /* Respeta "reducir movimiento": desactiva animaciones y transiciones */
 @media (prefers-reduced-motion: reduce) {
@@ -200,13 +366,15 @@
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
     scroll-behavior: auto !important;
   }
 }
 
-/* ── Utilidades de accesibilidad ────────────────────────────── */
+/* ── Utilidades de accesibilidad ────────────────────────────────────── */
 
 /* Enlace de salto al contenido principal (solo visible al enfocar) */
 @utility skip-link {
@@ -215,13 +383,13 @@
   left: 0;
   z-index: 100;
   transform: translateY(-120%);
-  border-radius: 0 0 0.5rem 0;
-  background-color: var(--color-primary-container);
+  border-radius: 0 0 0.75rem 0;
+  background-color: var(--color-accent-strong);
   padding: 0.75rem 1.25rem;
   font-family: var(--font-label-md);
   font-size: var(--text-label-md);
   font-weight: 700;
-  color: var(--color-on-primary-container);
+  color: var(--color-accent-ink);
   transition: transform 150ms ease;
 
   &:focus-visible {

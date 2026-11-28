@@ -13,25 +13,34 @@ const enlaces = [
 ];
 ---
 
-<footer class="border-t border-outline-variant/20 bg-surface-container-lowest">
-  <div class="mx-auto flex w-full max-w-7xl flex-col items-center justify-center gap-6 px-6 py-12 text-center">
+<footer class="relative mt-16 bg-paper-deep">
+  <!-- Suelo con motivo de olas (seigaiha) -->
+  <div class="j-pattern-edge" aria-hidden="true"></div>
+
+  <div class="j-container flex w-full flex-col items-center justify-center gap-7 py-14 text-center">
     <!-- Logo e identidad -->
-    <div class="flex flex-col items-center gap-3">
-      <div class="h-16 w-16 overflow-hidden rounded-full border border-outline-variant/40 bg-surface p-1">
-        <img src={LOGO_URL} alt={`Logo oficial de ${MARCA.nombreCompleto}`} class="h-full w-full object-contain" width="64" height="64" loading="lazy" decoding="async" />
+    <div class="flex flex-col items-center gap-4">
+      <div class="relative">
+        <div class="h-16 w-16 overflow-hidden rounded-full border border-hairline bg-card p-1">
+          <img src={LOGO_URL} alt={`Logo oficial de ${MARCA.nombreCompleto}`} class="h-full w-full object-contain" width="64" height="64" loading="lazy" decoding="async" />
+        </div>
+        <!-- Sello decorativo (sin texto) -->
+        <span
+          class="absolute -right-2 -bottom-2 h-7 w-7 rotate-[-4deg] rounded-[18%] border-2 border-accent bg-accent-soft"
+          aria-hidden="true"></span>
       </div>
-      <span class="font-headline-md text-headline-md font-extrabold text-on-surface">LETSGO SUSHI</span>
-      <p class="max-w-md font-body-sm text-body-sm text-on-surface/70">
+      <span class="font-headline-md text-headline-md font-semibold tracking-wide text-on-surface">LETSGO SUSHI</span>
+      <p class="max-w-md text-body-sm text-ink-2">
         Makoto Sushi Bar &amp; Delivery. Alta gastronomía japonesa y cocina urbana contemporánea.
       </p>
     </div>
 
     <!-- Redes sociales -->
-    <div class="flex items-center gap-4">
+    <div class="flex items-center gap-3">
       {
         REDES.map((red) => (
           <a
-            class="flex h-10 w-10 items-center justify-center rounded-full bg-surface-container text-on-surface transition-all hover:bg-surface-container-high hover:text-primary"
+            class="flex h-10 w-10 items-center justify-center rounded-full border border-hairline bg-card text-ink-2 transition-all duration-300 hover:border-accent-line hover:text-accent-strong"
             href={red.href}
             aria-label={red.etiqueta}
             rel="noopener noreferrer"
@@ -44,13 +53,10 @@ const enlaces = [
     </div>
 
     <!-- Enlaces de interés -->
-    <nav aria-label="Enlaces legales y de interés" class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 pt-2">
+    <nav aria-label="Enlaces legales y de interés" class="flex flex-wrap items-center justify-center gap-x-7 gap-y-3 pt-1">
       {
         enlaces.map((enlace) => (
-          <a
-            class="font-label-sm text-label-sm text-on-surface-variant transition-colors duration-150 hover:text-primary"
-            href={enlace.href}
-          >
+          <a class="j-ink-link font-label-sm text-label-sm" href={enlace.href}>
             {enlace.texto}
           </a>
         ))
@@ -59,7 +65,7 @@ const enlaces = [
 
     <!-- Contacto directo -->
     <a
-      class="inline-flex items-center gap-2 rounded-lg border border-outline-variant/30 bg-surface-container px-4 py-2 font-label-sm text-label-sm font-semibold text-secondary transition-colors hover:border-secondary"
+      class="j-btn j-btn-line j-btn-sm"
       href={enlaceWhatsapp()}
       rel="noopener noreferrer"
       target="_blank"
@@ -69,7 +75,7 @@ const enlaces = [
     </a>
 
     <!-- Copyright -->
-    <p class="w-full max-w-2xl border-t border-outline-variant/10 pt-6 font-body-sm text-body-sm text-on-surface/70">
+    <p class="w-full max-w-2xl border-t border-hairline pt-6 text-body-sm text-ink-3">
       © {new Date().getFullYear()} {MARCA.nombreCompleto}. Todos los derechos reservados.
     </p>
   </div>

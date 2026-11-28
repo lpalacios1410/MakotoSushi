@@ -1,0 +1,24 @@
+---
+/**
+ * Eyebrow de sección: numeral + filete + etiqueta.
+ *
+ * El contenido visible va en español (el sitio es para clientes en Venezuela),
+ * así que el numeral es arábigo y la fuente es Mincho, no pincel.
+ */
+interface Props {
+  /** Numeral de la sección, p. ej. "01". */
+  numeral: string;
+  /** Etiqueta corta de la sección. */
+  etiqueta: string;
+  /** Centra el eyebrow (para encabezados centrados). */
+  centro?: boolean;
+}
+
+const { numeral, etiqueta, centro = false } = Astro.props;
+---
+
+<p class:list={['j-eyebrow', centro && 'center']}>
+  <span class="numeral" aria-hidden="true">{numeral}</span>
+  <span class="rule" aria-hidden="true"></span>
+  <span>{etiqueta}</span>
+</p>

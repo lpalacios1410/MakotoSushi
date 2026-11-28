@@ -6,6 +6,7 @@
 import { z } from 'astro/zod';
 import CategoryChips from './CategoryChips.astro';
 import DishCard from './DishCard.astro';
+import SectionEyebrow from './SectionEyebrow.astro';
 import destacados from '../data/destacados.json';
 import { TIPOS_BADGE } from '../lib/tipos';
 
@@ -24,24 +25,20 @@ const schemaDestacados = z.array(
 const platillos = schemaDestacados.parse(destacados);
 ---
 
-<section id="catalogo" class="bg-surface py-16 md:py-24">
-  <div class="mx-auto max-w-7xl px-6">
+<section id="catalogo" class="relative">
+  <div class="j-container j-section">
     <!-- Encabezado de la sección -->
-    <div class="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-      <div>
-        <span class="mb-2 block font-label-sm text-label-sm uppercase tracking-widest text-primary">Carta Gastronómica</span>
-        <h2 class="font-headline-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">Nuestro Catálogo Exclusivo</h2>
-        <p class="mt-2 max-w-xl font-body-md text-body-md text-on-surface/80">
-          Preparaciones minuciosas elaboradas con arroz sazonado a punto, palta Hass seleccionada y toppings que desafían lo
-          convencional.
-        </p>
-      </div>
-      <a
-        class="inline-flex items-center gap-2 font-label-md text-label-md font-semibold text-secondary transition-colors hover:text-secondary-fixed"
-        href="/menu/"
-      >
-        <span>Ver el menú completo</span>
-        <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
+    <div class="j-head">
+      <SectionEyebrow numeral="01" etiqueta="Carta gastronómica" />
+      <h2 class="font-headline-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">
+        Nuestro <span class="text-accent">Catálogo</span> Exclusivo
+      </h2>
+      <p class="lede max-w-xl">
+        Preparaciones minuciosas elaboradas con arroz sazonado a punto, palta Hass seleccionada y toppings que desafían lo
+        convencional.
+      </p>
+      <a class="j-ink-link font-label-md text-label-md font-semibold" href="/menu/">
+        Ver el menú completo <span aria-hidden="true">→</span>
       </a>
     </div>
 

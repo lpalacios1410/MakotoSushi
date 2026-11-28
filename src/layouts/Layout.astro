@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import '../styles/japanese.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import Carrito from '../components/Carrito.astro';
@@ -85,7 +86,8 @@ const bloquesSchema = Array.isArray(schema) ? [schemaMarca, ...schema] : [schema
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#131315" />
+    <meta name="theme-color" content="#f7f3eb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1b191f" media="(prefers-color-scheme: dark)" />
     <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
 
     <!-- Canonical y Open Graph -->
@@ -104,14 +106,21 @@ const bloquesSchema = Array.isArray(schema) ? [schemaMarca, ...schema] : [schema
     <meta name="twitter:image" content={imagenSocial} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <!-- Google Fonts: Montserrat (titulares) + DM Sans (cuerpo) + Material Symbols (iconografía) -->
+    <!-- Google Fonts: Shippori Mincho (titulares) + Zen Maru Gothic (cuerpo)
+         + JetBrains Mono (códigos) + Material Symbols (iconografía) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&family=Shippori+Mincho:wght@500;600;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <title>{title}</title>
+
+    {/* La clase `js` habilita los estados ocultos del revelado al hacer scroll.
+        Sin JavaScript la página se ve completa. */}
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
 
     {/* Structured data (JSON-LD) */}
     {
@@ -120,7 +129,7 @@ const bloquesSchema = Array.isArray(schema) ? [schemaMarca, ...schema] : [schema
       ))
     }
   </head>
-  <body class="bg-background text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container">
+  <body class="bg-background text-on-surface antialiased selection:bg-bloom selection:text-ink">
     <a class="skip-link" href="#contenido-principal">Ir al contenido principal</a>
     <Navbar activo={activo} />
     <main id="contenido-principal">
@@ -128,5 +137,12 @@ const bloquesSchema = Array.isArray(schema) ? [schemaMarca, ...schema] : [schema
     </main>
     <Footer />
     <Carrito />
+
+    {/* Revelado de secciones al hacer scroll. */}
+    <script>
+      import { revealOnScroll } from '../scripts/reveal';
+
+      revealOnScroll();
+    </script>
   </body>
 </html>

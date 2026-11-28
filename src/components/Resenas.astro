@@ -2,6 +2,8 @@
 /**
  * Sección de reseñas de clientes (prueba social).
  */
+import SectionEyebrow from './SectionEyebrow.astro';
+
 const resenas = [
   {
     estrellas: 5,
@@ -10,7 +12,7 @@ const resenas = [
     iniciales: 'CM',
     nombre: 'Camila Morales',
     detalle: 'Cliente frecuente delivery',
-    clasesIniciales: 'text-primary',
+    clasesIniciales: 'text-accent-strong',
   },
   {
     estrellas: 5,
@@ -19,7 +21,7 @@ const resenas = [
     iniciales: 'FR',
     nombre: 'Felipe Rivas',
     detalle: 'Visita en barra local',
-    clasesIniciales: 'text-tertiary',
+    clasesIniciales: 'text-deep',
   },
   {
     estrellas: 5,
@@ -28,18 +30,20 @@ const resenas = [
     iniciales: 'VS',
     nombre: 'Valentina Silva',
     detalle: 'Pedido online',
-    clasesIniciales: 'text-secondary',
+    clasesIniciales: 'text-ink-2',
   },
 ];
 ---
 
-<section id="opiniones" class="border-t border-outline-variant/20 bg-surface-container-lowest py-16 md:py-20">
-  <div class="mx-auto max-w-7xl px-6">
+<section id="opiniones" class="relative border-t border-hairline">
+  <div class="j-container j-section">
     <!-- Encabezado -->
-    <div class="mx-auto mb-12 max-w-2xl text-center">
-      <span class="mb-2 block font-label-sm text-label-sm uppercase tracking-widest text-primary">Comunidad Letsgo</span>
-      <h2 class="font-headline-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">Lo que Dicen Nuestros Clientes</h2>
-      <p class="mt-2 font-body-md text-body-md text-on-surface/70">
+    <div class="j-head center">
+      <SectionEyebrow numeral="04" etiqueta="Comunidad Letsgo" centro />
+      <h2 class="font-headline-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">
+        Lo que Dicen <span class="text-accent">Nuestros Clientes</span>
+      </h2>
+      <p class="lede">
         La fidelidad de nuestros comensales es nuestra mejor carta de presentación.
       </p>
     </div>
@@ -48,24 +52,24 @@ const resenas = [
     <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
       {
         resenas.map((resena) => (
-          <div class="flex flex-col justify-between rounded-2xl border border-outline-variant/30 bg-surface-container-low p-6">
+          <div class="j-card p-6" data-reveal>
             <div>
-              <div class="mb-3 flex text-tertiary" role="img" aria-label={`Valoración: ${resena.estrellas} de 5 estrellas`}>
+              <div class="mb-3 flex gap-1 text-accent-strong" role="img" aria-label={`Valoración: ${resena.estrellas} de 5 estrellas`}>
                 {Array.from({ length: resena.estrellas }).map(() => (
                   <span class="material-symbols-outlined ms-fill text-sm" aria-hidden="true">
                     star
                   </span>
                 ))}
               </div>
-              <p class="font-body-md text-body-md italic text-on-surface/90">{resena.texto}</p>
+              <p class="text-body-md text-ink-2">{resena.texto}</p>
             </div>
-            <div class="mt-4 flex items-center gap-3 border-t border-outline-variant/20 pt-5">
-              <div class={`flex h-10 w-10 items-center justify-center rounded-full bg-surface-container-highest font-bold ${resena.clasesIniciales}`}>
+            <div class="mt-5 flex items-center gap-3 border-t border-hairline pt-5">
+              <div class={`flex h-10 w-10 items-center justify-center rounded-full bg-paper-deep font-bold ${resena.clasesIniciales}`}>
                 {resena.iniciales}
               </div>
               <div>
                 <p class="font-label-md text-label-md font-bold text-on-surface">{resena.nombre}</p>
-                <p class="font-body-sm text-body-sm text-on-surface/60">{resena.detalle}</p>
+                <p class="text-body-sm text-ink-3">{resena.detalle}</p>
               </div>
             </div>
           </div>

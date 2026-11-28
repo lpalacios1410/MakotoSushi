@@ -8,12 +8,12 @@ import { obtenerMenu } from '../lib/contenido';
 const categorias = await obtenerMenu();
 ---
 
-<div class="scrollbar-none mb-10 flex items-center gap-2 overflow-x-auto pb-4" aria-label="Categorías del menú">
+<div class="scrollbar-none mb-9 flex items-center gap-2 overflow-x-auto pb-4" aria-label="Categorías del menú">
   {
     categorias.map((cat) => (
       <a
         href={`/menu/${cat.id}/`}
-        class="whitespace-nowrap rounded-full border border-outline-variant/30 bg-surface-container-high px-5 py-2.5 font-label-sm text-label-sm font-semibold text-on-surface/80 transition-all hover:bg-surface-container-highest hover:text-on-surface"
+        class="j-tag whitespace-nowrap px-4 py-2 text-label-sm font-semibold transition-colors duration-300 hover:border-accent-line hover:text-accent-strong"
       >
         {cat.data.titulo}
       </a>

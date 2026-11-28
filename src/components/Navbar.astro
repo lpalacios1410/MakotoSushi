@@ -29,37 +29,37 @@ function current(href: string, id: string): 'page' | 'true' | undefined {
 }
 ---
 
-<header class="sticky top-0 z-50 border-b border-outline-variant/30 bg-surface/90 shadow-md backdrop-blur-md">
-  <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4">
+<header class="sticky top-0 z-50 border-b border-hairline bg-[color-mix(in_srgb,var(--paper)_85%,transparent)] shadow-[0_10px_30px_-24px_rgb(var(--shadow-rgb)/0.5)] backdrop-blur-md">
+  <div class="j-container flex w-full items-center justify-between py-4">
     <!-- Logo y nombre de la marca -->
     <a class="group flex items-center gap-3 transition-transform duration-150 active:scale-95" href="/#inicio">
       <div
-        class="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border border-outline-variant/40 bg-surface-container-lowest p-0.5 transition-colors group-hover:border-primary-container"
+        class="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border border-hairline bg-card p-0.5 transition-colors group-hover:border-accent-line"
       >
         <img src={LOGO_URL} alt={`Logo de ${MARCA.nombreCompleto}`} class="h-full w-full object-contain" width="44" height="44" loading="eager" decoding="async" />
       </div>
       <div class="flex flex-col">
-        <span class="font-headline-md text-headline-md font-extrabold leading-tight tracking-wider text-on-surface">
+        <span class="font-headline-md text-headline-md font-semibold leading-tight tracking-wide text-on-surface">
           LETSGO SUSHI
         </span>
-        <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary">
+        <span class="font-label-sm text-label-sm uppercase tracking-widest text-accent-strong">
           Makoto Sushi Bar
         </span>
       </div>
     </a>
 
     <!-- Navegación de escritorio -->
-    <nav class="hidden items-center gap-8 md:flex" aria-label="Navegación principal">
+    <nav class="hidden items-center gap-2 md:flex" aria-label="Navegación principal">
       {
         enlaces.map((enlace) => (
           <a
             href={enlace.href}
             aria-current={current(enlace.href, enlace.id)}
             class:list={[
-              'pb-1 font-label-md text-label-md transition-colors duration-200 hover:text-primary',
+              'rounded-full px-3.5 py-1.5 font-label-md text-label-md transition-colors duration-300',
               activo === enlace.id
-                ? 'border-b-2 border-primary-container font-bold text-primary'
-                : 'font-medium text-on-surface/80',
+                ? 'bg-accent-soft font-bold text-accent-strong'
+                : 'font-medium text-ink-2 hover:bg-tint hover:text-on-surface',
             ]}
           >
             {enlace.texto}
@@ -72,7 +72,7 @@ function current(href: string, id: string): 'page' | 'true' | undefined {
     <div class="flex items-center gap-3">
       <!-- WhatsApp directo -->
       <a
-        class="hidden items-center gap-2 rounded-lg border border-outline-variant/30 bg-surface-container-high px-3.5 py-2 font-label-sm text-label-sm text-secondary transition-all hover:border-secondary hover:bg-surface-container lg:flex"
+        class="j-btn j-btn-line j-btn-sm hidden lg:inline-flex"
         href={enlaceWhatsapp()}
         rel="noopener noreferrer"
         target="_blank"
@@ -83,14 +83,14 @@ function current(href: string, id: string): 'page' | 'true' | undefined {
 
       <!-- Carrito de pedidos (abre el drawer) -->
       <button
-        class="relative rounded-lg border border-outline-variant/30 bg-surface-container p-2.5 text-on-surface transition-colors duration-150 hover:bg-surface-container-high active:scale-95"
+        class="relative rounded-full border border-hairline bg-card p-2.5 text-on-surface transition-colors duration-300 hover:bg-paper-deep active:scale-95"
         data-abrir-carrito
         aria-label="Ver carrito de pedidos"
       >
         <span class="material-symbols-outlined text-xl" aria-hidden="true">shopping_bag</span>
         <span
           data-cart-count
-          class="absolute -top-1 -right-1 hidden h-5 w-5 items-center justify-center rounded-full border-2 border-surface bg-primary-container text-[10px] font-bold text-on-primary-container"
+          class="absolute -top-1 -right-1 hidden h-5 w-5 items-center justify-center rounded-full border-2 border-card bg-accent-strong text-[10px] font-bold text-accent-ink"
           aria-hidden="true"
         >
           0
@@ -99,7 +99,7 @@ function current(href: string, id: string): 'page' | 'true' | undefined {
 
       <!-- CTA principal -->
       <a
-        class="hidden rounded-lg bg-primary-container px-5 py-2.5 font-label-md text-label-md font-bold tracking-wider text-on-primary-container transition-all duration-150 hover:opacity-90 active:scale-95 glow-primary sm:inline-flex"
+        class="j-btn j-btn-accent j-btn-sm hidden sm:inline-flex"
         href="/menu/"
       >
         Pedir Ahora
@@ -108,7 +108,7 @@ function current(href: string, id: string): 'page' | 'true' | undefined {
       <!-- Menú hamburguesa (móvil) -->
       <button
         id="menuBtn"
-        class="rounded-lg border border-outline-variant/30 bg-surface-container p-2.5 text-on-surface transition-colors duration-150 hover:bg-surface-container-high active:scale-95 md:hidden"
+        class="rounded-full border border-hairline bg-card p-2.5 text-on-surface transition-colors duration-300 hover:bg-paper-deep active:scale-95 md:hidden"
         aria-label="Abrir menú"
         aria-expanded="false"
         aria-controls="menuMovil"
@@ -119,16 +119,16 @@ function current(href: string, id: string): 'page' | 'true' | undefined {
   </div>
 
   <!-- Menú móvil desplegable -->
-  <nav id="menuMovil" class="hidden border-t border-outline-variant/30 bg-surface md:hidden" aria-label="Navegación móvil">
-    <div class="flex flex-col gap-1 px-6 py-4">
+  <nav id="menuMovil" class="hidden border-t border-hairline bg-surface md:hidden" aria-label="Navegación móvil">
+    <div class="j-container flex flex-col gap-1 py-4">
       {
         enlaces.map((enlace) => (
           <a
             href={enlace.href}
             aria-current={current(enlace.href, enlace.id)}
             class:list={[
-              'rounded-lg px-3 py-2.5 font-label-md text-label-md transition-colors hover:bg-surface-container hover:text-primary',
-              activo === enlace.id ? 'bg-surface-container font-bold text-primary' : 'text-on-surface/80',
+              'rounded-full px-3 py-2.5 font-label-md text-label-md transition-colors duration-300 hover:bg-tint',
+              activo === enlace.id ? 'bg-accent-soft font-bold text-accent-strong' : 'text-ink-2',
             ]}
           >
             {enlace.texto}
@@ -136,7 +136,7 @@ function current(href: string, id: string): 'page' | 'true' | undefined {
         ))
       }
       <a
-        class="mt-2 rounded-lg bg-primary-container px-3 py-3 text-center font-label-md text-label-md font-bold tracking-wider text-on-primary-container"
+        class="j-btn j-btn-accent mt-2 w-full"
         href="/menu/"
       >
         Pedir Ahora

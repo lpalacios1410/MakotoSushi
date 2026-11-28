@@ -1,53 +1,51 @@
 ---
 /**
  * Hero principal de la landing.
+ *
+ * Composición asimétrica sobre papel washi: palabras que suben por su línea,
+ * una palabra acentuada con trazo de pincel y el enso detrás de la foto.
  */
 import { IMAGEN_PLATO } from '../config';
 ---
 
-<section
-  id="inicio"
-  class="relative overflow-hidden border-b border-outline-variant/20 bg-surface-container-lowest pb-20 pt-10 md:py-24"
->
-  <!-- Resplandores atmosféricos -->
-  <div
-    class="pointer-events-none absolute -top-32 left-1/4 h-96 w-96 rounded-full bg-primary-container/10 blur-3xl"
-  >
-  </div>
-  <div
-    class="pointer-events-none absolute bottom-0 right-10 h-96 w-96 rounded-full bg-tertiary/5 blur-3xl"
-  >
+<section id="inicio" class="relative isolate overflow-clip">
+  <!-- Fondo pintado: sol, niebla y enso -->
+  <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+    <span class="j-sun"></span>
+    <span class="j-mist j-mist-1"></span>
+    <span class="j-mist j-mist-2"></span>
+    <svg class="j-enso -right-16 top-1/2 -translate-y-1/2 opacity-70" viewBox="0 0 200 200">
+      <path pathLength="1" d="M150 40 C 118 14, 58 18, 34 62 C 12 104, 36 160, 92 170 C 146 180, 184 140, 178 92 C 175 70, 166 56, 156 46"></path>
+    </svg>
   </div>
 
-  <div class="relative z-10 mx-auto max-w-7xl px-6">
-    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+  <div class="j-container j-section">
+    <div class="grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
       <!-- Columna izquierda: copy y CTAs -->
       <div class="flex flex-col items-start gap-6 lg:col-span-6">
         <div
-          class="inline-flex items-center gap-2.5 rounded-full border border-outline-variant/40 bg-surface-container-high px-3.5 py-1.5"
+          class="j-rise inline-flex items-center gap-2.5 rounded-full border border-hairline bg-card px-4 py-2"
         >
-          <span
-            class="h-2.5 w-2.5 animate-pulse rounded-full bg-primary-container"
-          ></span>
-          <span
-            class="font-label-sm text-label-sm uppercase tracking-wider text-primary"
+          <span class="h-2 w-2 rounded-full bg-accent" aria-hidden="true"></span>
+          <span class="font-label-sm text-label-sm uppercase tracking-widest text-ink-2"
             >Adictos al Verdadero Sabor</span
           >
         </div>
 
-        <h1
-          class="font-headline-xl text-headline-xl-mobile leading-tight tracking-tight text-on-surface md:text-headline-xl"
-        >
-          Adictos al Verdadero
-          <br class="hidden sm:inline" />
-          <span
-            class="bg-linear-to-r from-primary via-primary-container to-tertiary bg-clip-text text-transparent"
-          >
-            Sabor Japonés
+        <h1 class="font-headline-xl text-headline-xl-mobile leading-tight tracking-tight text-on-surface md:text-headline-xl">
+          <span class="j-word" style="--i:0"><span>Adictos</span></span>
+          <span class="j-word" style="--i:1"><span>al</span></span>
+          <span class="j-word" style="--i:2"><span>Verdadero</span></span>
+          <span class="j-word" style="--i:3"><span>Sabor</span></span>
+          <span class="j-word j-word-accent" style="--i:4">
+            <span>Japonés</span>
+            <svg class="j-brush" viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M3 13 C 40 6, 90 5, 130 9 S 185 14, 197 8"></path>
+            </svg>
           </span>
         </h1>
 
-        <p class="max-w-xl font-body-lg text-body-lg text-on-surface/80">
+        <p class="j-rise j-rise-1 max-w-xl text-body-lg text-ink-2">
           Sushi de autor, pesca del día fresca y combinaciones artesanales
           llevadas a tu mesa o a la comodidad de tu hogar. Pasión en barra por <strong
             class="font-semibold text-on-surface">Makoto Sushi</strong
@@ -55,113 +53,89 @@ import { IMAGEN_PLATO } from '../config';
           <strong class="font-semibold text-on-surface">Letsgo Sushi</strong>.
         </p>
 
-        <div class="flex w-full flex-wrap items-center gap-4 pt-2 sm:w-auto">
-          <a
-            class="glow-primary inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary-container px-7 py-3.5 font-label-md text-label-md font-bold tracking-wider text-on-primary-container transition-all duration-150 hover:opacity-95 active:scale-95 sm:w-auto"
-            href="/menu/"
-          >
+        <div class="j-rise j-rise-2 flex w-full flex-wrap items-center gap-4 pt-2 sm:w-auto">
+          <a class="j-btn j-btn-accent" href="/menu/">
             <span class="material-symbols-outlined" aria-hidden="true"
               >restaurant_menu</span
             >
             Explorar Catálogo Completo
           </a>
-          <a
-            class="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-outline-variant/40 bg-surface-container px-6 py-3.5 font-label-md text-label-md font-semibold text-on-surface transition-all duration-150 hover:border-primary-container hover:text-primary sm:w-auto"
-            href="/sedes/"
-          >
-            <span class="material-symbols-outlined" aria-hidden="true"
-              >storefront</span
-            >
+          <a class="j-btn j-btn-line" href="/sedes/">
+            <span class="material-symbols-outlined" aria-hidden="true">storefront</span>
             Visitar Nuestras Sedes
           </a>
         </div>
 
         <!-- Prueba social -->
-        <div
-          class="flex w-full items-center gap-6 border-t border-outline-variant/30 pt-4"
-        >
+        <div class="j-rise j-rise-3 flex w-full items-center gap-6 border-t border-hairline pt-4">
           <div class="flex -space-x-2">
             <div
-              class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-surface bg-surface-container-high text-[10px] font-bold text-primary"
+              class="flex h-8 w-8 items-center justify-center rounded-full border border-hairline bg-card text-[10px] font-bold text-accent"
             >
               MS
             </div>
             <div
-              class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-surface bg-surface-container-highest text-[10px] font-bold text-tertiary"
+              class="flex h-8 w-8 items-center justify-center rounded-full border border-hairline bg-paper-deep text-[10px] font-bold text-gold"
             >
               LS
             </div>
             <div
-              class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-surface bg-primary-container text-[10px] font-bold text-on-primary-container"
+              class="flex h-8 w-8 items-center justify-center rounded-full border border-hairline bg-accent-soft text-[10px] font-bold text-accent-strong"
             >
               +5k
             </div>
           </div>
-          <p class="font-body-sm text-body-sm text-on-surface/70">
-            Más de <span class="font-semibold text-on-surface"
-              >12,000 pedidos</span
+          <p class="text-body-sm text-ink-2">
+            Más de <span class="font-semibold text-on-surface">12,000 pedidos</span
             > entregados con excelencia gastronómica.
           </p>
         </div>
       </div>
 
       <!-- Columna derecha: plato destacado con badges -->
-      <div class="relative lg:col-span-6">
-        <div class="group relative mx-auto max-w-lg lg:max-w-none">
-          <!-- Plato central -->
+      <div class="j-float lg:col-span-6">
+        <figure class="group relative mx-auto max-w-lg lg:max-w-none">
           <div
-            class="relative overflow-hidden rounded-2xl border border-outline-variant/40 bg-surface-container shadow-2xl"
+            class="relative overflow-hidden rounded-[22px] border border-hairline bg-card shadow-[0_0_0_8px_var(--halo),var(--shadow-lift)]"
           >
             <img
               src={IMAGEN_PLATO}
               alt="Sushi de autor y rolls Makoto Sushi"
-              class="h-95 w-full object-cover object-center transition-transform duration-500 group-hover:scale-105 sm:h-115"
+              class="h-95 w-full object-cover object-center transition-transform duration-700 group-hover:scale-105 sm:h-115"
               width="512"
               height="460"
               loading="eager"
               decoding="async"
               fetchpriority="high"
             />
-            <div
-              class="absolute inset-0 bg-linear-to-t from-surface-container-lowest via-transparent to-transparent opacity-80"
-            >
-            </div>
-            <div
-              class="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-xl border border-outline-variant/30 bg-surface/85 p-4 backdrop-blur-md"
+            <div class="absolute inset-0 bg-linear-to-t from-[color-mix(in_srgb,var(--ink)_55%,transparent)] via-transparent to-transparent"></div>
+            <figcaption
+              class="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-[14px] border border-hairline bg-[color-mix(in_srgb,var(--card)_90%,transparent)] p-4 backdrop-blur-md"
             >
               <div>
-                <span
-                  class="block font-label-sm text-label-sm font-bold uppercase tracking-wider text-tertiary"
+                <span class="block font-label-sm text-label-sm uppercase tracking-widest text-accent-strong"
                   >Recomendación del Itamae</span
                 >
                 <p class="font-headline-sm text-headline-sm text-on-surface">
                   Tabla Degustación de Autor
                 </p>
               </div>
-              <span
-                class="font-headline-sm text-headline-sm font-bold text-primary"
-                >$25</span
-              >
-            </div>
+              <span class="j-price">$25</span>
+            </figcaption>
           </div>
 
           <!-- Badge flotante: reseñas -->
           <div
-            class="absolute -top-4 left-4 flex items-center gap-3 rounded-xl border border-outline-variant/40 bg-surface-container-high/95 px-4 py-3 shadow-xl backdrop-blur-md sm:-left-6"
+            class="absolute -top-5 left-4 flex items-center gap-3 rounded-[14px] border border-hairline bg-card px-4 py-3 shadow-[var(--shadow-soft)] sm:-left-8"
           >
-            <div
-              class="flex h-10 w-10 items-center justify-center rounded-lg bg-tertiary/10 text-tertiary"
-            >
-              <span
-                class="material-symbols-outlined ms-fill text-xl"
-                aria-hidden="true">star</span
-              >
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gold-soft text-gold">
+              <span class="material-symbols-outlined ms-fill text-xl" aria-hidden="true">star</span>
             </div>
             <div>
               <p class="font-label-md text-label-md font-bold text-on-surface">
                 4.9 / 5.0
               </p>
-              <p class="font-body-sm text-body-sm text-on-surface/60">
+              <p class="text-body-sm text-ink-3">
                 +850 reseñas Google
               </p>
             </div>
@@ -169,11 +143,9 @@ import { IMAGEN_PLATO } from '../config';
 
           <!-- Badge flotante: delivery -->
           <div
-            class="absolute top-1/2 right-4 flex -translate-y-1/2 items-center gap-3 rounded-xl border border-outline-variant/40 bg-surface-container-high/95 px-4 py-3 shadow-xl backdrop-blur-md sm:-right-6"
+            class="absolute top-1/2 right-4 flex -translate-y-1/2 items-center gap-3 rounded-[14px] border border-hairline bg-card px-4 py-3 shadow-[var(--shadow-soft)] sm:-right-8"
           >
-            <div
-              class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-container/20 text-primary"
-            >
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-accent-soft text-accent-strong">
               <span class="material-symbols-outlined text-xl" aria-hidden="true"
                 >moped</span
               >
@@ -182,7 +154,7 @@ import { IMAGEN_PLATO } from '../config';
               <p class="font-label-md text-label-md font-bold text-on-surface">
                 35 min
               </p>
-              <p class="font-body-sm text-body-sm text-on-surface/60">
+              <p class="text-body-sm text-ink-3">
                 Delivery Express
               </p>
             </div>
@@ -190,16 +162,16 @@ import { IMAGEN_PLATO } from '../config';
 
           <!-- Badge flotante: frescura -->
           <div
-            class="absolute -bottom-5 right-6 hidden items-center gap-2 rounded-xl border border-secondary/40 bg-surface-container-high/95 px-4 py-2.5 text-secondary shadow-xl backdrop-blur-md sm:flex"
+            class="absolute -bottom-5 right-6 hidden items-center gap-2 rounded-[14px] border border-hairline bg-card px-4 py-2.5 text-ink-2 shadow-[var(--shadow-soft)] sm:flex"
           >
-            <span class="material-symbols-outlined text-lg" aria-hidden="true"
+            <span class="material-symbols-outlined text-lg text-deep" aria-hidden="true"
               >verified</span
             >
             <span class="font-label-sm text-label-sm font-bold text-on-surface"
               >100% Fresco y Artesanal</span
             >
           </div>
-        </div>
+        </figure>
       </div>
     </div>
   </div>

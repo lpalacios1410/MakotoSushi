@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SedeCard from '../../components/SedeCard.astro';
+import SectionEyebrow from '../../components/SectionEyebrow.astro';
 import { MARCA, URL_SITIO } from '../../config';
 import { obtenerSedes } from '../../lib/contenido';
 
@@ -39,17 +40,20 @@ const schema = {
   activo="sedes"
   schema={schema}
 >
-  <section class="bg-surface-container-lowest py-12 md:py-20">
-    <div class="mx-auto max-w-7xl px-6">
-      <!-- Encabezado -->
-      <div class="mx-auto mb-12 max-w-2xl text-center">
-        <span class="mb-2 block font-label-sm text-label-sm uppercase tracking-widest text-primary">Puntos de Encuentro</span>
-        <h1 class="font-headline-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">Nuestras Sedes</h1>
-        <p class="mt-2 font-body-md text-body-md text-on-surface/80">
+  <section class="j-band border-b border-hairline">
+    <div class="j-container">
+      <div class="j-page-head j-page-head--plain">
+        <SectionEyebrow numeral="01" etiqueta="Puntos de encuentro" />
+        <h1>Nuestras Sedes</h1>
+        <p>
           {sedes.length} puntos en Caracas para disfrutar en barra, recoger tu pedido o recibirlo en casa.
         </p>
       </div>
+    </div>
+  </section>
 
+  <section class="relative">
+    <div class="j-container j-section">
       <!-- Grilla de sedes -->
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
         {sedes.map((sede) => <SedeCard sede={sede} nivel="h2" />)}
